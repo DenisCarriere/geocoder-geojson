@@ -1,20 +1,20 @@
-export interface Bounds {
+interface Bounds {
   northeast: LatLng
   southwest: LatLng
 }
 
-export interface LatLng {
+interface LatLng {
   lat: number
   lng: number
 }
 
-export interface AddressComponent {
+interface AddressComponent {
   long_name: string
   short_name: string
   types: Array<string>
 }
 
-export interface GoogleResult {
+interface GoogleResult {
   address_components: Array<AddressComponent>
   formatted_address: string
   geometry: {
