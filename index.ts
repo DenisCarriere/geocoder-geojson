@@ -5,7 +5,7 @@ import { GoogleResults } from './providers/google'
  * Google Provider
  *
  * @param {string} address Location for your search
- * @returns {GoogleResults}
+ * @returns {GoogleResults} JSON Object
  * @example
  * geocoder.google('Ottawa')
  *   .then(data => data.results)
