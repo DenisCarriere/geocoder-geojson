@@ -1,6 +1,6 @@
 {
   "name": "geocoder-promise",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Tools to help with TMS, Quadkey & Google (XYZ) Tiles",
   "main": "index.js",
   "jsnext:main": "index.js",
