@@ -21,6 +21,8 @@ geocoder.google('New York City')
   .then(data => console.log(data))
 ```
 
+![geocoder](https://cloud.githubusercontent.com/assets/550895/19335059/5482e9ca-90ce-11e6-993d-dc213a5084ad.gif)
+
 ## Tests
 
 ```bash
