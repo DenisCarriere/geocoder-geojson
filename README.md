@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/DenisCarriere/geocoder-promise.svg?branch=master)](https://travis-ci.org/DenisCarriere/geocoder-promise)
 [![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/geocoder-promise/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/geocoder-promise?branch=master)
+[![npm version](https://badge.fury.io/js/geocoder-promise.svg)](https://badge.fury.io/js/geocoder-promise)
 
 # Geocoder (ES6 Module)
 
