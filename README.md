@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/geocoder-geojson/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/geocoder-geojson?branch=master)
 [![npm version](https://badge.fury.io/js/geocoder-geojson.svg)](https://badge.fury.io/js/geocoder-geojson)
 
-# Geocoder GeoJSON
+# [Geocoder GeoJSON](https://www.npmjs.com/package/geocoder-geojson)
 
 Geocoding results in standard GeoJSON geographic data structures.
 
@@ -95,3 +95,15 @@ replaceStreetSuffix('Foo Bar Dr.')
 ```
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** name replace street suffix
+
+# Changelog
+
+## 1.0.0 - 2016-10-14
+
+First Stable release was created
+
+Features:
+
+- `google` provider
+- `confidenceScore`
+- `replaceStreetSuffix`
