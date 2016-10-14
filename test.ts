@@ -6,6 +6,11 @@ test('google', async t => {
   t.true(!!g.features)
 })
 
+test('google short=false', async t => {
+  const g = await geocoder.google('Ottawa', false)
+  t.true(!!g.features)
+})
+
 test('replaceStreetSuffix', async t => {
   t.deepEqual(geocoder.replaceStreetSuffix('Foo Bar St'), 'Foo Bar Street')
   t.deepEqual(geocoder.replaceStreetSuffix('Foo Bar Dr'), 'Foo Bar Drive')

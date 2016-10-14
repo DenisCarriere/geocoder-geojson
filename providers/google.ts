@@ -81,7 +81,7 @@ export function GoogleToGeoJSON(json: GoogleResults, short?: boolean) {
 
   json.results.map(result => {
     // Google Specific Properties
-    const components = parseAddressComponents(result.address_components)
+    const components = parseAddressComponents(result.address_components, short)
     const location_type = result.geometry.location_type
     const formatted_address = result.formatted_address
     const place_id = result.place_id
