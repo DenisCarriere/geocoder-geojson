@@ -1,7 +1,7 @@
 {
   "name": "geocoder-promise",
   "version": "0.1.0",
-  "description": "Tools to help with TMS, Quadkey & Google (XYZ) Tiles",
+  "description": "Geocoder uses Promises & Typings.",
   "main": "index.js",
   "jsnext:main": "index.js",
   "scripts": {
