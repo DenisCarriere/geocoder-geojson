@@ -36,8 +36,10 @@ export const scoreMatrix: Array<[number, number]> = [
  * @param {BBox} bbox extent in [minX, minY, maxX, maxY] order
  * @returns {number} confidence score
  * @example
- * const score = condifenceScore([-76, 44, -75, 45])
- * //=score
+ * confidenceScore([-75.1, 45.1, -75, 45])
+ * //=4
+ * confidenceScore([-75.001, 45.001, -75, 45])
+ * //=10
  */
 export function confidenceScore(bbox: BBox): number {
   if (!bbox) { return 0 }
@@ -54,13 +56,21 @@ export function confidenceScore(bbox: BBox): number {
   return result
 }
 
-export function fullStreetSuffix(name: string): string {
+/**
+ * Replaces Street Suffix with a complete word
+ *
+ * @param {string} name street name
+ * @returns {string} name replace street suffix
+ * @example
+ * replaceStreetSuffix('Foo Bar St')
+ * //='Foo Bar Street'
+ * replaceStreetSuffix('Foo Bar Dr.')
+ * //='Foo Bar Drive'
+ */
+export function replaceStreetSuffix(name: string): string {
   keys(suffix).map(key => {
     const pattern = new RegExp(`${ key }[\.]?$`, 'i')
     name = name.replace(pattern, suffix[key])
   })
   return name
 }
-
-const street = fullStreetSuffix('1552 Payette Dr')
-console.log(street)

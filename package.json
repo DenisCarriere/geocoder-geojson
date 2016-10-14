@@ -1,17 +1,17 @@
 {
-  "name": "geocoder-promise",
+  "name": "geocoder-geojson",
   "version": "0.2.0",
   "description": "Geocoding results in standard GeoJSON geographic data structures.",
   "main": "index.js",
   "jsnext:main": "index.js",
   "scripts": {
     "test": "tsc && nyc ava && npm run lint",
-    "docs": "tsc && cat HEADER.md > README.md && documentation build index.js -c documentation.yml -f md >> README.md",
+    "docs": "tsc && cat HEADER.md > README.md && documentation build index.js -c documentation.yml -f md --shallow >> README.md",
     "lint": "tsc && tslint index.ts test.ts && documentation lint index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DenisCarriere/geocoder-promise.git"
+    "url": "git+https://github.com/DenisCarriere/geocoder-geojson.git"
   },
   "author": "Denis Carriere <carriere.denis@gmail.com>",
   "contributors": [
@@ -19,9 +19,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DenisCarriere/geocoder-promise/issues"
+    "url": "https://github.com/DenisCarriere/geocoder-geojson/issues"
   },
-  "homepage": "https://github.com/DenisCarriere/geocoder-promise#readme",
+  "homepage": "https://github.com/DenisCarriere/geocoder-geojson#readme",
   "devDependencies": {
     "ava": "^0.16.0",
     "coveralls": "^2.11.14",

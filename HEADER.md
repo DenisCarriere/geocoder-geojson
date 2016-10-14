@@ -1,27 +1,25 @@
-[![Build Status](https://travis-ci.org/DenisCarriere/geocoder-promise.svg?branch=master)](https://travis-ci.org/DenisCarriere/geocoder-promise)
-[![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/geocoder-promise/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/geocoder-promise?branch=master)
-[![npm version](https://badge.fury.io/js/geocoder-promise.svg)](https://badge.fury.io/js/geocoder-promise)
+[![Build Status](https://travis-ci.org/DenisCarriere/geocoder-geojson.svg?branch=master)](https://travis-ci.org/DenisCarriere/geocoder-geojson)
+[![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/geocoder-geojson/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/geocoder-geojson?branch=master)
+[![npm version](https://badge.fury.io/js/geocoder-geojson.svg)](https://badge.fury.io/js/geocoder-geojson)
 
-# Geocoder (ES6 Module)
+# Geocoder GeoJSON
 
-A Geocoder written purely in TypeScript and returns Promises.
+Geocoding results in standard GeoJSON geographic data structures.
 
 ## Install
 
 ```bash
-$ npm install --save geocoder-promise
+$ npm install --save geocoder-geojson
 ```
 
 ## Quickstart
 
 ```javascript
-import * as geocoder from 'geocoder-promise'
+import * as geocoder from 'geocoder-geojson'
 
 geocoder.google('New York City')
-  .then(data => console.log(data))
+  .then(geojson => console.log(geojson))
 ```
-
-![geocoder](https://cloud.githubusercontent.com/assets/550895/19335059/5482e9ca-90ce-11e6-993d-dc213a5084ad.gif)
 
 ## Tests
 

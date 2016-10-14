@@ -1,27 +1,25 @@
-[![Build Status](https://travis-ci.org/DenisCarriere/geocoder-promise.svg?branch=master)](https://travis-ci.org/DenisCarriere/geocoder-promise)
-[![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/geocoder-promise/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/geocoder-promise?branch=master)
-[![npm version](https://badge.fury.io/js/geocoder-promise.svg)](https://badge.fury.io/js/geocoder-promise)
+[![Build Status](https://travis-ci.org/DenisCarriere/geocoder-geojson.svg?branch=master)](https://travis-ci.org/DenisCarriere/geocoder-geojson)
+[![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/geocoder-geojson/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/geocoder-geojson?branch=master)
+[![npm version](https://badge.fury.io/js/geocoder-geojson.svg)](https://badge.fury.io/js/geocoder-geojson)
 
-# Geocoder (ES6 Module)
+# Geocoder GeoJSON
 
 Geocoding results in standard GeoJSON geographic data structures.
 
 ## Install
 
 ```bash
-$ npm install --save geocoder-promise
+$ npm install --save geocoder-geojson
 ```
 
 ## Quickstart
 
 ```javascript
-import * as geocoder from 'geocoder-promise'
+import * as geocoder from 'geocoder-geojson'
 
 geocoder.google('New York City')
-  .then(data => console.log(data))
+  .then(geojson => console.log(geojson))
 ```
-
-![geocoder](https://cloud.githubusercontent.com/assets/550895/19335059/5482e9ca-90ce-11e6-993d-dc213a5084ad.gif)
 
 ## Tests
 
@@ -58,3 +56,41 @@ geocoder.google('Ottawa')
 ```
 
 Returns **GoogleResults** JSON Object
+
+# replaceStreetSuffix
+
+Replaces Street Suffix with a complete word
+
+**Parameters**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** street name
+
+**Examples**
+
+```javascript
+replaceStreetSuffix('Foo Bar St')
+//='Foo Bar Street'
+replaceStreetSuffix('Foo Bar Dr.')
+//='Foo Bar Drive'
+```
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** name replace street suffix
+
+# confidenceScore
+
+Generates a confidence score from 1 (worst) to 10 (best) from a given BBox
+
+**Parameters**
+
+-   `bbox` **BBox** extent in [minX, minY, maxX, maxY] order
+
+**Examples**
+
+```javascript
+confidenceScore([-75.1, 45.1, -75, 45])
+//=4
+confidenceScore([-75.001, 45.001, -75, 45])
+//=10
+```
+
+Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** confidence score

@@ -1,7 +1,7 @@
 import * as rp from 'request-promise'
 import * as turf from '@turf/turf'
 import { assign } from 'lodash'
-import { BBox, confidenceScore } from '../utils'
+import { BBox, confidenceScore, replaceStreetSuffix } from '../utils'
 
 interface Bounds {
   northeast: LatLng
@@ -123,7 +123,7 @@ function GoogleToGeoJSON(json: GoogleResults, short?: boolean) {
     // OSM attributes
     const osm = {
       'addr:housenumber': components.street_number,
-      'addr:street': components.route,
+      'addr:street': replaceStreetSuffix(components.route),
       'addr:postcode': components.postal_code,
     }
     assign(properties, osm)
@@ -137,6 +137,3 @@ function GoogleToGeoJSON(json: GoogleResults, short?: boolean) {
   })
   return collection
 }
-
-google('1552 Payette dr., ottawa, Ontario')
-  .then(data => console.log(JSON.stringify(data, null, 4)), error => console.log(error))
