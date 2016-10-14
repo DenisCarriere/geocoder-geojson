@@ -21,18 +21,6 @@ geocoder.google('New York City')
   .then(geojson => console.log(geojson))
 ```
 
-## Tests
-
-```bash
-$ npm test
-```
-
-## Documentation
-
-```bash
-$ npm run docs
-```
-
 ## Providers
 
 | Providers       | Coverage    | Restrictions |
