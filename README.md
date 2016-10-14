@@ -15,10 +15,47 @@ $ npm install --save geocoder-geojson
 ## Quickstart
 
 ```javascript
-import * as geocoder from 'geocoder-geojson'
+import geocoder from 'geocoder-geojson'
 
-geocoder.google('New York City')
-  .then(geojson => console.log(geojson))
+geocoder.google('Ottawa, Canada')
+  .then(geojson => geojson)
+/*
+{
+  "type": "FeatureCollection",
+  "features": [
+      {
+          "type": "Feature",
+          "properties": {
+              "location_type": "APPROXIMATE",
+              "formatted_address": "Ottawa, ON, Canada",
+              "place_id": "ChIJrxNRX7IFzkwR7RXdMeFRaoo",
+              "types": [
+                  "locality",
+                  "political"
+              ],
+              "confidence": 1,
+              "locality": "Ottawa",
+              "administrative_area_level_2": "Ottawa Division",
+              "administrative_area_level_1": "ON",
+              "country": "CA"
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [
+                  -75.69719309999999,
+                  45.4215296
+              ]
+          },
+          "bbox": [
+              -76.3539158,
+              44.9627331,
+              -75.2465979,
+              45.5375801
+          ]
+      }
+  ]
+}
+*/
 ```
 
 ## Providers
