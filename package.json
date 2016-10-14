@@ -1,7 +1,7 @@
 {
   "name": "geocoder-promise",
   "version": "0.1.1",
-  "description": "Geocoder uses Promises & Typings.",
+  "description": "Geocoding results in standard GeoJSON geographic data structures.",
   "main": "index.js",
   "jsnext:main": "index.js",
   "scripts": {

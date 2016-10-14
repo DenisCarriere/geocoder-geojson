@@ -4,7 +4,7 @@
 
 # Geocoder (ES6 Module)
 
-A Geocoder written purely in TypeScript and returns Promises.
+Geocoding results in standard GeoJSON scheme.
 
 ## Install
 
