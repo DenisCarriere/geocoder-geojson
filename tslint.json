@@ -9,7 +9,8 @@
     "variable-name": [false, "check-format"],
     "max-line-length": [true, 150],
     "no-console": [false],
-    "interface-name": [false]
+    "interface-name": [false],
+    "no-var-requires": false
   },
   "rulesDirectory": [ ]
 }

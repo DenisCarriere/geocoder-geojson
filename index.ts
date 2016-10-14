@@ -1,21 +1,16 @@
-import * as rp from 'request-promise'
-import { GoogleResults } from './providers/google'
+import * as providers from './providers'
+import * as utils from './utils'
 
-/**
- * Google Provider
- *
- * @param {string} address Location for your search
- * @returns {GoogleResults} JSON Object
- * @example
- * geocoder.google('Ottawa')
- *   .then(data => data.results)
- */
-export async function google(address: string): Promise<GoogleResults> {
-  const url = 'https://maps.googleapis.com/maps/api/geocode/json'
-  const params = {
-    address,
-  }
-  const results: GoogleResults = await rp.get(url, {qs: params})
-    .then(data => JSON.parse(data))
-  return results
+// Providers
+export const google = providers.google
+
+// Utils
+export const fullStreetSuffix = utils.fullStreetSuffix
+export const confidenceScore = utils.confidenceScore
+
+// Default Export
+export default {
+  google,
+  fullStreetSuffix,
+  confidenceScore,
 }

@@ -4,7 +4,7 @@
 
 # Geocoder (ES6 Module)
 
-Geocoding results in standard GeoJSON scheme.
+Geocoding results in standard GeoJSON geographic data structures.
 
 ## Install
 
