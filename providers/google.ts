@@ -1,7 +1,7 @@
-import * as rp from 'request-promise'
 import * as turf from '@turf/turf'
 import { assign } from 'lodash'
-import { BBox, confidenceScore, replaceStreetSuffix } from '../utils'
+import { BBox } from '../index'
+import { confidenceScore, replaceStreetSuffix } from '../index'
 
 interface Bounds {
   northeast: LatLng
@@ -32,28 +32,9 @@ interface GoogleResult {
   types: Array<string>
 }
 
-interface GoogleResults {
+export interface GoogleResults {
   status: string
   results: Array<GoogleResult>
-}
-
-/**
- * Google Provider
- *
- * @param {string} address Location for your search
- * @returns {GoogleResults} JSON Object
- * @example
- * geocoder.google('Ottawa')
- *   .then(data => data.results)
- */
-export default async function google(address: string, short?: boolean): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  const url = 'https://maps.googleapis.com/maps/api/geocode/json'
-  const params = {
-    address,
-  }
-  const data = await rp.get(url, {qs: params})
-  const json: GoogleResults = await JSON.parse(data)
-  return GoogleToGeoJSON(json, short)
 }
 
 /**
@@ -95,7 +76,7 @@ function parsePoint(result: GoogleResult): GeoJSON.Feature<GeoJSON.Point> {
 /**
  * Convert Google results into GeoJSON
  */
-function GoogleToGeoJSON(json: GoogleResults, short?: boolean) {
+export function GoogleToGeoJSON(json: GoogleResults, short?: boolean) {
   const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
 
   json.results.map(result => {

@@ -47,6 +47,7 @@ Google Provider
 **Parameters**
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
+-   `short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `true`)
 
 **Examples**
 
@@ -56,25 +57,6 @@ geocoder.google('Ottawa')
 ```
 
 Returns **GoogleResults** JSON Object
-
-# replaceStreetSuffix
-
-Replaces Street Suffix with a complete word
-
-**Parameters**
-
--   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** street name
-
-**Examples**
-
-```javascript
-replaceStreetSuffix('Foo Bar St')
-//='Foo Bar Street'
-replaceStreetSuffix('Foo Bar Dr.')
-//='Foo Bar Drive'
-```
-
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** name replace street suffix
 
 # confidenceScore
 
@@ -94,3 +76,22 @@ confidenceScore([-75.001, 45.001, -75, 45])
 ```
 
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** confidence score
+
+# replaceStreetSuffix
+
+Replaces Street Suffix with a complete word
+
+**Parameters**
+
+-   `name` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** street name
+
+**Examples**
+
+```javascript
+replaceStreetSuffix('Foo Bar St')
+//='Foo Bar Street'
+replaceStreetSuffix('Foo Bar Dr.')
+//='Foo Bar Drive'
+```
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** name replace street suffix
