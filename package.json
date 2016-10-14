@@ -1,6 +1,6 @@
 {
   "name": "geocoder-promise",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Geocoder uses Promises & Typings.",
   "main": "index.js",
   "jsnext:main": "index.js",
