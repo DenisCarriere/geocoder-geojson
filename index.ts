@@ -20,7 +20,7 @@ export type LngLat = [number, number]
  * @param {string} address Location for your search
  * @param {Object} options Google specific options
  * @param {string} [options.language=en] The language in which to return results.
- * @param {boolean} [options.short=true] Google address components have long or short results
+ * @param {boolean} [options.short=false] Google address components have long or short results
  * @returns {GoogleResults} JSON Object
  * @example
  * geocoder.google('Ottawa')
@@ -44,7 +44,7 @@ export async function google(address: string, options = GoogleDefaultOptions): P
  * @param {string} address Location for your search
  * @param {Object} options Google specific options
  * @param {string} [options.language=en] The language in which to return results.
- * @param {boolean} [options.short=true] Google address components have long or short results
+ * @param {boolean} [options.short=false] Google address components have long or short results
  * @returns {GoogleResults} JSON Object
  * @example
  * geocoder.googleReverse([-75.1, 45.1])
@@ -132,3 +132,6 @@ export function replaceStreetSuffix(name: string): string {
   }
   return name
 }
+
+google('150 Elgin Street, Ottawa')
+  .then(results => console.log(results.features[0]))

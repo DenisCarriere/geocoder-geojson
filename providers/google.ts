@@ -36,7 +36,7 @@ type method = 'geocode' | 'reverse'
 
 export const GoogleDefaultOptions: GoogleOptions = {
   sensor: false,
-  short: true,
+  short: false,
 }
 
 interface GoogleOptions {

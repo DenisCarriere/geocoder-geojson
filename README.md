@@ -21,36 +21,30 @@ import * as geocoder from 'geocoder-geojson'
 geocoder.google('Ottawa, Canada')
   .then(results => results.features[0])
 /*
-{
-    "type": "Feature",
-    "properties": {
-        "location_type": "APPROXIMATE",
-        "formatted_address": "Ottawa, ON, Canada",
-        "place_id": "ChIJrxNRX7IFzkwR7RXdMeFRaoo",
-        "types": [
-            "locality",
-            "political"
-        ],
-        "confidence": 1,
-        "locality": "Ottawa",
-        "administrative_area_level_2": "Ottawa Division",
-        "administrative_area_level_1": "ON",
-        "country": "CA"
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [
-            -75.69719309999999,
-            45.4215296
-        ]
-    },
-    "bbox": [
-        -76.3539158,
-        44.9627331,
-        -75.2465979,
-        45.5375801
-    ]
-}
+{ type: 'Feature',
+  properties:
+   { location_type: 'ROOFTOP',
+     formatted_address: '150 Elgin St, Ottawa, ON K2P 1L4, Canada',
+     place_id: 'ChIJC5ZgQ6oFzkwRE0RurHZ6uFQ',
+     types: [ 'street_address' ],
+     confidence: 10,
+     street_number: '150',
+     route: 'Elgin St',
+     neighborhood: 'Byward Market - Parliament Hill',
+     locality: 'Ottawa',
+     administrative_area_level_2: 'Ottawa Division',
+     administrative_area_level_1: 'ON',
+     country: 'CA',
+     postal_code: 'K2P 1L4',
+     'addr:housenumber': '150',
+     'addr:street': 'Elgin Street',
+     'addr:postcode': 'K2P 1L4' },
+  geometry: { type: 'Point', coordinates: [ -75.6927819, 45.4204693 ] },
+  bbox:
+   [ -75.6941308802915,
+     45.4191203197085,
+     -75.69143291970849,
+     45.4218182802915 ] }
 */
 ```
 
@@ -71,7 +65,7 @@ Google Provider
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
 -   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default google_1.GoogleDefaultOptions)** Google specific options
     -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results. (optional, default `en`)
-    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `true`)
+    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `false`)
 
 **Examples**
 
@@ -91,7 +85,7 @@ Google Provider (Reverse)
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
 -   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default google_1.GoogleDefaultOptions)** Google specific options
     -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results. (optional, default `en`)
-    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `true`)
+    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `false`)
 -   `lnglat`  
 
 **Examples**
@@ -145,8 +139,8 @@ Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ## 1.1.0 - 2016-10-17
 
-Added Google Reverse method
-
+- Added Google Reverse method
+- Changed default Google option `short=false`
 ```javascript
 geocoder.googleReverse([-75.1, 45.1])
 ```

@@ -3,8 +3,8 @@
 
 ## 1.1.0 - 2016-10-17
 
-Added Google Reverse method
-
+- Added Google Reverse method
+- Changed default Google option `short=false`
 ```javascript
 geocoder.googleReverse([-75.1, 45.1])
 ```
