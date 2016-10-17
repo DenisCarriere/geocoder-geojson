@@ -2,7 +2,7 @@ import * as path from 'path'
 import * as turf from '@turf/turf'
 import { keys, assign } from 'lodash'
 import * as rp from 'request-promise'
-import { GoogleResults, GoogleToGeoJSON, GoogleDefaultOptions } from './providers/google'
+import { GoogleToGeoJSON, GoogleDefaultOptions } from './providers/google'
 
 /**
  * BBox extent in [minX, minY, maxX, maxY] order
@@ -33,9 +33,9 @@ export async function google(address: string, options = GoogleDefaultOptions): P
     sensor: (options.sensor) ? options.sensor : false,
   }
   assign(params, options)
-  const data = await rp.get(url, {qs: params})
-  const json: GoogleResults = await JSON.parse(data)
-  return GoogleToGeoJSON(json, options)
+  return rp.get(url, {qs: params})
+    .then(data => JSON.parse(data))
+    .then(json => GoogleToGeoJSON(json, options))
 }
 
 /**
@@ -58,9 +58,9 @@ export async function googleReverse(lnglat: LngLat, options = GoogleDefaultOptio
     sensor: (options.sensor) ? options.sensor : false,
   }
   assign(params, options)
-  const data = await rp.get(url, {qs: params})
-  const json: GoogleResults = await JSON.parse(data)
-  return GoogleToGeoJSON(json, options)
+  return rp.get(url, {qs: params})
+    .then(data => JSON.parse(data))
+    .then(json => GoogleToGeoJSON(json, options))
 }
 
 /**
@@ -132,6 +132,3 @@ export function replaceStreetSuffix(name: string): string {
   }
   return name
 }
-
-google('150 Elgin Street, Ottawa')
-  .then(results => console.log(results.features[0]))
