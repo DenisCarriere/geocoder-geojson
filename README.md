@@ -16,7 +16,7 @@ $ npm install --save geocoder-geojson
 ## Quickstart
 
 ```javascript
-import geocoder from 'geocoder-geojson'
+import * as geocoder from 'geocoder-geojson'
 
 geocoder.google('Ottawa, Canada')
   .then(geojson => geojson)
@@ -73,13 +73,36 @@ Google Provider
 **Parameters**
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
--   `short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `true`)
+-   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default google_1.GoogleDefaultOptions)** Google specific options
+    -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results. (optional, default `en`)
+    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `true`)
 
 **Examples**
 
 ```javascript
 geocoder.google('Ottawa')
-  .then(data => data.results)
+  .then(results => results.features)
+```
+
+Returns **GoogleResults** JSON Object
+
+# googleReverse
+
+Google Provider (Reverse)
+
+**Parameters**
+
+-   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
+-   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default google_1.GoogleDefaultOptions)** Google specific options
+    -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results. (optional, default `en`)
+    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `true`)
+-   `lnglat`  
+
+**Examples**
+
+```javascript
+geocoder.googleReverse([-75.1, 45.1])
+  .then(results => results.features)
 ```
 
 Returns **GoogleResults** JSON Object
@@ -123,6 +146,14 @@ replaceStreetSuffix('Foo Bar Dr.')
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** name replace street suffix
 
 # Changelog
+
+## 1.1.0 - 2016-10-17
+
+Added Google Reverse method
+
+```javascript
+geocoder.googleReverse([-75.1, 45.1])
+```
 
 ## 1.0.0 - 2016-10-14
 

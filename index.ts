@@ -1,33 +1,66 @@
 import * as path from 'path'
 import * as turf from '@turf/turf'
-import { keys } from 'lodash'
+import { keys, assign } from 'lodash'
 import * as rp from 'request-promise'
-import { GoogleResults, GoogleToGeoJSON } from './providers/google'
+import { GoogleResults, GoogleToGeoJSON, GoogleDefaultOptions } from './providers/google'
 
 /**
  * BBox extent in [minX, minY, maxX, maxY] order
- * @private
  */
 export type BBox = [number, number, number, number]
+
+/**
+ * Longitude & Latitude [x, y]
+ */
+export type LngLat = [number, number]
 
 /**
  * Google Provider
  *
  * @param {string} address Location for your search
- * @param {boolean} [short=true] Google address components have long or short results
+ * @param {Object} options Google specific options
+ * @param {string} [options.language=en] The language in which to return results.
+ * @param {boolean} [options.short=true] Google address components have long or short results
  * @returns {GoogleResults} JSON Object
  * @example
  * geocoder.google('Ottawa')
- *   .then(data => data.results)
+ *   .then(results => results.features)
  */
-export async function google(address: string, short?: boolean): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function google(address: string, options = GoogleDefaultOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'
   const params = {
     address,
+    sensor: (options.sensor) ? options.sensor : false,
   }
+  assign(params, options)
   const data = await rp.get(url, {qs: params})
   const json: GoogleResults = await JSON.parse(data)
-  return GoogleToGeoJSON(json, short)
+  return GoogleToGeoJSON(json, options)
+}
+
+/**
+ * Google Provider (Reverse)
+ *
+ * @param {string} address Location for your search
+ * @param {Object} options Google specific options
+ * @param {string} [options.language=en] The language in which to return results.
+ * @param {boolean} [options.short=true] Google address components have long or short results
+ * @returns {GoogleResults} JSON Object
+ * @example
+ * geocoder.googleReverse([-75.1, 45.1])
+ *   .then(results => results.features)
+ */
+export async function googleReverse(lnglat: LngLat, options = GoogleDefaultOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+  const [lng, lat] = lnglat
+  const url = 'https://maps.googleapis.com/maps/api/geocode/json'
+  const params = {
+    address: [lat, lng].join(','),
+    sensor: (options.sensor) ? options.sensor : false,
+  }
+  assign(params, options)
+  const data = await rp.get(url, {qs: params})
+  const json: GoogleResults = await JSON.parse(data)
+  return GoogleToGeoJSON(json, options)
 }
 
 /**
@@ -98,10 +131,4 @@ export function replaceStreetSuffix(name: string): string {
     })
   }
   return name
-}
-
-export default {
-  google,
-  confidenceScore,
-  replaceStreetSuffix,
 }

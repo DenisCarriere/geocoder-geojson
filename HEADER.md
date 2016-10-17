@@ -16,7 +16,7 @@ $ npm install --save geocoder-geojson
 ## Quickstart
 
 ```javascript
-import geocoder from 'geocoder-geojson'
+import * as geocoder from 'geocoder-geojson'
 
 geocoder.google('Ottawa, Canada')
   .then(geojson => geojson)

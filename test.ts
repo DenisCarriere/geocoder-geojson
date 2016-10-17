@@ -1,5 +1,5 @@
 import test from 'ava'
-import geocoder from './index'
+import * as geocoder from './index'
 
 test('google', async t => {
   const g = await geocoder.google('Ottawa')
@@ -7,7 +7,12 @@ test('google', async t => {
 })
 
 test('google short=false', async t => {
-  const g = await geocoder.google('Ottawa', false)
+  const g = await geocoder.google('Ottawa', {short: false})
+  t.true(!!g.features)
+})
+
+test('googleReverse', async t => {
+  const g = await geocoder.googleReverse([-75.1, 45.1])
   t.true(!!g.features)
 })
 

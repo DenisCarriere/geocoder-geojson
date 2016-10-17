@@ -32,6 +32,21 @@ interface GoogleResult {
   types: Array<string>
 }
 
+type method = 'geocode' | 'reverse'
+
+export const GoogleDefaultOptions: GoogleOptions = {
+  sensor: false,
+  short: true,
+}
+
+interface GoogleOptions {
+  client?: string
+  key?: string
+  language?: string
+  short?: boolean
+  sensor?: boolean
+}
+
 export interface GoogleResults {
   status: string
   results: Array<GoogleResult>
@@ -40,10 +55,10 @@ export interface GoogleResults {
 /**
  * Parses Address Component into a single layer Object
  */
-function parseAddressComponents(components: Array<AddressComponent>, short = true) {
+function parseAddressComponents(components: Array<AddressComponent>, options?: GoogleOptions) {
   const results: any = {}
   components.map(component => {
-    if (short) { results[component.types[0]] = component.short_name
+    if (options.short) { results[component.types[0]] = component.short_name
     } else { results[component.types[0]] = component.long_name }
   })
   return results
@@ -76,12 +91,12 @@ function parsePoint(result: GoogleResult): GeoJSON.Feature<GeoJSON.Point> {
 /**
  * Convert Google results into GeoJSON
  */
-export function GoogleToGeoJSON(json: GoogleResults, short?: boolean) {
+export function GoogleToGeoJSON(json: GoogleResults, options?: GoogleOptions) {
   const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
 
   json.results.map(result => {
     // Google Specific Properties
-    const components = parseAddressComponents(result.address_components, short)
+    const components = parseAddressComponents(result.address_components, options)
     const location_type = result.geometry.location_type
     const formatted_address = result.formatted_address
     const place_id = result.place_id
