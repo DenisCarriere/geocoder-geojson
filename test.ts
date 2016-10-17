@@ -1,6 +1,11 @@
 import test from 'ava'
 import * as geocoder from './index'
 
+test('bing', async t => {
+  const g = await geocoder.bing('Ottawa, ON')
+  t.true(!!g.features)
+})
+
 test('google', async t => {
   const g = await geocoder.google('Ottawa')
   t.true(!!g.features)

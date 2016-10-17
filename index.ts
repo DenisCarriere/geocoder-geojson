@@ -3,6 +3,7 @@ import * as turf from '@turf/turf'
 import { keys, assign } from 'lodash'
 import * as rp from 'request-promise'
 import { GoogleToGeoJSON, GoogleDefaultOptions } from './providers/google'
+import { BingToGeoJSON, BingDefaultOptions } from './providers/bing'
 
 /**
  * BBox extent in [minX, minY, maxX, maxY] order
@@ -15,13 +16,22 @@ export type BBox = [number, number, number, number]
 export type LngLat = [number, number]
 
 /**
+ * OpenStreetMap
+ */
+export interface OSM {
+  'addr:housenumber'?: string
+  'addr:street'?: string
+  'addr:postcode'?: string
+}
+
+/**
  * Google Provider
  *
  * @param {string} address Location for your search
  * @param {Object} options Google specific options
  * @param {string} [options.language=en] The language in which to return results.
  * @param {boolean} [options.short=false] Google address components have long or short results
- * @returns {GoogleResults} JSON Object
+ * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
  * geocoder.google('Ottawa')
  *   .then(results => results.features)
@@ -45,7 +55,7 @@ export async function google(address: string, options = GoogleDefaultOptions): P
  * @param {Object} options Google specific options
  * @param {string} [options.language=en] The language in which to return results.
  * @param {boolean} [options.short=false] Google address components have long or short results
- * @returns {GoogleResults} JSON Object
+ * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
  * geocoder.googleReverse([-75.1, 45.1])
  *   .then(results => results.features)
@@ -61,6 +71,33 @@ export async function googleReverse(lnglat: LngLat, options = GoogleDefaultOptio
   return rp.get(url, {qs: params})
     .then(data => JSON.parse(data))
     .then(json => GoogleToGeoJSON(json, options))
+}
+
+/**
+ * Bing Provider
+ *
+ * @param {string} address Location for your search
+ * @param {Object} options Bing specific options
+ * @returns {GeoJSON<Point>} GeoJSON Feature Collection
+ * @example
+ * geocoder.bing('Ottawa')
+ *   .then(results => results.features)
+ */
+export async function bing(address: string, options = BingDefaultOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+  const url = 'http://dev.virtualearth.net/REST/v1/Locations'
+  const headers = {
+    'User-agent': 'geocoder-geojson',
+  }
+  const params = {
+    inclnb: 1,
+    key: verifyKey(options, 'BING_API_KEY'),
+    o: 'json',
+    q: address,
+  }
+  assign(params, options)
+  return rp.get(url, {qs: params})
+    .then(data => JSON.parse(data))
+    .then(json => BingToGeoJSON(json, options))
 }
 
 /**
@@ -132,3 +169,23 @@ export function replaceStreetSuffix(name: string): string {
   }
   return name
 }
+
+/**
+ * Verify if Key exists in Options or Environment Variable
+ *
+ * @private
+ * @param {Object} options Options with key
+ * @param {string} env Environment variable
+ * @returns {string} key
+ * @example
+ * const key = verifyKey(options, 'BING_API_KEY')
+ * //=key
+ */
+function verifyKey(options: {key?: string}, env: string) {
+  const key = (options.key) ? options.key : process.env[env]
+  if (!key) { throw new Error('[options.key] is required') }
+  return key
+}
+
+bing('Ottawa, ON')
+  .then(results => console.log(results.features[0]))

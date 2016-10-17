@@ -1,6 +1,6 @@
 import * as turf from '@turf/turf'
 import { assign } from 'lodash'
-import { BBox } from '../index'
+import { BBox, OSM } from '../index'
 import { confidenceScore, replaceStreetSuffix } from '../index'
 
 interface Bounds {
@@ -31,8 +31,6 @@ interface GoogleResult {
   place_id: string
   types: Array<string>
 }
-
-type method = 'geocode' | 'reverse'
 
 export const GoogleDefaultOptions: GoogleOptions = {
   sensor: false,
@@ -117,7 +115,7 @@ export function GoogleToGeoJSON(json: GoogleResults, options?: GoogleOptions) {
     assign(properties, components)
 
     // OSM attributes
-    const osm = {
+    const osm: OSM = {
       'addr:housenumber': components.street_number,
       'addr:street': replaceStreetSuffix(components.route),
       'addr:postcode': components.postal_code,
