@@ -85,9 +85,6 @@ export async function googleReverse(lnglat: LngLat, options = GoogleDefaultOptio
  */
 export async function bing(address: string, options = BingDefaultOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'http://dev.virtualearth.net/REST/v1/Locations'
-  const headers = {
-    'User-agent': 'geocoder-geojson',
-  }
   const params = {
     inclnb: 1,
     key: verifyKey(options, 'BING_API_KEY'),
