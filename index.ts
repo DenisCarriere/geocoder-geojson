@@ -1,5 +1,5 @@
 import * as rp from 'request-promise'
-import { verifyKey, LngLat } from './providers/utils'
+import { verifyKey, LngLat, validateLngLat } from './providers/utils'
 import { GoogleToGeoJSON, GoogleOptions } from './providers/google'
 import { BingToGeoJSON, BingOptions } from './providers/bing'
 import { MapboxToGeoJSON, MapboxOptions } from './providers/mapbox'
@@ -19,7 +19,7 @@ import { MapboxToGeoJSON, MapboxOptions } from './providers/mapbox'
 export async function mapbox(address: string, options = MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ address }.json`
   const params = {
-    access_token: options.access_token,
+    access_token: verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
   }
   return get(url, params, MapboxToGeoJSON, options)
 }
@@ -37,6 +37,7 @@ export async function mapbox(address: string, options = MapboxOptions): Promise<
  *   .then(results => results.features)
  */
 export async function mapboxReverse(lnglat: LngLat, options = MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+  lnglat = validateLngLat(lnglat)
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ lnglat.join(',') }.json`
   const params = {
     access_token: verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
@@ -78,7 +79,7 @@ export async function google(address: string, options: GoogleOptions = GoogleOpt
  *   .then(results => results.features)
  */
 export async function googleReverse(lnglat: LngLat, options: GoogleOptions = GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  const [lng, lat] = lnglat
+  const [lng, lat] = validateLngLat(lnglat)
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'
   const params = {
     address: [lat, lng].join(','),
