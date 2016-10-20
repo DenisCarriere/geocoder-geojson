@@ -13,6 +13,7 @@ import { verifyKey, LngLat, validateLngLat } from './utils'
  * @param {boolean} [options.short=false] Mapbox address components have long or short results
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
+ * // Environment variable MAPBOX_API_KEY
  * geocoder.mapbox('Ottawa, ON')
  *   .then(results => results.features)
  */
@@ -33,6 +34,7 @@ export async function mapbox(address: string, options = MapboxOptions): Promise<
  * @param {boolean} [options.short=false] Mapbox address components have long or short results
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
+ * // Environment variable MAPBOX_API_KEY
  * geocoder.mapbox('Ottawa, ON')
  *   .then(results => results.features)
  */
@@ -95,6 +97,7 @@ export async function googleReverse(lnglat: LngLat, options: GoogleOptions = Goo
  * @param {Object} options Bing specific options
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
+ * // Environment variable BING_API_KEY
  * geocoder.bing('Ottawa, ON')
  *   .then(results => results.features)
  */
@@ -112,6 +115,7 @@ export async function bing(address: string, options: BingOptions = BingOptions):
 /**
  * Generic GET function to normalize all of the requests
  *
+ * @private
  * @param {string} url URL
  * @param {Object} params Query String
  * @param {function} geojsonParser Customized function to generate a GeoJSON Point FeatureCollection

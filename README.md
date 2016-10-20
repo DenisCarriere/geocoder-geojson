@@ -71,6 +71,7 @@ Mapbox Provider
 **Examples**
 
 ```javascript
+// Environment variable MAPBOX_API_KEY
 geocoder.mapbox('Ottawa, ON')
   .then(results => results.features)
 ```
@@ -91,6 +92,7 @@ Mapbox Provider (Reverse)
 **Examples**
 
 ```javascript
+// Environment variable MAPBOX_API_KEY
 geocoder.mapbox('Ottawa, ON')
   .then(results => results.features)
 ```
@@ -149,24 +151,12 @@ Bing Provider
 **Examples**
 
 ```javascript
+// Environment variable BING_API_KEY
 geocoder.bing('Ottawa, ON')
   .then(results => results.features)
 ```
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
-
-# get
-
-Generic GET function to normalize all of the requests
-
-**Parameters**
-
--   `url` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** URL
--   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Query String
--   `geojsonParser` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Customized function to generate a GeoJSON Point FeatureCollection
--   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options used for both request & geojsonParser
-
-Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;GeoJSON.FeatureCollection&lt;GeoJSON.Point>>** GeoJSON Results
 
 # Changelog
 
