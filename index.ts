@@ -27,7 +27,7 @@ export async function mapbox(address: string, options = MapboxOptions): Promise<
 /**
  * Mapbox Provider (Reverse)
  *
- * @param {LngLat} address Location for your search
+ * @param {LngLat} lnglat Longitude & Latitude [x, y]
  * @param {Object} options Mapbox specific options
  * @param {string} options.access_token Mapbox developer access token
  * @param {boolean} [options.short=false] Mapbox address components have long or short results
@@ -69,7 +69,7 @@ export async function google(address: string, options: GoogleOptions = GoogleOpt
 /**
  * Google Provider (Reverse)
  *
- * @param {LngLat} address Location for your search
+ * @param {LngLat} lnglat Longitude & Latitude [x, y]
  * @param {Object} options Google specific options
  * @param {string} [options.language=en] The language in which to return results.
  * @param {boolean} [options.short=false] Google address components have long or short results
@@ -110,7 +110,7 @@ export async function bing(address: string, options: BingOptions = BingOptions):
 }
 
 /**
- * Generic GET function for all geocoding providers
+ * Generic GET function to normalize all of the requests
  *
  * @param {string} url URL
  * @param {Object} params Query String

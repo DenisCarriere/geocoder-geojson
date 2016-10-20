@@ -1,6 +1,17 @@
 
 # Changelog
 
+## 1.2.0 - 2016-10-17
+
+- Validatation of LngLat - Common mistake is rerversing the coordinates to LatLng
+- Added Mapbox & Mapbox Reverse providers
+- Added generic GET function to normalize all of the requests
+```javascript
+// Environment Variable MAPBOX_API_KEY
+geocoder.mapbox('Ottawa, ON')
+geocoder.mapboxReverse([-75.1, 45.1])
+```
+
 ## 1.1.0 - 2016-10-17
 
 - Added Google Reverse method
