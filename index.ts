@@ -16,14 +16,12 @@ import { MapboxToGeoJSON, MapboxOptions } from './providers/mapbox'
  * geocoder.mapbox('Ottawa, ON')
  *   .then(results => results.features)
  */
-export async function mapbox(address: string, options?: MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function mapbox(address: string, options = MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ address }.json`
   const params = {
     access_token: options.access_token,
   }
-  return rp.get(url, {qs: params})
-    .then(data => JSON.parse(data))
-    .then(json => MapboxToGeoJSON(json, options))
+  return get(url, params, MapboxToGeoJSON, options)
 }
 
 /**
@@ -38,14 +36,12 @@ export async function mapbox(address: string, options?: MapboxOptions): Promise<
  * geocoder.mapbox('Ottawa, ON')
  *   .then(results => results.features)
  */
-export async function mapboxReverse(lnglat: LngLat, options?: MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function mapboxReverse(lnglat: LngLat, options = MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ lnglat.join(',') }.json`
   const params = {
     access_token: verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
   }
-  return rp.get(url, { qs: params })
-    .then(data => JSON.parse(data))
-    .then(json => MapboxToGeoJSON(json, options))
+  return get(url, params, MapboxToGeoJSON, options)
 }
 
 /**
@@ -60,15 +56,13 @@ export async function mapboxReverse(lnglat: LngLat, options?: MapboxOptions): Pr
  * geocoder.google('Ottawa, ON')
  *   .then(results => results.features)
  */
-export async function google(address: string, options?: GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function google(address: string, options: GoogleOptions = GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'
   const params = {
     address,
-    sensor: (options.sensor) ? options.sensor : false,
+    sensor: options.sensor,
   }
-  return rp.get(url, { qs: params })
-    .then(data => JSON.parse(data))
-    .then(json => GoogleToGeoJSON(json, options))
+  return get(url, params, GoogleToGeoJSON, options)
 }
 
 /**
@@ -83,16 +77,14 @@ export async function google(address: string, options?: GoogleOptions): Promise<
  * geocoder.googleReverse([-75.1, 45.1])
  *   .then(results => results.features)
  */
-export async function googleReverse(lnglat: LngLat, options?: GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function googleReverse(lnglat: LngLat, options: GoogleOptions = GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const [lng, lat] = lnglat
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'
   const params = {
     address: [lat, lng].join(','),
-    sensor: (options.sensor) ? options.sensor : false,
+    sensor: options.sensor,
   }
-  return rp.get(url, { qs: params })
-    .then(data => JSON.parse(data))
-    .then(json => GoogleToGeoJSON(json, options))
+  return get(url, params, GoogleToGeoJSON, options)
 }
 
 /**
@@ -105,7 +97,7 @@ export async function googleReverse(lnglat: LngLat, options?: GoogleOptions): Pr
  * geocoder.bing('Ottawa, ON')
  *   .then(results => results.features)
  */
-export async function bing(address: string, options?: BingOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function bing(address: string, options: BingOptions = BingOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'http://dev.virtualearth.net/REST/v1/Locations'
   const params = {
     inclnb: 1,
@@ -113,9 +105,22 @@ export async function bing(address: string, options?: BingOptions): Promise<GeoJ
     o: 'json',
     q: address,
   }
-  return rp.get(url, { qs: params })
-    .then(data => JSON.parse(data))
-    .then(json => BingToGeoJSON(json, options))
+  return get(url, params, BingToGeoJSON, options)
 }
 
-bing('Ottawa ON').then(data => console.log(data), error => console.log(error))
+/**
+ * Generic GET function for all geocoding providers
+ *
+ * @private
+ * @param {string} url URL
+ * @param {Object} params Query String
+ * @param {function} geojsonParser Customized function to generate a GeoJSON Point FeatureCollection
+ * @param {Object} options Options used for both request & geojsonParser
+ * @returns {Promise<GeoJSON.FeatureCollection<GeoJSON.Point>>} GeoJSON Results
+ */
+async function get(url: string, params: any, geojsonParser: any, options: any): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+  const response = await rp.get(url, { qs: params })
+  const json = JSON.parse(response)
+  const geojson: GeoJSON.FeatureCollection<GeoJSON.Point>  = geojsonParser(json, options)
+  return geojson
+}
