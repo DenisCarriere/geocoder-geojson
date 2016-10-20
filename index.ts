@@ -120,7 +120,7 @@ export async function bing(address: string, options: BingOptions = BingOptions):
  */
 async function get(url: string, params: any, geojsonParser: any, options: any): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const response = await rp.get(url, { qs: params })
-  const json = JSON.parse(response)
-  const geojson: GeoJSON.FeatureCollection<GeoJSON.Point>  = geojsonParser(json, options)
+  const json = await JSON.parse(response)
+  const geojson: GeoJSON.FeatureCollection<GeoJSON.Point> = geojsonParser(json, options)
   return geojson
 }
