@@ -50,7 +50,10 @@ geocoder.google('Ottawa, Canada')
 
 ## Features
 
-| Name               | Coverage    | Restrictions                 |
-|--------------------|:------------|:-----------------------------|
-| Google             | Global      | API Key - RateLimit 2500/day |
-| GoogleReverse      | Global      | API Key - RateLimit 2500/day |
+| Name                                          | Coverage    | Restrictions                 |
+|-----------------------------------------------|:------------|:-----------------------------|
+| [google(address)](#google)                    | Global      | API Key - RateLimit 2500/day
+| [googleReverse([lng, lat])](#googlereverse)   | Global      | API Key - RateLimit 2500/day
+| [mapbox(address)](#mapbox)                    | Global      | API Key
+| [mapboxReverse([lng, lat])](#mapboxreverse    | Global      | API Key
+| [bing(address)](#bing)                        | Global      | API Key
