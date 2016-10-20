@@ -102,7 +102,7 @@ export function replaceStreetSuffix(name: string): string {
 export function verifyKey(key: string, env: string) {
   if (key) { return key }
   if (process.env[env]) { return process.env[env] }
-  throw new Error('[options.key] is required')
+  throw new Error('API key authentication is required')
 }
 
 /**

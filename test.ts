@@ -1,12 +1,17 @@
 import test from 'ava'
 import * as geocoder from './index'
-import { replaceStreetSuffix, confidenceScore } from './providers/utils'
+import { replaceStreetSuffix, confidenceScore, validateLngLat, verifyKey } from './providers/utils'
 
 const CITY = 'Ottawa, ON'
 const LNGLAT: [number, number] = [-75.1, 45.1]
 
 test('mapbox', async t => {
-  const g = await geocoder.mapbox(CITY, {access_token: 'pk.eyJ1IjoidHJpc3RlbiIsImEiOiJiUzBYOEJzIn0.VyXs9qNWgTfABLzSI3YcrQ'})
+  const g = await geocoder.mapbox(CITY)
+  t.true(!!g.features)
+})
+
+test('mapboxReverse', async t => {
+  const g = await geocoder.mapboxReverse(LNGLAT)
   t.true(!!g.features)
 })
 
@@ -40,4 +45,15 @@ test('replaceStreetSuffix', async t => {
 test('confidenceScore', t => {
   t.deepEqual(confidenceScore([-75.1, 45.1, -75, 45]), 4)
   t.deepEqual(confidenceScore([-75.001, 45.001, -75, 45]), 10)
+})
+
+test('validateLngLat', t => {
+  t.throws(() => validateLngLat([-120, 220]), 'LngLat [lat] must be within -90 to 90 degrees')
+  t.throws(() => validateLngLat([120, 220]), 'LngLat [lat] must be within -90 to 90 degrees')
+  t.throws(() => validateLngLat([-220, 45]), 'LngLat [lng] must be within -180 to 180 degrees')
+  t.throws(() => validateLngLat([220, 45]), 'LngLat [lng] must be within -180 to 180 degrees')
+})
+
+test('verifyKey', t => {
+  t.throws(() => verifyKey('', 'ENV_MISSING'), 'API key authentication is required')
 })
