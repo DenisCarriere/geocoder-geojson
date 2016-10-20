@@ -33,7 +33,6 @@ interface MapboxResults {
  * Convert Mapbox results into GeoJSON
  */
 export function MapboxToGeoJSON(json: MapboxResults, options: MapboxOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
-  console.log(JSON.stringify(json, null, 4))
   const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
   json.features.map(result => {
     collection.features.push(result)
