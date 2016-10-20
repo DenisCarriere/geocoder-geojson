@@ -1,7 +1,7 @@
 
 # Changelog
 
-## 1.2.1 - 2016-10-17
+## 1.2.1 - 2016-10-20
 
 - Remove OSM attribute creation from Google & Bing
 - Validatation of LngLat - Common mistake is rerversing the coordinates to LatLng
