@@ -1,6 +1,6 @@
 import test from 'ava'
 import * as geocoder from './index'
-import { replaceStreetSuffix, confidenceScore, validateLngLat, verifyKey } from './providers/utils'
+import { replaceStreetSuffix, confidenceScore, validateLngLat, verifyKey } from './utils'
 
 const CITY = 'Ottawa, ON'
 const LNGLAT: [number, number] = [-75.1, 45.1]

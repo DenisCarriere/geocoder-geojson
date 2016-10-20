@@ -1,6 +1,6 @@
 import * as turf from '@turf/turf'
 import { assign } from 'lodash'
-import { BBox, LngLat, OSM, confidenceScore } from './utils'
+import { BBox, LngLat, OSM, confidenceScore } from '../utils'
 
 export const BingOptions: BingOptions = {}
 export interface BingOptions {
