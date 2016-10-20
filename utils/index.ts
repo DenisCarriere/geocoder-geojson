@@ -15,9 +15,10 @@ export type LngLat = [number, number]
 /**
  * OpenStreetMap
  */
-export interface OSM {
+export interface OpenStreetMap {
   'addr:housenumber'?: string
   'addr:street'?: string
+  'addr:city'?: string
   'addr:postcode'?: string
 }
 

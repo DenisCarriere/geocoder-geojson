@@ -23,28 +23,19 @@ geocoder.google('Ottawa, Canada')
 /*
 { type: 'Feature',
   properties:
-   { location_type: 'ROOFTOP',
-     formatted_address: '150 Elgin St, Ottawa, ON K2P 1L4, Canada',
-     place_id: 'ChIJC5ZgQ6oFzkwRE0RurHZ6uFQ',
-     types: [ 'street_address' ],
-     confidence: 10,
-     street_number: '150',
-     route: 'Elgin St',
-     neighborhood: 'Byward Market - Parliament Hill',
+   { location_type: 'APPROXIMATE',
+     formatted_address: 'Ottawa, ON, Canada',
+     place_id: 'ChIJrxNRX7IFzkwR7RXdMeFRaoo',
+     types: [ 'locality', 'political' ],
+     confidence: 1,
      locality: 'Ottawa',
      administrative_area_level_2: 'Ottawa Division',
-     administrative_area_level_1: 'ON',
-     country: 'CA',
-     postal_code: 'K2P 1L4',
-     'addr:housenumber': '150',
-     'addr:street': 'Elgin Street',
-     'addr:postcode': 'K2P 1L4' },
-  geometry: { type: 'Point', coordinates: [ -75.6927819, 45.4204693 ] },
-  bbox:
-   [ -75.6941308802915,
-     45.4191203197085,
-     -75.69143291970849,
-     45.4218182802915 ] }
+     administrative_area_level_1: 'Ontario',
+     country: 'Canada',
+  geometry:
+   { type: 'Point',
+     coordinates: [ -75.69719309999999, 45.4215296 ] },
+  bbox: [ -76.3539158, 44.9627331, -75.2465979, 45.5375801 ] }
 */
 ```
 

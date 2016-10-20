@@ -1,6 +1,6 @@
 import * as turf from '@turf/turf'
 import { assign } from 'lodash'
-import { BBox, OSM, confidenceScore, replaceStreetSuffix } from '../utils'
+import { BBox, confidenceScore } from '../utils'
 
 export const GoogleOptions: GoogleOptions = {
   language: 'en',
@@ -92,34 +92,27 @@ export function GoogleToGeoJSON(json: GoogleResults, options?: GoogleOptions): G
   const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
 
   json.results.map(result => {
-    // Google Specific Properties
-    const components = parseAddressComponents(result.address_components, options.short)
-    const location_type = result.geometry.location_type
-    const formatted_address = result.formatted_address
-    const place_id = result.place_id
-    const types = result.types
-
-    // Point GeoJSON
+    // Get Geometries
     const point = parsePoint(result)
     const bbox = parseBBox(result)
+
+    // Calculate Confidence score
+    const location_type = result.geometry.location_type
     let confidence = confidenceScore(bbox)
     if (location_type === 'ROOFTOP') { confidence = 10 }
-    const properties = {
-      location_type,
-      formatted_address,
-      place_id,
-      types,
-      confidence,
-    }
-    assign(properties, components)
 
-    // OSM attributes
-    const osm: OSM = {
-      'addr:housenumber': components.street_number,
-      'addr:street': replaceStreetSuffix(components.route),
-      'addr:postcode': components.postal_code,
+    // GeoJSON Point properties
+    const properties = {
+      confidence,
+      location_type,
+      formatted_address: result.formatted_address,
+      place_id: result.place_id,
+      types: result.types,
     }
-    assign(properties, osm)
+
+    // Google Specific Properties
+    const components = parseAddressComponents(result.address_components, options.short)
+    assign(properties, components)
 
     // Store Point to GeoJSON feature collection
     if (point) {
