@@ -1,6 +1,6 @@
 import * as turf from '@turf/turf'
 import { assign } from 'lodash'
-import { BBox, OSM, confidenceScore, replaceStreetSuffix } from './utils'
+import { BBox, OSM, confidenceScore, replaceStreetSuffix } from '../utils'
 
 export const GoogleOptions: GoogleOptions = {
   language: 'en',

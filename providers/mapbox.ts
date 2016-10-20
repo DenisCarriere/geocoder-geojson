@@ -1,5 +1,5 @@
 import * as turf from '@turf/turf'
-import { LngLat } from './utils'
+import { LngLat } from '../utils'
 
 export const MapboxOptions: MapboxOptions = {}
 export interface MapboxOptions {
