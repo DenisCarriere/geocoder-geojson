@@ -1,8 +1,8 @@
 import * as rp from 'request-promise'
-import { verifyKey, LngLat, validateLngLat } from './providers/utils'
-import { GoogleToGeoJSON, GoogleOptions } from './providers/google'
 import { BingToGeoJSON, BingOptions } from './providers/bing'
+import { GoogleToGeoJSON, GoogleOptions } from './providers/google'
 import { MapboxToGeoJSON, MapboxOptions } from './providers/mapbox'
+import { verifyKey, LngLat, validateLngLat } from './utils'
 
 /**
  * Mapbox Provider
@@ -27,7 +27,7 @@ export async function mapbox(address: string, options = MapboxOptions): Promise<
 /**
  * Mapbox Provider (Reverse)
  *
- * @param {string} address Location for your search
+ * @param {LngLat} address Location for your search
  * @param {Object} options Mapbox specific options
  * @param {string} options.access_token Mapbox developer access token
  * @param {boolean} [options.short=false] Mapbox address components have long or short results
@@ -69,7 +69,7 @@ export async function google(address: string, options: GoogleOptions = GoogleOpt
 /**
  * Google Provider (Reverse)
  *
- * @param {string} address Location for your search
+ * @param {LngLat} address Location for your search
  * @param {Object} options Google specific options
  * @param {string} [options.language=en] The language in which to return results.
  * @param {boolean} [options.short=false] Google address components have long or short results
@@ -112,7 +112,6 @@ export async function bing(address: string, options: BingOptions = BingOptions):
 /**
  * Generic GET function for all geocoding providers
  *
- * @private
  * @param {string} url URL
  * @param {Object} params Query String
  * @param {function} geojsonParser Customized function to generate a GeoJSON Point FeatureCollection
@@ -120,7 +119,7 @@ export async function bing(address: string, options: BingOptions = BingOptions):
  * @returns {Promise<GeoJSON.FeatureCollection<GeoJSON.Point>>} GeoJSON Results
  */
 async function get(url: string, params: any, geojsonParser: any, options: any): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  const response = await rp.get(url, { qs: params })
+  const response = await rp.get(url, Object.assign({ qs: params }, options))
   const json = await JSON.parse(response)
   const geojson: GeoJSON.FeatureCollection<GeoJSON.Point> = geojsonParser(json, options)
   return geojson
