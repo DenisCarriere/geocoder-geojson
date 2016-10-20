@@ -1,7 +1,6 @@
 import * as turf from '@turf/turf'
 import { assign } from 'lodash'
-import { BBox, OSM } from '../index'
-import { confidenceScore, replaceStreetSuffix } from '../index'
+import { BBox, OSM, confidenceScore, replaceStreetSuffix } from './utils'
 
 interface Bounds {
   northeast: LatLng
@@ -32,12 +31,7 @@ interface GoogleResult {
   types: Array<string>
 }
 
-export const GoogleDefaultOptions: GoogleOptions = {
-  sensor: false,
-  short: false,
-}
-
-interface GoogleOptions {
+export interface GoogleOptions {
   client?: string
   key?: string
   language?: string
@@ -53,10 +47,10 @@ export interface GoogleResults {
 /**
  * Parses Address Component into a single layer Object
  */
-function parseAddressComponents(components: Array<AddressComponent>, options?: GoogleOptions) {
+function parseAddressComponents(components: Array<AddressComponent>, short = true) {
   const results: any = {}
   components.map(component => {
-    if (options.short) { results[component.types[0]] = component.short_name
+    if (short) { results[component.types[0]] = component.short_name
     } else { results[component.types[0]] = component.long_name }
   })
   return results
@@ -94,7 +88,7 @@ export function GoogleToGeoJSON(json: GoogleResults, options?: GoogleOptions) {
 
   json.results.map(result => {
     // Google Specific Properties
-    const components = parseAddressComponents(result.address_components, options)
+    const components = parseAddressComponents(result.address_components, options.short)
     const location_type = result.geometry.location_type
     const formatted_address = result.formatted_address
     const place_id = result.place_id
