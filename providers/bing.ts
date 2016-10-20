@@ -66,7 +66,7 @@ function parsePoint(result: BingResult): GeoJSON.Feature<GeoJSON.Point> {
 /**
  * Convert Bing results into GeoJSON
  */
-export function BingToGeoJSON(json: BingResults, options?: BingOptions) {
+export function BingToGeoJSON(json: BingResults, options?: BingOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
   const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
   json.resourceSets[0].resources.map(result => {
     // Point GeoJSON

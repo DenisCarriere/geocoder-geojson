@@ -2,6 +2,19 @@ import * as turf from '@turf/turf'
 import { assign } from 'lodash'
 import { BBox, OSM, confidenceScore, replaceStreetSuffix } from './utils'
 
+export const GoogleOptions: GoogleOptions = {
+  language: 'en',
+  sensor: false,
+  short: false,
+}
+export interface GoogleOptions {
+  client?: string
+  key?: string
+  language?: string
+  short?: boolean
+  sensor?: boolean
+}
+
 interface Bounds {
   northeast: LatLng
   southwest: LatLng
@@ -29,14 +42,6 @@ interface GoogleResult {
   }
   place_id: string
   types: Array<string>
-}
-
-export interface GoogleOptions {
-  client?: string
-  key?: string
-  language?: string
-  short?: boolean
-  sensor?: boolean
 }
 
 export interface GoogleResults {
@@ -83,7 +88,7 @@ function parsePoint(result: GoogleResult): GeoJSON.Feature<GeoJSON.Point> {
 /**
  * Convert Google results into GeoJSON
  */
-export function GoogleToGeoJSON(json: GoogleResults, options?: GoogleOptions) {
+export function GoogleToGeoJSON(json: GoogleResults, options?: GoogleOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
   const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
 
   json.results.map(result => {

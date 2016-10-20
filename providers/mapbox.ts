@@ -1,6 +1,11 @@
 import * as turf from '@turf/turf'
 import { LngLat } from './utils'
 
+export const MapboxOptions: MapboxOptions = {}
+export interface MapboxOptions {
+  access_token?: string
+}
+
 interface Geometry {
   coordinates: LngLat
   type: string
@@ -24,14 +29,10 @@ interface MapboxResults {
   type: string
 }
 
-export interface MapboxOptions {
-  access_token: string
-}
-
 /**
  * Convert Mapbox results into GeoJSON
  */
-export function MapboxToGeoJSON(json: MapboxResults, options: MapboxOptions) {
+export function MapboxToGeoJSON(json: MapboxResults, options: MapboxOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
   console.log(JSON.stringify(json, null, 4))
   const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
   json.features.map(result => {
