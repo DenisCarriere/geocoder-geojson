@@ -13,9 +13,7 @@ import { verifyKey, LngLat, validateLngLat } from './utils'
  * @param {boolean} [options.short=false] Address components have long or short results
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
- * // Environment variable MAPBOX_ACCESS_TOKEN
- * geocoder.mapbox('Ottawa, ON')
- *   .then(results => results.features)
+ * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
 export async function mapbox(address: string, options = MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ address }.json`
@@ -34,9 +32,7 @@ export async function mapbox(address: string, options = MapboxOptions): Promise<
  * @param {boolean} [options.short=false] Address components have long or short results
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
- * // Environment variable MAPBOX_ACCESS_TOKEN
- * geocoder.mapbox('Ottawa, ON')
- *   .then(results => results.features)
+ * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
 export async function mapboxReverse(lnglat: LngLat, options = MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   lnglat = validateLngLat(lnglat)
@@ -56,8 +52,7 @@ export async function mapboxReverse(lnglat: LngLat, options = MapboxOptions): Pr
  * @param {boolean} [options.short=false] Address components have long or short results
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
- * geocoder.google('Ottawa, ON')
- *   .then(results => results.features)
+ * const geojson = await geocoder.google('Ottawa, ON')
  */
 export async function google(address: string, options = GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -77,8 +72,7 @@ export async function google(address: string, options = GoogleOptions): Promise<
  * @param {boolean} [options.short=false] Address components have long or short results
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
- * geocoder.googleReverse([-75.1, 45.1])
- *   .then(results => results.features)
+ * const geojson = await geocoder.googleReverse([-75.1, 45.1])
  */
 export async function googleReverse(lnglat: LngLat, options = GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const [lng, lat] = validateLngLat(lnglat)
@@ -98,9 +92,7 @@ export async function googleReverse(lnglat: LngLat, options = GoogleOptions): Pr
  * @param {string} [options.key] API key or environment variable `BING_API_KEY`
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
- * // Environment variable BING_API_KEY
- * geocoder.bing('Ottawa, ON')
- *   .then(results => results.features)
+ * const geojson = await geocoder.bing('Ottawa, ON')
  */
 export async function bing(address: string, options = BingOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'http://dev.virtualearth.net/REST/v1/Locations'
@@ -128,4 +120,12 @@ async function get(url: string, params: any, geojsonParser: any, options: any): 
   const json = await JSON.parse(response)
   const geojson: GeoJSON.FeatureCollection<GeoJSON.Point> = geojsonParser(json, options)
   return geojson
+}
+
+export default {
+  google,
+  googleReverse,
+  mapbox,
+  mapboxReverse,
+  bing,
 }

@@ -3,6 +3,8 @@
 
 ## 1.2.2 - 2016-10-22
 
+- Change docs to `await` instead of `.then()`
+- Add default export
 - Update JSDocs options
 
 ## 1.2.1 - 2016-10-20

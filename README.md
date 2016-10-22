@@ -5,7 +5,7 @@
 
 # [Geocoder GeoJSON](https://www.npmjs.com/package/geocoder-geojson)
 
-Geocoding results in standard GeoJSON geographic data structures.
+Geocoding results in [GeoJSON format](http://geojson.org/geojson-spec.html).
 
 ## Install
 
@@ -16,7 +16,7 @@ $ npm install --save geocoder-geojson
 ## Quickstart
 
 ```javascript
-import * as geocoder from 'geocoder-geojson'
+import geocoder from 'geocoder-geojson'
 
 geocoder.google('Ottawa, Canada')
   .then(geojson => geojson.features[0])
@@ -62,9 +62,7 @@ Mapbox Provider
 **Examples**
 
 ```javascript
-// Environment variable MAPBOX_ACCESS_TOKEN
-geocoder.mapbox('Ottawa, ON')
-  .then(results => results.features)
+const geojson = await geocoder.mapbox('Ottawa, ON')
 ```
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
@@ -83,9 +81,7 @@ Mapbox Provider (Reverse)
 **Examples**
 
 ```javascript
-// Environment variable MAPBOX_ACCESS_TOKEN
-geocoder.mapbox('Ottawa, ON')
-  .then(results => results.features)
+const geojson = await geocoder.mapbox('Ottawa, ON')
 ```
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
@@ -104,8 +100,7 @@ Google Provider
 **Examples**
 
 ```javascript
-geocoder.google('Ottawa, ON')
-  .then(results => results.features)
+const geojson = await geocoder.google('Ottawa, ON')
 ```
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
@@ -124,8 +119,7 @@ Google Provider (Reverse)
 **Examples**
 
 ```javascript
-geocoder.googleReverse([-75.1, 45.1])
-  .then(results => results.features)
+const geojson = await geocoder.googleReverse([-75.1, 45.1])
 ```
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
@@ -143,9 +137,7 @@ Bing Provider
 **Examples**
 
 ```javascript
-// Environment variable BING_API_KEY
-geocoder.bing('Ottawa, ON')
-  .then(results => results.features)
+const geojson = await geocoder.bing('Ottawa, ON')
 ```
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
@@ -154,6 +146,8 @@ Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
 ## 1.2.2 - 2016-10-22
 
+- Change docs to `await` instead of `.then()`
+- Add default export
 - Update JSDocs options
 
 ## 1.2.1 - 2016-10-20

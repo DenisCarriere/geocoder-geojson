@@ -5,7 +5,7 @@
 
 # [Geocoder GeoJSON](https://www.npmjs.com/package/geocoder-geojson)
 
-Geocoding results in standard GeoJSON geographic data structures.
+Geocoding results in [GeoJSON format](http://geojson.org/geojson-spec.html).
 
 ## Install
 
@@ -16,7 +16,7 @@ $ npm install --save geocoder-geojson
 ## Quickstart
 
 ```javascript
-import * as geocoder from 'geocoder-geojson'
+import geocoder from 'geocoder-geojson'
 
 geocoder.google('Ottawa, Canada')
   .then(geojson => geojson.features[0])
