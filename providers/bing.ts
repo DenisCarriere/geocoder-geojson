@@ -1,4 +1,4 @@
-import * as turf from '@turf/turf'
+import { point, featureCollection } from '@turf/helpers'
 import { BBox, LngLat, confidenceScore } from '../utils'
 
 export const BingOptions: BingOptions = {}
@@ -59,14 +59,14 @@ function parseBBox(result: BingResult): BBox {
 
 function parsePoint(result: BingResult): GeoJSON.Feature<GeoJSON.Point> {
   const [lat, lng] = result.point.coordinates
-  return turf.point([lng, lat])
+  return point([lng, lat])
 }
 
 /**
  * Convert Bing results into GeoJSON
  */
 export function BingToGeoJSON(json: BingResults, options?: BingOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
-  const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
+  const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = featureCollection([])
   json.resourceSets[0].resources.map(result => {
     // Point GeoJSON
     const point = parsePoint(result)
