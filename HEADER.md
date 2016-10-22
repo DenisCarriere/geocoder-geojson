@@ -1,9 +1,9 @@
+# [Geocoder GeoJSON](https://www.npmjs.com/package/geocoder-geojson)
+
 [![Build Status](https://travis-ci.org/DenisCarriere/geocoder-geojson.svg?branch=master)](https://travis-ci.org/DenisCarriere/geocoder-geojson)
 [![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/geocoder-geojson/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/geocoder-geojson?branch=master)
 [![npm version](https://badge.fury.io/js/geocoder-geojson.svg)](https://badge.fury.io/js/geocoder-geojson)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DenisCarriere/geocoder-geojson/master/LICENSE)
-
-# [Geocoder GeoJSON](https://www.npmjs.com/package/geocoder-geojson)
 
 Geocoding results in [GeoJSON format](http://geojson.org/geojson-spec.html).
 
@@ -48,3 +48,9 @@ geocoder.google('Ottawa, Canada')
 | [mapbox](#mapbox)                 | Global      | API Key
 | [mapboxReverse](#mapboxreverse)   | Global      | API Key
 | [bing](#bing)                     | Global      | API Key
+
+## Future Goals
+
+- Replace `request-promise` & `request` dependencies for `fetch`.
+- Implement all geocoding providers from [`Python Geocoder`](https://github.com/DenisCarriere/geocoder)
+- Add CLI `geocode`

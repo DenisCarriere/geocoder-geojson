@@ -1,5 +1,4 @@
 import * as turf from '@turf/turf'
-import { assign } from 'lodash'
 import { BBox, LngLat, confidenceScore } from '../utils'
 
 export const BingOptions: BingOptions = {}
@@ -85,7 +84,7 @@ export function BingToGeoJSON(json: BingResults, options?: BingOptions): GeoJSON
       statusDescription: json.statusDescription,
       traceId: json.traceId,
     }
-    assign(properties, result.address)
+    Object.assign(properties, result.address)
 
     // Store Point to GeoJSON feature collection
     if (point) {

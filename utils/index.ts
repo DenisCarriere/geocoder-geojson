@@ -1,6 +1,7 @@
 import * as path from 'path'
-import * as turf from '@turf/turf'
-import { keys } from 'lodash'
+import { point } from '@turf/helpers'
+import * as bboxPolygon from '@turf/bbox-polygon'
+import * as distance from '@turf/distance'
 
 /**
  * BBox extent in [minX, minY, maxX, maxY] order
@@ -51,14 +52,14 @@ const scoreMatrix: Array<[number, number]> = [
 export function confidenceScore(bbox: BBox): number {
   if (!bbox) { return 0 }
   let result = 0
-  const poly = turf.bboxPolygon(bbox)
-  const sw = turf.point(poly.geometry.coordinates[0][0])
-  const ne = turf.point(poly.geometry.coordinates[0][2])
-  const distance = turf.distance(sw, ne, 'kilometers')
+  const poly = bboxPolygon(bbox)
+  const sw = point(poly.geometry.coordinates[0][0])
+  const ne = point(poly.geometry.coordinates[0][2])
+  const d = distance(sw, ne, 'kilometers')
   scoreMatrix.map(step => {
     const [score, maximum] = step
-    if (distance < maximum) { result = score }
-    if (distance >= 25) { result = 1 }
+    if (d < maximum) { result = score }
+    if (d >= 25) { result = 1 }
   })
   return result
 }
@@ -82,7 +83,7 @@ interface Suffix { [key: string]: string }
  */
 export function replaceStreetSuffix(name: string): string {
   if (name) {
-    keys(suffix).map(key => {
+    Object.keys(suffix).map(key => {
       const pattern = new RegExp(`${ key }[\.]?$`, 'i')
       name = name.replace(pattern, suffix[key])
     })

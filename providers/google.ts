@@ -1,5 +1,4 @@
 import * as turf from '@turf/turf'
-import { assign } from 'lodash'
 import { BBox, confidenceScore } from '../utils'
 
 export const GoogleOptions: GoogleOptions = {
@@ -112,7 +111,7 @@ export function GoogleToGeoJSON(json: GoogleResults, options?: GoogleOptions): G
 
     // Google Specific Properties
     const components = parseAddressComponents(result.address_components, options.short)
-    assign(properties, components)
+    Object.assign(properties, components)
 
     // Store Point to GeoJSON feature collection
     if (point) {

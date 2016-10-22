@@ -1,8 +1,10 @@
 
 # Changelog
 
-## 1.2.2 - 2016-10-22
+## 1.3.0 - 2016-10-22
 
+- Replaced `@turf/turf` for namespaced modules `@turf/helpers`, `@turf/distance` & `@turf/bbox-polygon`
+- Removed `lodash` from dependencies
 - Change docs to `await` instead of `.then()`
 - Add default export
 - Update JSDocs options
@@ -13,6 +15,7 @@
 - Validatation of LngLat - Common mistake is rerversing the coordinates to LatLng
 - Added Mapbox & Mapbox Reverse providers
 - Added generic GET function to normalize all of the requests
+
 ```javascript
 // Environment Variable MAPBOX_API_KEY
 geocoder.mapbox('Ottawa, ON')
