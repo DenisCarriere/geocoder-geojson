@@ -1,7 +1,7 @@
 
 # Changelog
 
-## 1.3.0 - 2016-10-22
+## 1.4.0 - 2016-10-22
 
 - Replaced `@turf/turf` for namespaced modules `@turf/helpers`, `@turf/distance` & `@turf/bbox-polygon`
 - Removed `lodash` from dependencies
