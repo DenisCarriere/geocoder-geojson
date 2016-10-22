@@ -1,9 +1,12 @@
 
 # Changelog
 
+## 1.2.2 - 2016-10-22
+
+- Update JSDocs options
+
 ## 1.2.1 - 2016-10-20
 
-- Add Code Climate
 - Remove OSM attribute creation from Google & Bing
 - Validatation of LngLat - Common mistake is rerversing the coordinates to LatLng
 - Added Mapbox & Mapbox Reverse providers

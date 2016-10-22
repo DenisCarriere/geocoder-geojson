@@ -1,6 +1,6 @@
 {
   "name": "geocoder-geojson",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Geocoding results in standard GeoJSON geographic data structures.",
   "main": "index.js",
   "jsnext:main": "index.js",

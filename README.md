@@ -19,7 +19,7 @@ $ npm install --save geocoder-geojson
 import * as geocoder from 'geocoder-geojson'
 
 geocoder.google('Ottawa, Canada')
-  .then(results => results.features[0])
+  .then(geojson => geojson.features[0])
 /*
 { type: 'Feature',
   properties:
@@ -41,13 +41,13 @@ geocoder.google('Ottawa, Canada')
 
 ## Features
 
-| Name                                          | Coverage    | Restrictions                 |
-|-----------------------------------------------|:------------|:-----------------------------|
-| [google(address)](#google)                    | Global      | API Key - RateLimit 2500/day
-| [googleReverse([lng, lat])](#googlereverse)   | Global      | API Key - RateLimit 2500/day
-| [mapbox(address)](#mapbox)                    | Global      | API Key
-| [mapboxReverse([lng, lat])](#mapboxreverse    | Global      | API Key
-| [bing(address)](#bing)                        | Global      | API Key
+| Name                              | Coverage    | Restrictions                 |
+|-----------------------------------|:------------|:-----------------------------|
+| [google](#google)                 | Global      | API Key - RateLimit 2500/day
+| [googleReverse](#googlereverse)   | Global      | API Key - RateLimit 2500/day
+| [mapbox](#mapbox)                 | Global      | API Key
+| [mapboxReverse](#mapboxreverse)   | Global      | API Key
+| [bing](#bing)                     | Global      | API Key
 # mapbox
 
 Mapbox Provider
@@ -55,14 +55,14 @@ Mapbox Provider
 **Parameters**
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
--   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default mapbox_1.MapboxOptions)** Mapbox specific options
-    -   `options.access_token` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Mapbox developer access token
-    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Mapbox address components have long or short results (optional, default `false`)
+-   `options` **\[MapboxOptions]** Mapbox Options
+    -   `options.access_token` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Access token or environment variable `MAPBOX_ACCESS_TOKEN`
+    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
 
 **Examples**
 
 ```javascript
-// Environment variable MAPBOX_API_KEY
+// Environment variable MAPBOX_ACCESS_TOKEN
 geocoder.mapbox('Ottawa, ON')
   .then(results => results.features)
 ```
@@ -76,14 +76,14 @@ Mapbox Provider (Reverse)
 **Parameters**
 
 -   `lnglat` **[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)** Longitude & Latitude [x, y]
--   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default mapbox_1.MapboxOptions)** Mapbox specific options
-    -   `options.access_token` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Mapbox developer access token
-    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Mapbox address components have long or short results (optional, default `false`)
+-   `options` **\[MapboxOptions]** Mapbox Options
+    -   `options.access_token` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Access token or environment variable `MAPBOX_ACCESS_TOKEN`
+    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
 
 **Examples**
 
 ```javascript
-// Environment variable MAPBOX_API_KEY
+// Environment variable MAPBOX_ACCESS_TOKEN
 geocoder.mapbox('Ottawa, ON')
   .then(results => results.features)
 ```
@@ -97,9 +97,9 @@ Google Provider
 **Parameters**
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
--   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default google_1.GoogleOptions)** Google specific options
-    -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results. (optional, default `en`)
-    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `false`)
+-   `options` **\[GoogleOptions]** Google Options
+    -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results (optional, default `en`)
+    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
 
 **Examples**
 
@@ -117,9 +117,9 @@ Google Provider (Reverse)
 **Parameters**
 
 -   `lnglat` **[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)** Longitude & Latitude [x, y]
--   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default google_1.GoogleOptions)** Google specific options
-    -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results. (optional, default `en`)
-    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Google address components have long or short results (optional, default `false`)
+-   `options` **\[GoogleOptions]** Google Options
+    -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results (optional, default `en`)
+    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
 
 **Examples**
 
@@ -137,7 +137,8 @@ Bing Provider
 **Parameters**
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
--   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default bing_1.BingOptions)** Bing specific options
+-   `options` **\[BingOptions]** Bing Options
+    -   `options.key` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** API key or environment variable `BING_API_KEY`
 
 **Examples**
 
@@ -151,7 +152,11 @@ Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
 # Changelog
 
-## 1.2.1 - 2016-10-17
+## 1.2.2 - 2016-10-22
+
+- Update JSDocs options
+
+## 1.2.1 - 2016-10-20
 
 - Remove OSM attribute creation from Google & Bing
 - Validatation of LngLat - Common mistake is rerversing the coordinates to LatLng
