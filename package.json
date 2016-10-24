@@ -23,9 +23,10 @@
   },
   "homepage": "https://github.com/DenisCarriere/geocoder-geojson#readme",
   "devDependencies": {
-    "@types/bluebird": "^3.0.35",
-    "@types/request": "0.0.31",
-    "@types/request-promise": "^3.0.32",
+    "@types/geojson": "0.0.31",
+    "@types/isomorphic-fetch": "0.0.31",
+    "@types/node": "^6.0.45",
+    "@types/qs": "^6.2.30",
     "@types/turf": "^3.5.32",
     "ava": "^0.16.0",
     "coveralls": "^2.11.14",
@@ -61,8 +62,7 @@
     "@turf/bbox-polygon": "^3.5.2",
     "@turf/distance": "^3.5.2",
     "@turf/helpers": "^3.5.2",
-    "bluebird": "^3.4.6",
-    "request": "^2.75.0",
-    "request-promise": "^4.1.1"
+    "isomorphic-fetch": "^2.2.1",
+    "qs": "^6.3.0"
   }
 }

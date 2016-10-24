@@ -1,4 +1,5 @@
-import * as rp from 'request-promise'
+import 'isomorphic-fetch'
+import * as qs from 'qs'
 import { BingToGeoJSON, BingOptions } from './providers/bing'
 import { GoogleToGeoJSON, GoogleOptions } from './providers/google'
 import { MapboxToGeoJSON, MapboxOptions } from './providers/mapbox'
@@ -116,8 +117,8 @@ export async function bing(address: string, options = BingOptions): Promise<GeoJ
  * @returns {Promise<GeoJSON.FeatureCollection<GeoJSON.Point>>} GeoJSON Results
  */
 async function get(url: string, params: any, geojsonParser: any, options: any): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  const response = await rp.get(url, Object.assign({ qs: params }, options))
-  const json = await JSON.parse(response)
+  const response = await fetch(`${ url }?${ qs.stringify(params) }`)
+  const json = await response.json()
   const geojson: GeoJSON.FeatureCollection<GeoJSON.Point> = geojsonParser(json, options)
   return geojson
 }
