@@ -1,8 +1,9 @@
 
 # Changelog
 
-## 1.5.0 - 2016-10-26
+## 1.5.2 - 2016-10-26
 
+- Add `@types` to dependencies
 - Replaced `request` dependency for `isomorphic-fetch`.
 
 ## 1.4.0 - 2016-10-22
