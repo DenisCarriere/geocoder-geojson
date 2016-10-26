@@ -21,32 +21,17 @@
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-3.5.2.tgz#a4cbdfa625acbc57fe320db0c2a6325812a3291e"
 
-"@types/bluebird@^3.0.35":
-  version "3.0.35"
-  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.0.35.tgz#e6e2d375a7b7a0a22f155ce74eb28d0da303740c"
-
-"@types/form-data@*":
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/@types/form-data/-/form-data-0.0.32.tgz#218134515d38929524ff562ba1c6ce93981f3a45"
-
-"@types/geojson@*":
+"@types/geojson@*", "@types/geojson@0.0.31":
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-0.0.31.tgz#ad8d4cb76f7bf13c59babc5bed77f2dd2c4175bc"
 
-"@types/node@*":
-  version "6.0.45"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.45.tgz#c4842a9d653d767831e4ff495b6008cc0d579966"
-
-"@types/request-promise@^3.0.32":
-  version "3.0.32"
-  resolved "https://registry.yarnpkg.com/@types/request-promise/-/request-promise-3.0.32.tgz#54e02575b8a6cbc8fbe8d4a024398b68176d3f43"
-
-"@types/request@0.0.31":
+"@types/isomorphic-fetch@0.0.31":
   version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@types/request/-/request-0.0.31.tgz#e9e77661f76c596a6fd0edba622005667171baeb"
-  dependencies:
-    "@types/form-data" "*"
-    "@types/node" "*"
+  resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.31.tgz#ec120166ce22f0b134e8770f40c97cd076068fae"
+
+"@types/qs@^6.2.30":
+  version "6.2.30"
+  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.2.30.tgz#139e247511ee3b9be539cdd553c8fdb33c1f624e"
 
 "@types/turf@^3.5.32":
   version "3.5.32"
@@ -1053,7 +1038,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.0.0, bluebird@^3.4.1, bluebird@^3.4.6:
+bluebird@^3.0.0, bluebird@^3.4.1:
   version "3.4.6"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.4.6.tgz#01da8d821d87813d158967e743d5fe6c62cf8c0f"
 
@@ -1634,6 +1619,12 @@ empower-core@^0.6.1:
     call-signature "0.0.2"
     core-js "^2.0.0"
 
+encoding@^0.1.11:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.12.tgz#538b66f3ee62cd1ab51ec323829d1f9480c74beb"
+  dependencies:
+    iconv-lite "~0.4.13"
+
 end-of-stream@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.0.0.tgz#d4596e702734a93e40e9af864319eabd99ff2f0e"
@@ -2122,7 +2113,7 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-iconv-lite@0.4.13:
+iconv-lite@~0.4.13, iconv-lite@0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
 
@@ -2392,6 +2383,13 @@ isobject@^2.0.0:
   dependencies:
     isarray "1.0.0"
 
+isomorphic-fetch@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
+  dependencies:
+    node-fetch "^1.0.1"
+    whatwg-fetch ">=0.10.0"
+
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -2593,7 +2591,7 @@ lodash.isequal@^4.0.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.4.0.tgz#6295768e98e14dc15ce8d362ef6340db82852031"
 
-lodash@^4.11.1, lodash@^4.13.1, lodash@^4.2.0:
+lodash@^4.11.1, lodash@^4.2.0:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.4.tgz#01ce306b9bad1319f2a5528674f88297aeb70127"
 
@@ -2812,6 +2810,13 @@ multimatch@^2.1.0:
 nan@^2.3.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.4.0.tgz#fb3c59d45fe4effe215f0b890f8adf6eb32d2232"
+
+node-fetch@^1.0.1:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.6.3.tgz#dc234edd6489982d58e8f0db4f695029abcd8c04"
+  dependencies:
+    encoding "^0.1.11"
+    is-stream "^1.0.1"
 
 node-pre-gyp@^0.6.29:
   version "0.6.30"
@@ -3248,6 +3253,10 @@ pseudomap@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
 
+qs@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
+
 qs@~5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-5.1.0.tgz#4d932e5c7ea411cca76a312d39a606200fd50cd9"
@@ -3493,21 +3502,7 @@ replace-ext@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-0.0.1.tgz#29bbd92078a739f0bcce2b4ee41e837953522924"
 
-request-promise-core@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/request-promise-core/-/request-promise-core-1.1.1.tgz#3eee00b2c5aa83239cfb04c5700da36f81cd08b6"
-  dependencies:
-    lodash "^4.13.1"
-
-request-promise@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/request-promise/-/request-promise-4.1.1.tgz#26021e4f6f56fd4c309f6bf1ebd8c97a95ac1fb5"
-  dependencies:
-    bluebird "^3.4.1"
-    request-promise-core "1.1.1"
-    stealthy-require "^1.0.0"
-
-request@^2.75.0, request@2.75.0, request@2.x:
+request@2.75.0, request@2.x:
   version "2.75.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.75.0.tgz#d2b8268a286da13eaa5d01adf5d18cc90f657d93"
   dependencies:
@@ -3703,10 +3698,6 @@ stack-utils@^0.4.0:
 statuses@1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.3.0.tgz#8e55758cb20e7682c1f4fce8dcab30bf01d1e07a"
-
-stealthy-require@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.0.0.tgz#1a8ed8fc19a8b56268f76f5a1a3e3832b0c26200"
 
 stream-array@^1.1.0:
   version "1.1.2"
@@ -4227,6 +4218,10 @@ websocket-driver@>=0.5.1:
 websocket-extensions@>=0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.1.tgz#76899499c184b6ef754377c2dbb0cd6cb55d29e7"
+
+whatwg-fetch@>=0.10.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-1.0.0.tgz#01c2ac4df40e236aaa18480e3be74bd5c8eb798e"
 
 which-module@^1.0.0:
   version "1.0.0"
