@@ -1,4 +1,4 @@
-import * as axios from 'axios'
+import axios from 'axios'
 import { BingToGeoJSON, BingOptions } from './providers/bing'
 import { GoogleToGeoJSON, GoogleOptions } from './providers/google'
 import { MapboxToGeoJSON, MapboxOptions } from './providers/mapbox'
