@@ -5,8 +5,8 @@
   "main": "index.js",
   "jsnext:main": "index.js",
   "scripts": {
-    "prepublish": "tsc",
-    "test": "tsc && nyc ava && npm run lint",
+    "prepublish": "npm run test",
+    "test": "npm run lint && nyc ava",
     "docs": "tsc && cat HEADER.md > README.md && documentation build index.js -c documentation.yml -f md --shallow >> README.md && cat CHANGELOG.md >> README.md",
     "lint": "tsc && tslint index.ts test.ts && documentation lint index.js"
   },
