@@ -1,4 +1,3 @@
-import * as path from 'path'
 import { point } from '@turf/helpers'
 import * as bboxPolygon from '@turf/bbox-polygon'
 import * as distance from '@turf/distance'
@@ -64,32 +63,32 @@ export function confidenceScore(bbox: BBox): number {
   return result
 }
 
-/**
- * Street Suffix
- */
-const suffix: Suffix = require(path.join(__dirname, 'suffix.json'))
-interface Suffix { [key: string]: string }
+// /**
+//  * Street Suffix
+//  */
+// const suffix: Suffix = require(path.join(__dirname, 'suffix.json'))
+// interface Suffix { [key: string]: string }
 
-/**
- * Replaces Street Suffix with a complete word
- *
- * @param {string} name street name
- * @returns {string} name replace street suffix
- * @example
- * replaceStreetSuffix('Foo Bar St')
- * //='Foo Bar Street'
- * replaceStreetSuffix('Foo Bar Dr.')
- * //='Foo Bar Drive'
- */
-export function replaceStreetSuffix(name: string): string {
-  if (name) {
-    Object.keys(suffix).map(key => {
-      const pattern = new RegExp(`${ key }[\.]?$`, 'i')
-      name = name.replace(pattern, suffix[key])
-    })
-  }
-  return name
-}
+// /**
+//  * Replaces Street Suffix with a complete word
+//  *
+//  * @param {string} name street name
+//  * @returns {string} name replace street suffix
+//  * @example
+//  * replaceStreetSuffix('Foo Bar St')
+//  * //='Foo Bar Street'
+//  * replaceStreetSuffix('Foo Bar Dr.')
+//  * //='Foo Bar Drive'
+//  */
+// export function replaceStreetSuffix(name: string): string {
+//   if (name) {
+//     Object.keys(suffix).map(key => {
+//       const pattern = new RegExp(`${ key }[\.]?$`, 'i')
+//       name = name.replace(pattern, suffix[key])
+//     })
+//   }
+//   return name
+// }
 
 /**
  * Verify if Key exists in Options or Environment Variable
@@ -102,9 +101,11 @@ export function replaceStreetSuffix(name: string): string {
  * //=key
  */
 export function verifyKey(key: string, env: string) {
-  if (key) { return key }
-  if (process.env[env]) { return process.env[env] }
-  throw new Error('API key authentication is required')
+  if (process) {
+    if (key) { return key }
+    if (process.env[env]) { return process.env[env] }
+    throw new Error('API key authentication is required')
+  }
 }
 
 /**

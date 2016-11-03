@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 1.6.0 - 2016-11-3
+
+- Replace `isomorphic-fetch` & `qs` with `axios` (less headaches)
+- Deprecate `replaceStreetSuffix` function
+
 ## 1.5.2 - 2016-10-26
 
 - Add `@types` to dependencies

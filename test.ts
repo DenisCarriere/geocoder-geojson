@@ -1,6 +1,6 @@
 import test from 'ava'
 import * as geocoder from './index'
-import { replaceStreetSuffix, confidenceScore, validateLngLat, verifyKey } from './utils'
+import { confidenceScore, validateLngLat, verifyKey } from './utils'
 
 const CITY = 'Ottawa, ON'
 const LNGLAT: [number, number] = [-75.1, 45.1]
@@ -35,12 +35,12 @@ test('googleReverse', async t => {
   t.true(!!g.features)
 })
 
-test('replaceStreetSuffix', async t => {
-  t.deepEqual(replaceStreetSuffix('Foo Bar St'), 'Foo Bar Street')
-  t.deepEqual(replaceStreetSuffix('Foo Bar Dr'), 'Foo Bar Drive')
-  t.deepEqual(replaceStreetSuffix('Foo Bar Ave'), 'Foo Bar Avenue')
-  t.deepEqual(replaceStreetSuffix('Foo Bar Rd'), 'Foo Bar Road')
-})
+// test('replaceStreetSuffix', async t => {
+//   t.deepEqual(replaceStreetSuffix('Foo Bar St'), 'Foo Bar Street')
+//   t.deepEqual(replaceStreetSuffix('Foo Bar Dr'), 'Foo Bar Drive')
+//   t.deepEqual(replaceStreetSuffix('Foo Bar Ave'), 'Foo Bar Avenue')
+//   t.deepEqual(replaceStreetSuffix('Foo Bar Rd'), 'Foo Bar Road')
+// })
 
 test('confidenceScore', t => {
   t.deepEqual(confidenceScore([-75.1, 45.1, -75, 45]), 4)
