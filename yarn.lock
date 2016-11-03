@@ -21,6 +21,10 @@
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/@turf/invariant/-/invariant-3.5.2.tgz#a4cbdfa625acbc57fe320db0c2a6325812a3291e"
 
+"@types/axios@^0.9.33":
+  version "0.9.33"
+  resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.9.33.tgz#18146365faee23e00fcd2d5fc92e0c5f3140b454"
+
 "@types/geojson@*", "@types/geojson@0.0.31":
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-0.0.31.tgz#ad8d4cb76f7bf13c59babc5bed77f2dd2c4175bc"

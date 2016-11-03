@@ -1,6 +1,6 @@
 {
   "name": "geocoder-geojson",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Geocoding results in GeoJSON format",
   "main": "index.js",
   "jsnext:main": "index.js",
@@ -58,6 +58,7 @@
     "@turf/bbox-polygon": "^3.5.2",
     "@turf/distance": "^3.5.2",
     "@turf/helpers": "^3.5.2",
+    "@types/axios": "^0.9.33",
     "@types/geojson": "0.0.31",
     "@types/node": "^6.0.46",
     "@types/turf": "^3.5.32",
