@@ -1,2 +1,11 @@
 test
+test*
 coverage
+documentation.yml
+yarn.lock
+tsconfig.json
+tslint.json
+HEADER.md
+.nyc_output
+.vscode
+.travis.yml
