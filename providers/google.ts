@@ -30,7 +30,7 @@ interface AddressComponent {
   types: Array<string>
 }
 
-interface GoogleResult {
+export interface GoogleResult {
   address_components: Array<AddressComponent>
   formatted_address: string
   geometry: {

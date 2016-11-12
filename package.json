@@ -1,6 +1,6 @@
 {
   "name": "geocoder-geojson",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "description": "Geocoding results in GeoJSON format",
   "main": "index.js",
   "jsnext:main": "index.js",
@@ -47,7 +47,7 @@
   ],
   "ava": {
     "files": [
-      "test.js"
+      "test/test.*.js"
     ],
     "concurrency": 5,
     "failFast": true,
@@ -60,6 +60,7 @@
     "@types/geojson": "0.0.31",
     "@types/node": "^6.0.46",
     "@types/turf": "^3.5.32",
-    "axios": "^0.15.2"
+    "axios": "^0.15.2",
+    "wikidata-sdk": "^4.1.0"
   }
 }

@@ -11,7 +11,7 @@ interface Geometry {
   type: string
 }
 
-interface MapboxFeature extends GeoJSON.Feature<GeoJSON.Point> {
+export interface MapboxResult extends GeoJSON.Feature<GeoJSON.Point> {
   address: string
   center: LngLat
   context: any[]
@@ -22,9 +22,9 @@ interface MapboxFeature extends GeoJSON.Feature<GeoJSON.Point> {
   text: string
 }
 
-interface MapboxResults {
+export interface MapboxResults {
   attribution: string
-  features: Array<MapboxFeature>
+  features: Array<MapboxResult>
   query: string[]
   type: string
 }

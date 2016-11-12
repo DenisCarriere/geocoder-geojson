@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 1.7.0 - 2016-11-11
+
+- Add Wikidata provider
+- Seperate tests per providers `test/test.<provider>.ts`
+
 ## 1.6.0 - 2016-11-3
 
 - Replace `isomorphic-fetch` & `qs` with `axios` (less headaches)

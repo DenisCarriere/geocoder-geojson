@@ -1,7 +1,9 @@
 import axios from 'axios'
+import * as wdk from 'wikidata-sdk'
 import { BingToGeoJSON, BingOptions } from './providers/bing'
 import { GoogleToGeoJSON, GoogleOptions } from './providers/google'
 import { MapboxToGeoJSON, MapboxOptions } from './providers/mapbox'
+import * as Wikidata from './providers/wikidata'
 import { verifyKey, LngLat, validateLngLat } from './utils'
 
 /**
@@ -20,7 +22,7 @@ export async function mapbox(address: string, options = MapboxOptions): Promise<
   const params = {
     access_token: verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
   }
-  return get(url, params, MapboxToGeoJSON, options)
+  return get(url, MapboxToGeoJSON, params, options)
 }
 
 /**
@@ -40,7 +42,7 @@ export async function mapboxReverse(lnglat: LngLat, options = MapboxOptions): Pr
   const params = {
     access_token: verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
   }
-  return get(url, params, MapboxToGeoJSON, options)
+  return get(url, MapboxToGeoJSON, params, options)
 }
 
 /**
@@ -60,7 +62,7 @@ export async function google(address: string, options = GoogleOptions): Promise<
     address,
     sensor: options.sensor,
   }
-  return get(url, params, GoogleToGeoJSON, options)
+  return get(url, GoogleToGeoJSON, params, options)
 }
 
 /**
@@ -81,7 +83,7 @@ export async function googleReverse(lnglat: LngLat, options = GoogleOptions): Pr
     address: [lat, lng].join(','),
     sensor: options.sensor,
   }
-  return get(url, params, GoogleToGeoJSON, options)
+  return get(url, GoogleToGeoJSON, params, options)
 }
 
 /**
@@ -102,8 +104,27 @@ export async function bing(address: string, options = BingOptions): Promise<GeoJ
     o: 'json',
     q: address,
   }
-  return get(url, params, BingToGeoJSON, options)
+  return get(url, BingToGeoJSON, params, options)
 }
+
+/**
+ * Wikidata Provider
+ *
+ * @param {string} address Location for your search
+ * @param {WikidataOptions} [options] Wikidata Options
+ * @returns {GeoJSON<Point>} GeoJSON Feature Collection
+ * @example
+ * const geojson = await geocoder.wikidata('Ottawa')
+ */
+export async function wikidata(address: string, options = Wikidata.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+  const response = await axios.get(wdk.searchEntities(address, 'en', 1))
+  const entities: Wikidata.SearchEntities = response.data
+  const ids = entities.search.map(entity => entity.id)
+  const url = wdk.getEntities(ids)
+  return get(url, Wikidata.toGeoJSON)
+}
+
+wikidata('Ottawa')
 
 /**
  * Generic GET function to normalize all of the requests
@@ -115,8 +136,8 @@ export async function bing(address: string, options = BingOptions): Promise<GeoJ
  * @param {Object} options Options used for both request & geojsonParser
  * @returns {Promise<GeoJSON.FeatureCollection<GeoJSON.Point>>} GeoJSON Results
  */
-async function get(url: string, params: any, geojsonParser: any, options: any): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  const response = await axios.get(url, { params })
+async function get(url: string, geojsonParser: Function, params = {}, options = {}): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+  const response = await axios.get(url, {params})
   const json = response.data
   const geojson: GeoJSON.FeatureCollection<GeoJSON.Point> = geojsonParser(json, options)
   return geojson
@@ -128,4 +149,5 @@ export default {
   mapbox,
   mapboxReverse,
   bing,
+  wikidata,
 }
