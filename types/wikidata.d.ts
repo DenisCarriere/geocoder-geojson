@@ -1,8 +1,6 @@
-type Formats = "json" | "xml"
-
 interface SearchEntities {
   search: string
-  format?: Formats
+  format?: string
   language?: string
   limit?: number
 }
@@ -11,7 +9,7 @@ interface GetEntities {
   ids: string | Array<string>,
   languages?: string | Array<string>,
   properties?: Array<string>,
-  format?: Formats
+  format?: string
 }
 
 declare module "wikidata-sdk" {
@@ -19,12 +17,12 @@ declare module "wikidata-sdk" {
     search: string | SearchEntities,
     language?: string,
     limit?: number,
-    format?: Formats,
+    format?: string,
     uselang?: string): any;
 
   export function getEntities(
     ids: string | Array<string>,
     languages?: string | Array<string>,
     properties?: Array<string>,
-    format?: Formats): any;
+    format?: string): any;
 }

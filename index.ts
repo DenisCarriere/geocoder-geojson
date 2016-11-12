@@ -1,3 +1,5 @@
+/// <reference path="./types/wikidata.d.ts" />
+
 import axios from 'axios'
 import * as turf from '@turf/helpers'
 import * as nearest from '@turf/nearest'
