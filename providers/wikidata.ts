@@ -1,5 +1,4 @@
 import * as turf from '@turf/helpers'
-import * as nearest from '@turf/nearest'
 import { Points } from '../utils'
 
 type LngLat = [number, number]
@@ -36,10 +35,20 @@ export interface SearchEntities {
   success: number
 }
 
-interface P625 {
+interface Mainsnak {
   mainsnak: {
-    snaktype: string
-    property: string
+    snaktype?: string
+    property?: string
+    datatype?: string
+    datavalue?: any
+  }
+  type?: string
+  id?: string
+  rank?: string
+}
+
+interface P625 extends Mainsnak {
+  mainsnak: {
     datavalue: {
       value: {
         latitude: number
@@ -50,13 +59,29 @@ interface P625 {
       }
       type: string
     }
-    datatype: string
   }
 }
+
+interface P31 extends Mainsnak {
+  mainsnak: {
+    datavalue: {
+      value: {
+        latitude: number
+        longitude: number
+        altitude: number
+        precision: number
+        globe: string
+      }
+      type: string
+    }
+  }
+}
+
 interface Item {
   language: string
   value: string
 }
+
 interface Value {
   [language: string]: Item
   en: Item
@@ -70,6 +95,7 @@ interface Value {
 
 type Claims = {
   P625: Array<P625>
+  P31: Array<P31>
 }
 
 type Sitelinks = any
@@ -94,10 +120,15 @@ export interface Results {
   }
 }
 
-function english(value: Value) {
+function getEnglish(value: Value) {
   if (value.en) {
     return value.en.value
   }
+}
+
+function getPlace(description: string) {
+  const match = description.match(/^(.+) in/)
+  if (match) { return match[1] }
 }
 
 /**
@@ -108,11 +139,14 @@ export function toGeoJSON(json: Results, options: Options): Points {
   Object.keys(json.entities).map(id => {
     const entity = json.entities[id]
     if (entity.claims.P625) {
+      console.log(JSON.stringify(entity, null, 4))
       const {longitude, latitude} = entity.claims.P625[0].mainsnak.datavalue.value
+      const description = getEnglish(entity.descriptions)
       const properties = {
-        description: english(entity.descriptions),
+        description,
         id,
-        label: english(entity.labels),
+        label: getEnglish(entity.labels),
+        place: getPlace(description),
       }
       const point = turf.point([longitude, latitude], properties)
       point.id = id

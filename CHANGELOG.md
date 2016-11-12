@@ -6,6 +6,7 @@
 - Add Command Line Interface (CLI)
 - Add Wikidata provider
 - Add --nearest to Wikidata
+- Add wikidata `place` precision
 - Seperate tests per providers `test/test.<provider>.ts`
 
 ## 1.6.0 - 2016-11-3
