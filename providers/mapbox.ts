@@ -1,8 +1,8 @@
 import { featureCollection } from '@turf/helpers'
-import { LngLat } from '../utils'
+import { LngLat, Points } from '../utils'
 
-export const MapboxOptions: MapboxOptions = {}
-export interface MapboxOptions {
+export const Options: Options = {}
+export interface Options {
   access_token?: string
 }
 
@@ -11,7 +11,7 @@ interface Geometry {
   type: string
 }
 
-export interface MapboxResult extends GeoJSON.Feature<GeoJSON.Point> {
+export interface Result extends GeoJSON.Feature<GeoJSON.Point> {
   address: string
   center: LngLat
   context: any[]
@@ -22,9 +22,9 @@ export interface MapboxResult extends GeoJSON.Feature<GeoJSON.Point> {
   text: string
 }
 
-export interface MapboxResults {
+export interface Results {
   attribution: string
-  features: Array<MapboxResult>
+  features: Array<Result>
   query: string[]
   type: string
 }
@@ -32,8 +32,8 @@ export interface MapboxResults {
 /**
  * Convert Mapbox results into GeoJSON
  */
-export function MapboxToGeoJSON(json: MapboxResults, options: MapboxOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
-  const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = featureCollection([])
+export function toGeoJSON(json: Results, options: Options): Points {
+  const collection: Points = featureCollection([])
   json.features.map(result => {
     collection.features.push(result)
   })

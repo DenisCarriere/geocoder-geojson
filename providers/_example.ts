@@ -1,15 +1,15 @@
 import * as turf from '@turf/helpers'
+import { Points } from '../utils'
 
-export const ExampleOptions: ExampleOptions = { }
-export interface ExampleOptions { }
-export interface ExampleResult { }
-export interface ExampleResults { }
+export const Options: Options = { }
+export interface Options { }
+export interface Result { }
+export interface Results { }
 
 /**
- * Convert Example results into GeoJSON
+ * Convert <PROVIDER> results into GeoJSON
  */
-export function ExampleToGeoJSON(json: ExampleResults, options: ExampleOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
-  const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
-
+export function toGeoJSON(json: Results, options: Options): Points {
+  const collection: Points = turf.featureCollection([])
   return collection
 }

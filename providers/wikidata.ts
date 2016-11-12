@@ -1,7 +1,15 @@
 import * as turf from '@turf/helpers'
+import * as nearest from '@turf/nearest'
+import { Points } from '../utils'
+
+type LngLat = [number, number]
 
 export const Options: Options = { }
-export interface Options { }
+export interface Options {
+  language?: string
+  limit?: number
+  nearest?: LngLat
+}
 
 interface Match {
   type: string
@@ -44,10 +52,21 @@ interface P625 {
     datatype: string
   }
 }
-type Type = 'item'
-type Labels = any
-type Descriptions = any
-type Aliases = any
+interface Item {
+  language: string
+  value: string
+}
+interface Value {
+  [language: string]: Item
+  en: Item
+  fr: Item
+  ru: Item
+  es: Item
+  uk: Item
+  zh: Item
+  ja: Item
+}
+
 type Claims = {
   P625: Array<P625>
 }
@@ -60,11 +79,11 @@ export interface Result {
   title: string
   lastrevid: string
   modified: string
-  type: Type
+  type: string
   id: string
-  labels: Labels
-  descriptions: Descriptions
-  aliases: Aliases
+  labels: Value
+  descriptions: Value
+  aliases: Value
   claims: Claims
   sitelinks: Sitelinks
 }
@@ -74,15 +93,30 @@ export interface Results {
   }
 }
 
+function english(value: Value) {
+  if (value.en) {
+    return value.en.value
+  }
+}
+
 /**
  * Convert Wikidata results into GeoJSON
  */
-export function toGeoJSON(json: Results, options: Options): GeoJSON.FeatureCollection<GeoJSON.Point> {
-  const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = turf.featureCollection([])
+export function toGeoJSON(json: Results, options: Options): Points {
+  const collection: Points = turf.featureCollection([])
   Object.keys(json.entities).map(id => {
     const entity = json.entities[id]
-    const {longitude, latitude} = entity.claims.P625[0].mainsnak.datavalue.value
-    console.log(longitude, latitude)
+    if (entity.claims.P625) {
+      const {longitude, latitude} = entity.claims.P625[0].mainsnak.datavalue.value
+      const properties = {
+        description: english(entity.descriptions),
+        id,
+        label: english(entity.labels),
+      }
+      const point = turf.point([longitude, latitude], properties)
+      point.id = id
+      collection.features.push(point)
+    }
   })
   return collection
 }

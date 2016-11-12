@@ -1,10 +1,14 @@
 import axios from 'axios'
+import * as turf from '@turf/helpers'
+import * as nearest from '@turf/nearest'
+import * as distance from '@turf/distance'
 import * as wdk from 'wikidata-sdk'
-import { BingToGeoJSON, BingOptions } from './providers/bing'
-import { GoogleToGeoJSON, GoogleOptions } from './providers/google'
-import { MapboxToGeoJSON, MapboxOptions } from './providers/mapbox'
+import * as Bing from './providers/bing'
+import * as Google from './providers/google'
+import * as Mapbox from './providers/mapbox'
 import * as Wikidata from './providers/wikidata'
-import { verifyKey, LngLat, validateLngLat } from './utils'
+import * as utils from './utils'
+import { LngLat, Points } from './utils'
 
 /**
  * Mapbox Provider
@@ -17,12 +21,12 @@ import { verifyKey, LngLat, validateLngLat } from './utils'
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
-export async function mapbox(address: string, options = MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function mapbox(address: string, options = Mapbox.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ address }.json`
   const params = {
-    access_token: verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
+    access_token: utils.verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
   }
-  return get(url, MapboxToGeoJSON, params, options)
+  return get(url, Mapbox.toGeoJSON, params, options)
 }
 
 /**
@@ -36,13 +40,13 @@ export async function mapbox(address: string, options = MapboxOptions): Promise<
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
-export async function mapboxReverse(lnglat: LngLat, options = MapboxOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  lnglat = validateLngLat(lnglat)
+export async function mapboxReverse(lnglat: LngLat, options = Mapbox.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+  lnglat = utils.validateLngLat(lnglat)
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ lnglat.join(',') }.json`
   const params = {
-    access_token: verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
+    access_token: utils.verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
   }
-  return get(url, MapboxToGeoJSON, params, options)
+  return get(url, Mapbox.toGeoJSON, params, options)
 }
 
 /**
@@ -56,13 +60,13 @@ export async function mapboxReverse(lnglat: LngLat, options = MapboxOptions): Pr
  * @example
  * const geojson = await geocoder.google('Ottawa, ON')
  */
-export async function google(address: string, options = GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function google(address: string, options = Google.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'
   const params = {
     address,
     sensor: options.sensor,
   }
-  return get(url, GoogleToGeoJSON, params, options)
+  return get(url, Google.toGeoJSON, params, options)
 }
 
 /**
@@ -76,14 +80,14 @@ export async function google(address: string, options = GoogleOptions): Promise<
  * @example
  * const geojson = await geocoder.googleReverse([-75.1, 45.1])
  */
-export async function googleReverse(lnglat: LngLat, options = GoogleOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  const [lng, lat] = validateLngLat(lnglat)
+export async function googleReverse(lnglat: LngLat, options = Google.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+  const [lng, lat] = utils.validateLngLat(lnglat)
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'
   const params = {
     address: [lat, lng].join(','),
     sensor: options.sensor,
   }
-  return get(url, GoogleToGeoJSON, params, options)
+  return get(url, Google.toGeoJSON, params, options)
 }
 
 /**
@@ -96,36 +100,45 @@ export async function googleReverse(lnglat: LngLat, options = GoogleOptions): Pr
  * @example
  * const geojson = await geocoder.bing('Ottawa, ON')
  */
-export async function bing(address: string, options = BingOptions): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+export async function bing(address: string, options = Bing.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'http://dev.virtualearth.net/REST/v1/Locations'
   const params = {
     inclnb: 1,
-    key: verifyKey(options.key, 'BING_API_KEY'),
+    key: utils.verifyKey(options.key, 'BING_API_KEY'),
     o: 'json',
     q: address,
   }
-  return get(url, BingToGeoJSON, params, options)
+  return get(url, Bing.toGeoJSON, params, options)
 }
 
 /**
  * Wikidata Provider
  *
  * @param {string} address Location for your search
- * @param {WikidataOptions} [options] Wikidata Options
+ * @param {Options} [options] Wikidata Options
+ * @param {string} [options.language] Language
+ * @param {number} [options.limit] Limit
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')
  */
 export async function wikidata(address: string, options = Wikidata.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  const response = await axios.get(wdk.searchEntities(address, 'en', 1))
+  const urlEntities = wdk.searchEntities({
+    language: options.language,
+    limit: options.limit,
+    search: address,
+  })
+  const response = await axios.get(urlEntities)
   const entities: Wikidata.SearchEntities = response.data
   const ids = entities.search.map(entity => entity.id)
   const url = wdk.getEntities(ids)
-  return get(url, Wikidata.toGeoJSON)
+  return get(url, Wikidata.toGeoJSON, {}, options)
 }
 
-wikidata('Ottawa')
-
+interface Options {
+  nearest?: LngLat
+  distance?: number
+}
 /**
  * Generic GET function to normalize all of the requests
  *
@@ -136,10 +149,23 @@ wikidata('Ottawa')
  * @param {Object} options Options used for both request & geojsonParser
  * @returns {Promise<GeoJSON.FeatureCollection<GeoJSON.Point>>} GeoJSON Results
  */
-async function get(url: string, geojsonParser: Function, params = {}, options = {}): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+async function get(url: string, geojsonParser: Function, params = {}, options?: Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const response = await axios.get(url, {params})
   const json = response.data
-  const geojson: GeoJSON.FeatureCollection<GeoJSON.Point> = geojsonParser(json, options)
+  const geojson: Points = geojsonParser(json, options)
+
+  // Filter by nearest
+  if (options.nearest) {
+    const point = turf.point(options.nearest)
+    const result = nearest(point, geojson)
+    const dist = distance(point, result)
+    if (dist < options.distance) {
+      result.properties.distance = dist
+      geojson.features = [result]
+    } else {
+      geojson.features = []
+    }
+  }
   return geojson
 }
 

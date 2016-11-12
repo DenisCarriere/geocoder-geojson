@@ -9,6 +9,9 @@
     "docs": "tsc && cat HEADER.md > README.md && documentation build index.js -c documentation.yml -f md --shallow >> README.md && cat CHANGELOG.md >> README.md",
     "lint": "tsc && tslint index.ts test.ts && documentation lint index.js"
   },
+  "bin": {
+    "geocode": "cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DenisCarriere/geocoder-geojson.git"
@@ -57,10 +60,14 @@
     "@turf/bbox-polygon": "^3.5.2",
     "@turf/distance": "^3.5.2",
     "@turf/helpers": "^3.5.2",
+    "@types/colors": "^0.6.33",
+    "@types/commander": "^2.3.30",
     "@types/geojson": "0.0.31",
     "@types/node": "^6.0.46",
     "@types/turf": "^3.5.32",
     "axios": "^0.15.2",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
     "wikidata-sdk": "^4.1.0"
   }
 }

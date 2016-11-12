@@ -5,7 +5,7 @@
 [![npm version](https://badge.fury.io/js/geocoder-geojson.svg)](https://badge.fury.io/js/geocoder-geojson)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DenisCarriere/geocoder-geojson/master/LICENSE)
 
-Geocoding results in [GeoJSON format](http://geojson.org/geojson-spec.html).
+Geocoding results according to the [GeoJSON specification](http://geojson.org/geojson-spec.html).
 
 ## Install
 

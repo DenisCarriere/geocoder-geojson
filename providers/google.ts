@@ -1,12 +1,12 @@
 import { point, featureCollection } from '@turf/helpers'
-import { BBox, confidenceScore } from '../utils'
+import { BBox, confidenceScore, Points } from '../utils'
 
-export const GoogleOptions: GoogleOptions = {
+export const Options: Options = {
   language: 'en',
   sensor: false,
   short: false,
 }
-export interface GoogleOptions {
+export interface Options {
   client?: string
   key?: string
   language?: string
@@ -30,7 +30,7 @@ interface AddressComponent {
   types: Array<string>
 }
 
-export interface GoogleResult {
+export interface Result {
   address_components: Array<AddressComponent>
   formatted_address: string
   geometry: {
@@ -43,9 +43,9 @@ export interface GoogleResult {
   types: Array<string>
 }
 
-export interface GoogleResults {
+export interface Results {
   status: string
-  results: Array<GoogleResult>
+  results: Array<Result>
 }
 
 /**
@@ -63,7 +63,7 @@ function parseAddressComponents(components: Array<AddressComponent>, short = tru
 /**
  * Converts GoogleResult Bounds to BBox
  */
-function parseBBox(result: GoogleResult): BBox {
+function parseBBox(result: Result): BBox {
   if (result.geometry) {
     if (result.geometry.viewport) {
       const viewport = result.geometry.viewport
@@ -75,7 +75,7 @@ function parseBBox(result: GoogleResult): BBox {
 /**
  * Converts GoogleResult to GeoJSON Point
  */
-function parsePoint(result: GoogleResult): GeoJSON.Feature<GeoJSON.Point> {
+function parsePoint(result: Result): GeoJSON.Feature<GeoJSON.Point> {
   if (result.geometry) {
     if (result.geometry.location) {
       const {lng, lat} = result.geometry.location
@@ -87,8 +87,8 @@ function parsePoint(result: GoogleResult): GeoJSON.Feature<GeoJSON.Point> {
 /**
  * Convert Google results into GeoJSON
  */
-export function GoogleToGeoJSON(json: GoogleResults, options?: GoogleOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
-  const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = featureCollection([])
+export function toGeoJSON(json: Results, options?: Options): Points {
+  const collection: Points = featureCollection([])
 
   json.results.map(result => {
     // Get Geometries

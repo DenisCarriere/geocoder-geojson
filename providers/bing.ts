@@ -1,8 +1,8 @@
 import { point, featureCollection } from '@turf/helpers'
-import { BBox, LngLat, confidenceScore } from '../utils'
+import { Points, BBox, LngLat, confidenceScore } from '../utils'
 
-export const BingOptions: BingOptions = {}
-export interface BingOptions {
+export const Options: Options = {}
+export interface Options {
   key?: string
 }
 
@@ -18,10 +18,10 @@ interface GeocodePoint extends Point {
 
 interface ResourceSets {
   estimatedTotal: number
-  resources: Array<BingResult>
+  resources: Array<Result>
 }
 
-interface BingResult {
+interface Result {
   __type?: string
   bbox: BBox
   name: string
@@ -42,7 +42,7 @@ interface BingResult {
   matchCodes: Array<string>
 }
 
-export interface BingResults {
+export interface Results {
   authenticationResultCode: string
   brandLogoUri: string
   copyright: string
@@ -52,24 +52,19 @@ export interface BingResults {
   traceId: string
 }
 
-function parseBBox(result: BingResult): BBox {
-  const [minY, minX, maxY, maxX] = result.bbox
-  return [minX, minY, maxX, maxY]
-}
-
-function parsePoint(result: BingResult): GeoJSON.Feature<GeoJSON.Point> {
-  const [lat, lng] = result.point.coordinates
-  return point([lng, lat])
+function parseBBox(result: Result): BBox {
+  const [south, west, north, east] = result.bbox
+  return [west, south, east, north]
 }
 
 /**
  * Convert Bing results into GeoJSON
  */
-export function BingToGeoJSON(json: BingResults, options?: BingOptions): GeoJSON.FeatureCollection<GeoJSON.Point> {
-  const collection: GeoJSON.FeatureCollection<GeoJSON.Point> = featureCollection([])
+export function toGeoJSON(json: Results, options?: Options): Points {
+  const collection: Points = featureCollection([])
   json.resourceSets[0].resources.map(result => {
     // Point GeoJSON
-    const point = parsePoint(result)
+    const point = turf.point(result.point.coordinates.reverse())
     const bbox = parseBBox(result)
     let confidence = confidenceScore(bbox)
     const properties: any = {

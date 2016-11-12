@@ -5,7 +5,7 @@
 [![npm version](https://badge.fury.io/js/geocoder-geojson.svg)](https://badge.fury.io/js/geocoder-geojson)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DenisCarriere/geocoder-geojson/master/LICENSE)
 
-Geocoding results in [GeoJSON format](http://geojson.org/geojson-spec.html).
+Geocoding results according to the [GeoJSON specification](http://geojson.org/geojson-spec.html).
 
 ## Install
 
@@ -148,7 +148,33 @@ const geojson = await geocoder.bing('Ottawa, ON')
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
+# wikidata
+
+Wikidata Provider
+
+**Parameters**
+
+-   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
+-   `options` **\[Options]** Wikidata Options
+    -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Language
+    -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit
+
+**Examples**
+
+```javascript
+const geojson = await geocoder.wikidata('Ottawa')
+```
+
+Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
+
 # Changelog
+
+## 1.7.0 - 2016-11-11
+
+- Add Command Line Interface (CLI)
+- Add Wikidata provider
+- Add --nearest to Wikidata
+- Seperate tests per providers `test/test.<provider>.ts`
 
 ## 1.6.0 - 2016-11-3
 

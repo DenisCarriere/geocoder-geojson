@@ -3,6 +3,18 @@ import * as bboxPolygon from '@turf/bbox-polygon'
 import * as distance from '@turf/distance'
 
 /**
+ * Options for all providers
+ */
+export interface Options {
+  nearest: LngLat
+}
+
+/**
+ * Feature Collection of Points
+ */
+export type Points = GeoJSON.FeatureCollection<GeoJSON.Point>
+
+/**
  * BBox extent in [minX, minY, maxX, maxY] order
  */
 export type BBox = [number, number, number, number]
