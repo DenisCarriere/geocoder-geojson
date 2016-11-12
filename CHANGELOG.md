@@ -7,6 +7,7 @@
 - Add Wikidata provider
 - Add --nearest to Wikidata
 - Add wikidata `place` precision
+- Add `in` to filter out from `nearest`
 - Seperate tests per providers `test/test.<provider>.ts`
 
 ## 1.6.0 - 2016-11-3

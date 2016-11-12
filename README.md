@@ -165,6 +165,7 @@ Wikidata Provider
     -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit the amount of results
     -   `options.nearest` **\[[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)]** Nearest location from a given LngLat
     -   `options.distance` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Maximum distance from nearest LngLat
+    -   `options.in` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Filter results by place=\*
 
 **Examples**
 
@@ -181,6 +182,8 @@ Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 - Add Command Line Interface (CLI)
 - Add Wikidata provider
 - Add --nearest to Wikidata
+- Add wikidata `place` precision
+- Add `in` to filter out from `nearest`
 - Seperate tests per providers `test/test.<provider>.ts`
 
 ## 1.6.0 - 2016-11-3

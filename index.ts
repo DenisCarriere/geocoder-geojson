@@ -128,6 +128,7 @@ export async function bing(address: string, options = Bing.Options): Promise<Geo
  * @param {number} [options.limit] Limit the amount of results
  * @param {LngLat} [options.nearest] Nearest location from a given LngLat
  * @param {number} [options.distance] Maximum distance from nearest LngLat
+ * @param {Array<string>} [options.in] Filter results by place=*
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')
@@ -148,6 +149,7 @@ export async function wikidata(address: string, options = Wikidata.Options): Pro
 interface Options {
   nearest?: LngLat
   distance?: number
+  in?: Array<string>
 }
 /**
  * Generic GET function to normalize all of the requests
@@ -163,6 +165,16 @@ async function get(url: string, geojsonParser: Function, params = {}, options?: 
   const response = await axios.get(url, {params})
   const json = response.data
   const geojson: Points = geojsonParser(json, options)
+
+  // Filter by in
+  if (options.in) {
+    geojson.features = geojson.features.filter(feature => {
+      const place = feature.properties.place
+      if (place) {
+        return (options.in.indexOf(feature.properties.place) !== -1)
+      }
+    })
+  }
 
   // Filter by nearest
   if (options.nearest) {

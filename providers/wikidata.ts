@@ -127,8 +127,10 @@ function getEnglish(value: Value) {
 }
 
 function getPlace(description: string) {
-  const match = description.match(/^(.+) in/)
-  if (match) { return match[1] }
+  if (description) {
+    const match = description.match(/^(.+) in/)
+    if (match) { return match[1] }
+  }
 }
 
 /**
@@ -139,14 +141,14 @@ export function toGeoJSON(json: Results, options: Options): Points {
   Object.keys(json.entities).map(id => {
     const entity = json.entities[id]
     if (entity.claims.P625) {
-      console.log(JSON.stringify(entity, null, 4))
       const {longitude, latitude} = entity.claims.P625[0].mainsnak.datavalue.value
       const description = getEnglish(entity.descriptions)
+      const place = getPlace(description)
       const properties = {
         description,
         id,
+        place,
         label: getEnglish(entity.labels),
-        place: getPlace(description),
       }
       const point = turf.point([longitude, latitude], properties)
       point.id = id
