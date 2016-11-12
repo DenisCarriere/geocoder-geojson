@@ -1,5 +1,4 @@
-/// <reference path="./index.d.ts" />
-
+/// <reference path="index.d.ts" />
 import axios from 'axios'
 import * as turf from '@turf/helpers'
 import * as nearest from '@turf/nearest'
