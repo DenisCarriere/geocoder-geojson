@@ -1,14 +1,13 @@
 import * as turf from '@turf/helpers'
+import * as utils from '../utils'
 import { Points } from '../utils'
 
 type LngLat = [number, number]
 
 export const Options: Options = { }
-export interface Options {
+export interface Options extends utils.Options {
   language?: string
   limit?: number
-  nearest?: LngLat
-  distance?: number
 }
 
 interface Match {

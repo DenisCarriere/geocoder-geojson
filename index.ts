@@ -146,11 +146,6 @@ export async function wikidata(address: string, options = Wikidata.Options): Pro
   return get(url, Wikidata.toGeoJSON, {}, options)
 }
 
-interface Options {
-  nearest?: LngLat
-  distance?: number
-  in?: Array<string>
-}
 /**
  * Generic GET function to normalize all of the requests
  *
@@ -161,7 +156,7 @@ interface Options {
  * @param {Object} options Options used for both request & geojsonParser
  * @returns {Promise<GeoJSON.FeatureCollection<GeoJSON.Point>>} GeoJSON Results
  */
-async function get(url: string, geojsonParser: Function, params = {}, options?: Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
+async function get(url: string, geojsonParser: Function, params = {}, options?: utils.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const response = await axios.get(url, {params})
   const json = response.data
   const geojson: Points = geojsonParser(json, options)

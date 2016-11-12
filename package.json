@@ -1,6 +1,6 @@
 {
   "name": "geocoder-geojson",
-  "version": "1.7.9",
+  "version": "1.7.10",
   "description": "Geocoding results in GeoJSON format",
   "main": "index.js",
   "jsnext:main": "index.js",

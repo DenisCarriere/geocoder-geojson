@@ -17,3 +17,8 @@ test('wikidata.nearest.distance', async t => {
   const g = await geocoder.wikidata(CITY, {distance: 1, nearest: [-75, 45]})
   t.true(!!g.features)
 })
+
+test('wikidata.nearest.in', async t => {
+  const g = await geocoder.wikidata(CITY, {in: ['city'], nearest: [-75, 45]})
+  t.true(!!g.features)
+})

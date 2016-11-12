@@ -7,7 +7,9 @@ import * as distance from '@turf/distance'
  * Options for all providers
  */
 export interface Options {
-  nearest: LngLat
+  nearest?: LngLat
+  distance?: number
+  in?: Array<string>
 }
 
 /**
