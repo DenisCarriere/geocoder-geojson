@@ -13,11 +13,16 @@ interface CLI extends program.ICommand {
 }
 
 function customHelp() {
-  console.log('  Examples:\n')
-  console.log('    $ geocode --provider bing "Ottawa ON"\n')
-  console.log('    $ geocode --provider wikidata --nearest [-75.7,45.4] Ottawa')
-  console.log('  Providers:\n')
-  providers.map(provider => console.log(`    - ${provider}`))
+  console.log(`
+  Examples:
+
+    $ geocode --provider bing "Ottawa ON"
+    $ geocode -p wikidata --nearest [-75.7,45.4] Ottawa
+    $ geocode -p google --limit 3 "Ottawa ON"
+
+  Providers:
+`)
+  providers.map(provider => console.log(`    * ${provider}`))
 }
 
 function error (message: string) {
