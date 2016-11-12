@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as program from 'commander'
-import * as colors from 'colors'
+import { error } from './utils'
 
 const geocoder = require('.')
 delete geocoder.default
@@ -25,11 +25,6 @@ function customHelp() {
   providers.map(provider => console.log(`    * ${provider}`))
 }
 
-function error (message: string) {
-  console.log(colors.bgRed(`[Error] ${ message }`))
-  process.exit(1)
-}
-
 program
   .version(require('./package.json').version)
   .usage('[options] <location>')
@@ -52,7 +47,8 @@ if (cli.args[0]) {
 }
 
 // Handle Providers
-const provider = cli.provider.toLowerCase() || 'bing'
+let provider = cli.provider || 'bing'
+provider = provider.toLowerCase()
 if (providers.indexOf(provider) === -1) {
   error(`--provider is invalid`)
 }

@@ -8,7 +8,7 @@ import * as Google from './providers/google'
 import * as Mapbox from './providers/mapbox'
 import * as Wikidata from './providers/wikidata'
 import * as utils from './utils'
-import { LngLat, Points } from './utils'
+import { LngLat, Points, error } from './utils'
 
 /**
  * Mapbox Provider
@@ -23,8 +23,10 @@ import { LngLat, Points } from './utils'
  */
 export async function mapbox(address: string, options = Mapbox.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ address }.json`
+  const access_token = options.access_token || process.env.MAPBOX_ACCESS_TOKEN
+  if (!access_token) { error('--access_token is required') }
   const params = {
-    access_token: utils.verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
+    access_token,
   }
   return get(url, Mapbox.toGeoJSON, params, options)
 }
@@ -43,8 +45,10 @@ export async function mapbox(address: string, options = Mapbox.Options): Promise
 export async function mapboxReverse(lnglat: LngLat, options = Mapbox.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   lnglat = utils.validateLngLat(lnglat)
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${ lnglat.join(',') }.json`
+  const access_token = options.access_token || process.env.MAPBOX_ACCESS_TOKEN
+  if (!access_token) { error('--access_token is required') }
   const params = {
-    access_token: utils.verifyKey(options.access_token, 'MAPBOX_ACCESS_TOKEN'),
+    access_token,
   }
   return get(url, Mapbox.toGeoJSON, params, options)
 }
@@ -102,9 +106,11 @@ export async function googleReverse(lnglat: LngLat, options = Google.Options): P
  */
 export async function bing(address: string, options = Bing.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const url = 'http://dev.virtualearth.net/REST/v1/Locations'
+  const key = options.key || process.env.BING_API_KEY
+  if (!key) { error('--key is required') }
   const params = {
     inclnb: 1,
-    key: utils.verifyKey(options.key, 'BING_API_KEY'),
+    key,
     o: 'json',
     q: address,
   }
@@ -117,7 +123,9 @@ export async function bing(address: string, options = Bing.Options): Promise<Geo
  * @param {string} address Location for your search
  * @param {Options} [options] Wikidata Options
  * @param {string} [options.language] Language
- * @param {number} [options.limit] Limit
+ * @param {number} [options.limit] Limit the amount of results
+ * @param {LngLat} [options.nearest] Nearest location from a given LngLat
+ * @param {number} [options.distance] Maximum distance from nearest LngLat
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')

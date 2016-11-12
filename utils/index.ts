@@ -1,3 +1,4 @@
+import * as colors from 'colors'
 import { point } from '@turf/helpers'
 import * as bboxPolygon from '@turf/bbox-polygon'
 import * as distance from '@turf/distance'
@@ -32,6 +33,14 @@ export interface OpenStreetMap {
   'addr:street'?: string
   'addr:city'?: string
   'addr:postcode'?: string
+}
+
+/**
+ * Pretty Error message
+ */
+export function error (message: string) {
+  console.log(colors.bgRed(`[Error] ${ message }`))
+  process.exit(1)
 }
 
 /**
@@ -101,24 +110,6 @@ export function confidenceScore(bbox: BBox): number {
 //   }
 //   return name
 // }
-
-/**
- * Verify if Key exists in Options or Environment Variable
- *
- * @param {Object} options Options with key
- * @param {string} env Environment variable
- * @returns {string} key
- * @example
- * const key = verifyKey(options, 'BING_API_KEY')
- * //=key
- */
-export function verifyKey(key: string, env: string) {
-  if (process) {
-    if (key) { return key }
-    if (process.env[env]) { return process.env[env] }
-    throw new Error('API key authentication is required')
-  }
-}
 
 /**
  * Validates {@link LngLat} coordinates.
