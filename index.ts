@@ -159,10 +159,11 @@ async function get(url: string, geojsonParser: Function, params = {}, options?: 
     const point = turf.point(options.nearest)
     const result = nearest(point, geojson)
     const dist = distance(point, result)
-    if (dist < options.distance) {
-      result.properties.distance = dist
-      geojson.features = [result]
-    } else {
+    result.properties.distance = dist
+    geojson.features = [result]
+
+    // Remove features if nearest feature is not within maximum distance
+    if (dist > options.distance) {
       geojson.features = []
     }
   }

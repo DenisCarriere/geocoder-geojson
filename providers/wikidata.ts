@@ -9,6 +9,7 @@ export interface Options {
   language?: string
   limit?: number
   nearest?: LngLat
+  distance?: number
 }
 
 interface Match {

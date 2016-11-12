@@ -57,6 +57,11 @@ function parseBBox(result: Result): BBox {
   return [west, south, east, north]
 }
 
+function parsePoint(result: Result): GeoJSON.Feature<GeoJSON.Point> {
+  const [lat, lng] = result.point.coordinates
+  return point([lng, lat])
+}
+
 /**
  * Convert Bing results into GeoJSON
  */
@@ -64,7 +69,7 @@ export function toGeoJSON(json: Results, options?: Options): Points {
   const collection: Points = featureCollection([])
   json.resourceSets[0].resources.map(result => {
     // Point GeoJSON
-    const point = turf.point(result.point.coordinates.reverse())
+    const point = parsePoint(result)
     const bbox = parseBBox(result)
     let confidence = confidenceScore(bbox)
     const properties: any = {
