@@ -1,4 +1,4 @@
-/// <reference path="./types/wikidata.d.ts" />
+/// <reference path="./index.d.ts" />
 
 import axios from 'axios'
 import * as turf from '@turf/helpers'
