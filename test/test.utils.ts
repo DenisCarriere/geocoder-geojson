@@ -1,5 +1,5 @@
 import test from 'ava'
-import { confidenceScore, validateLngLat, verifyKey } from '../utils'
+import { confidenceScore, validateLngLat } from '../utils'
 
 test('confidenceScore', t => {
   t.deepEqual(confidenceScore([-75.1, 45.1, -75, 45]), 4)
@@ -11,10 +11,6 @@ test('validateLngLat', t => {
   t.throws(() => validateLngLat([120, 220]), 'LngLat [lat] must be within -90 to 90 degrees')
   t.throws(() => validateLngLat([-220, 45]), 'LngLat [lng] must be within -180 to 180 degrees')
   t.throws(() => validateLngLat([220, 45]), 'LngLat [lng] must be within -180 to 180 degrees')
-})
-
-test('verifyKey', t => {
-  t.throws(() => verifyKey('', 'ENV_MISSING'), 'API key authentication is required')
 })
 
 // test('replaceStreetSuffix', async t => {

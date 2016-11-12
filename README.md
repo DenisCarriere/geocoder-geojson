@@ -162,7 +162,9 @@ Wikidata Provider
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
 -   `options` **\[Options]** Wikidata Options
     -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Language
-    -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit
+    -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit the amount of results
+    -   `options.nearest` **\[[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)]** Nearest location from a given LngLat
+    -   `options.distance` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Maximum distance from nearest LngLat
 
 **Examples**
 
