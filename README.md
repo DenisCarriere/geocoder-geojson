@@ -13,47 +13,52 @@ Geocoding results according to the [GeoJSON specification](http://geojson.org/ge
 $ npm install --save geocoder-geojson
 ```
 
+Install globaly to access `geocode` via your command prompt. 
+
+```bash
+$ npm install -g geocoder-geojson
+$ geocode --version
+$ geocode --help
+```
+
 ## Quickstart
 
 ```javascript
 import geocoder from 'geocoder-geojson'
 
-geocoder.google('Ottawa, Canada')
-  .then(geojson => geojson.features[0])
-/*
-{ type: 'Feature',
-  properties:
-   { location_type: 'APPROXIMATE',
-     formatted_address: 'Ottawa, ON, Canada',
-     place_id: 'ChIJrxNRX7IFzkwR7RXdMeFRaoo',
-     types: [ 'locality', 'political' ],
-     confidence: 1,
-     locality: 'Ottawa',
-     administrative_area_level_2: 'Ottawa Division',
-     administrative_area_level_1: 'Ontario',
-     country: 'Canada',
-  geometry:
-   { type: 'Point',
-     coordinates: [ -75.69719309999999, 45.4215296 ] },
-  bbox: [ -76.3539158, 44.9627331, -75.2465979, 45.5375801 ] }
-*/
+geocoder.google('Ottawa, ON')
+  .then(geojson => console.log(geojson))
+```
+
+### CLI
+
+```bash
+$ geocode --provider bing "Ottawa ON"
+$ geocode -p wikidata --nearest [-75.7,45.4] Ottawa
+$ geocode -p google --limit 3 "Ottawa ON"
+```
+
+Using `jq` to filter JSON data
+
+```bash
+$ geocode -p wikidata --nearest [-75.7,45.4] Ottawa | jq .features[0].id
+"Q1930"
 ```
 
 ## Features
 
 | Name                              | Coverage    | Restrictions                 |
 |-----------------------------------|:------------|:-----------------------------|
-| [google](#google)                 | Global      | API Key - RateLimit 2500/day
-| [googleReverse](#googlereverse)   | Global      | API Key - RateLimit 2500/day
+| [google](#google)                 | Global      | Free & API Key - RateLimit 2500/day
+| [googleReverse](#googlereverse)   | Global      | Free & API Key - RateLimit 2500/day
 | [mapbox](#mapbox)                 | Global      | API Key
 | [mapboxReverse](#mapboxreverse)   | Global      | API Key
 | [bing](#bing)                     | Global      | API Key
+| [wikdata](#wikidata)              | Global      | Free
 
 ## Future Goals
 
-- Replace `request-promise` & `request` dependencies for `fetch`.
 - Implement all geocoding providers from [`Python Geocoder`](https://github.com/DenisCarriere/geocoder)
-- Add CLI `geocode`
 # mapbox
 
 Mapbox Provider
