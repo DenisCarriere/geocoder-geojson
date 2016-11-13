@@ -4,6 +4,8 @@ import { Points } from '../utils'
 
 type LngLat = [number, number]
 
+const wikidataPlaces = require('./wikidataPlaces.json')
+
 export const Options: Options = { }
 export interface Options extends utils.Options {
   language?: string
@@ -39,13 +41,19 @@ interface Mainsnak {
     snaktype?: string
     property?: string
     datatype?: string
-    datavalue?: any
+    datavalue?: {
+      value?: any
+      type?: string
+    }
   }
   type?: string
+  qualifiers?: any
+  'qualifiers-order'?: any
   id?: string
   rank?: string
 }
 
+// Coordinates
 interface P625 extends Mainsnak {
   mainsnak: {
     datavalue: {
@@ -56,22 +64,38 @@ interface P625 extends Mainsnak {
         precision: number
         globe: string
       }
-      type: string
     }
   }
 }
 
+// Population
+interface P1082 extends Mainsnak {
+  mainsnak: {
+    datavalue: {
+      value: any
+    }
+  }
+}
+
+
+// Country Code
+interface P17 extends Mainsnak {
+  mainsnak: {
+    datavalue: {
+      value: any
+    }
+  }
+}
+
+// Instance of
 interface P31 extends Mainsnak {
   mainsnak: {
     datavalue: {
       value: {
-        latitude: number
-        longitude: number
-        altitude: number
-        precision: number
-        globe: string
+        'entity-type': string
+        'numeric-id': number
+        id: string
       }
-      type: string
     }
   }
 }
@@ -93,6 +117,7 @@ interface Value {
 }
 
 type Claims = {
+  [key: string]: Array<any>
   P625: Array<P625>
   P31: Array<P31>
 }
@@ -125,11 +150,23 @@ function getEnglish(value: Value) {
   }
 }
 
-function getPlace(description: string) {
-  if (description) {
-    const match = description.match(/^(.+) in/)
-    if (match) { return match[1] }
+function getPlaces(description: string, claims: Claims): Array<string> {
+  const places: Array<string> = []
+
+  // Extract tags from instance of
+  claims.P31.map(claim => {
+    const id = claim.mainsnak.datavalue.value.id
+    if (wikidataPlaces.hasOwnProperty(id)) {
+      places.push(wikidataPlaces[id])
+    }
+  })
+
+  // Fallback - Regex description "city in Ontario" = "city"
+  if (description && places.length === 0) {
+    const match = description.match(/^(.+) [in|of]/)
+    if (match) { places.push(match[1]) }
   }
+  return places
 }
 
 /**
@@ -142,11 +179,11 @@ export function toGeoJSON(json: Results, options: Options): Points {
     if (entity.claims.P625) {
       const {longitude, latitude} = entity.claims.P625[0].mainsnak.datavalue.value
       const description = getEnglish(entity.descriptions)
-      const place = getPlace(description)
+      const places = getPlaces(description, entity.claims)
       const properties = {
         description,
         id,
-        place,
+        places,
         label: getEnglish(entity.labels),
       }
       const point = turf.point([longitude, latitude], properties)

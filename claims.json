@@ -1,0 +1,3559 @@
+{
+    "entities": {
+        "Q1930": {
+            "pageid": 2819,
+            "ns": 0,
+            "title": "Q1930",
+            "lastrevid": 399445583,
+            "modified": "2016-11-01T14:23:49Z",
+            "type": "item",
+            "id": "Q1930",
+            "labels": {
+                "en": {
+                    "language": "en",
+                    "value": "Ottawa"
+                },
+                "fr": {
+                    "language": "fr",
+                    "value": "Ottawa"
+                },
+                "ru": {
+                    "language": "ru",
+                    "value": "Оттава"
+                },
+                "en-ca": {
+                    "language": "en-ca",
+                    "value": "Ottawa"
+                },
+                "en-gb": {
+                    "language": "en-gb",
+                    "value": "Ottawa"
+                },
+                "ace": {
+                    "language": "ace",
+                    "value": "Ottawa"
+                },
+                "af": {
+                    "language": "af",
+                    "value": "Ottawa"
+                },
+                "am": {
+                    "language": "am",
+                    "value": "ኦታዋ"
+                },
+                "an": {
+                    "language": "an",
+                    "value": "Ottawa"
+                },
+                "ang": {
+                    "language": "ang",
+                    "value": "Ottawa"
+                },
+                "ar": {
+                    "language": "ar",
+                    "value": "أوتوا"
+                },
+                "av": {
+                    "language": "av",
+                    "value": "Оттава"
+                },
+                "az": {
+                    "language": "az",
+                    "value": "Ottava"
+                },
+                "be": {
+                    "language": "be",
+                    "value": "Атава"
+                },
+                "bg": {
+                    "language": "bg",
+                    "value": "Отава"
+                },
+                "bn": {
+                    "language": "bn",
+                    "value": "অটোয়া"
+                },
+                "bo": {
+                    "language": "bo",
+                    "value": "ཨོ་ཏ་ཝ།"
+                },
+                "br": {
+                    "language": "br",
+                    "value": "Ottawa"
+                },
+                "bs": {
+                    "language": "bs",
+                    "value": "Ottawa"
+                },
+                "ca": {
+                    "language": "ca",
+                    "value": "Ottawa"
+                },
+                "chr": {
+                    "language": "chr",
+                    "value": "ᎠᏔᏩ, ᎨᎾᏓ"
+                },
+                "ckb": {
+                    "language": "ckb",
+                    "value": "ئۆتاوا"
+                },
+                "co": {
+                    "language": "co",
+                    "value": "Ottawa"
+                },
+                "cs": {
+                    "language": "cs",
+                    "value": "Ottawa"
+                },
+                "cv": {
+                    "language": "cv",
+                    "value": "Оттава"
+                },
+                "cy": {
+                    "language": "cy",
+                    "value": "Ottawa"
+                },
+                "da": {
+                    "language": "da",
+                    "value": "Ottawa"
+                },
+                "de": {
+                    "language": "de",
+                    "value": "Ottawa"
+                },
+                "de-ch": {
+                    "language": "de-ch",
+                    "value": "Ottawa"
+                },
+                "el": {
+                    "language": "el",
+                    "value": "Οττάβα"
+                },
+                "eo": {
+                    "language": "eo",
+                    "value": "Otavo"
+                },
+                "es": {
+                    "language": "es",
+                    "value": "Ottawa"
+                },
+                "et": {
+                    "language": "et",
+                    "value": "Ottawa"
+                },
+                "eu": {
+                    "language": "eu",
+                    "value": "Ottawa"
+                },
+                "ext": {
+                    "language": "ext",
+                    "value": "Ottawa"
+                },
+                "fa": {
+                    "language": "fa",
+                    "value": "اتاوا"
+                },
+                "fi": {
+                    "language": "fi",
+                    "value": "Ottawa"
+                },
+                "fo": {
+                    "language": "fo",
+                    "value": "Ottawa"
+                },
+                "frp": {
+                    "language": "frp",
+                    "value": "Ottawa"
+                },
+                "fy": {
+                    "language": "fy",
+                    "value": "Ottawa"
+                },
+                "ga": {
+                    "language": "ga",
+                    "value": "Ottawa"
+                },
+                "gd": {
+                    "language": "gd",
+                    "value": "Ottawa"
+                },
+                "gl": {
+                    "language": "gl",
+                    "value": "Otava"
+                },
+                "he": {
+                    "language": "he",
+                    "value": "אוטווה"
+                },
+                "hif": {
+                    "language": "hif",
+                    "value": "Ottawa"
+                },
+                "hr": {
+                    "language": "hr",
+                    "value": "Ottawa"
+                },
+                "ht": {
+                    "language": "ht",
+                    "value": "Otawa"
+                },
+                "hu": {
+                    "language": "hu",
+                    "value": "Ottawa"
+                },
+                "hy": {
+                    "language": "hy",
+                    "value": "Օտտավա"
+                },
+                "id": {
+                    "language": "id",
+                    "value": "Ottawa"
+                },
+                "ie": {
+                    "language": "ie",
+                    "value": "Ottawa"
+                },
+                "io": {
+                    "language": "io",
+                    "value": "Ottawa"
+                },
+                "is": {
+                    "language": "is",
+                    "value": "Ottawa"
+                },
+                "it": {
+                    "language": "it",
+                    "value": "Ottawa"
+                },
+                "iu": {
+                    "language": "iu",
+                    "value": "ᐊᑐᕚ/atavaa"
+                },
+                "ja": {
+                    "language": "ja",
+                    "value": "オタワ"
+                },
+                "jv": {
+                    "language": "jv",
+                    "value": "Ottawa"
+                },
+                "ka": {
+                    "language": "ka",
+                    "value": "ოტავა"
+                },
+                "kk": {
+                    "language": "kk",
+                    "value": "Оттава"
+                },
+                "kl": {
+                    "language": "kl",
+                    "value": "Ottawa"
+                },
+                "kn": {
+                    "language": "kn",
+                    "value": "ಆಟ್ಟಾವಾ"
+                },
+                "ko": {
+                    "language": "ko",
+                    "value": "오타와"
+                },
+                "ku": {
+                    "language": "ku",
+                    "value": "Ottawa"
+                },
+                "kw": {
+                    "language": "kw",
+                    "value": "Ottawa"
+                },
+                "la": {
+                    "language": "la",
+                    "value": "Ottava"
+                },
+                "lmo": {
+                    "language": "lmo",
+                    "value": "Ottawa"
+                },
+                "ln": {
+                    "language": "ln",
+                    "value": "Ottawa"
+                },
+                "lt": {
+                    "language": "lt",
+                    "value": "Otava"
+                },
+                "lv": {
+                    "language": "lv",
+                    "value": "Otava"
+                },
+                "mk": {
+                    "language": "mk",
+                    "value": "Отава"
+                },
+                "ml": {
+                    "language": "ml",
+                    "value": "ഓട്ടവ"
+                },
+                "mn": {
+                    "language": "mn",
+                    "value": "Оттава"
+                },
+                "mr": {
+                    "language": "mr",
+                    "value": "ओटावा"
+                },
+                "ms": {
+                    "language": "ms",
+                    "value": "Ottawa"
+                },
+                "mzn": {
+                    "language": "mzn",
+                    "value": "اوتآوآ"
+                },
+                "nah": {
+                    "language": "nah",
+                    "value": "Ottahua"
+                },
+                "nds": {
+                    "language": "nds",
+                    "value": "Ottawa"
+                },
+                "nl": {
+                    "language": "nl",
+                    "value": "Ottawa"
+                },
+                "nn": {
+                    "language": "nn",
+                    "value": "Ottawa"
+                },
+                "nov": {
+                    "language": "nov",
+                    "value": "Ottawa"
+                },
+                "nrm": {
+                    "language": "nrm",
+                    "value": "Ottawa"
+                },
+                "oc": {
+                    "language": "oc",
+                    "value": "Ottawa"
+                },
+                "os": {
+                    "language": "os",
+                    "value": "Оттавæ"
+                },
+                "pa": {
+                    "language": "pa",
+                    "value": "ਓਟਾਵਾ"
+                },
+                "pap": {
+                    "language": "pap",
+                    "value": "Ottawa"
+                },
+                "pdc": {
+                    "language": "pdc",
+                    "value": "Ottawa"
+                },
+                "pl": {
+                    "language": "pl",
+                    "value": "Ottawa"
+                },
+                "pms": {
+                    "language": "pms",
+                    "value": "Ottawa"
+                },
+                "pnb": {
+                    "language": "pnb",
+                    "value": "اٹاوہ"
+                },
+                "pt": {
+                    "language": "pt",
+                    "value": "Ottawa"
+                },
+                "pt-br": {
+                    "language": "pt-br",
+                    "value": "Ottawa"
+                },
+                "qu": {
+                    "language": "qu",
+                    "value": "Ottawa"
+                },
+                "rm": {
+                    "language": "rm",
+                    "value": "Ottawa"
+                },
+                "ro": {
+                    "language": "ro",
+                    "value": "Ottawa"
+                },
+                "sah": {
+                    "language": "sah",
+                    "value": "Оттава"
+                },
+                "sc": {
+                    "language": "sc",
+                    "value": "Ottawa"
+                },
+                "scn": {
+                    "language": "scn",
+                    "value": "Ottawa"
+                },
+                "sco": {
+                    "language": "sco",
+                    "value": "Ottawa"
+                },
+                "sh": {
+                    "language": "sh",
+                    "value": "Ottawa"
+                },
+                "sk": {
+                    "language": "sk",
+                    "value": "Ottawa"
+                },
+                "sl": {
+                    "language": "sl",
+                    "value": "Ottawa"
+                },
+                "sq": {
+                    "language": "sq",
+                    "value": "Ottawa"
+                },
+                "sr": {
+                    "language": "sr",
+                    "value": "Отава"
+                },
+                "stq": {
+                    "language": "stq",
+                    "value": "Ottawa"
+                },
+                "sv": {
+                    "language": "sv",
+                    "value": "Ottawa"
+                },
+                "sw": {
+                    "language": "sw",
+                    "value": "Ottawa"
+                },
+                "ta": {
+                    "language": "ta",
+                    "value": "ஒட்டாவா"
+                },
+                "th": {
+                    "language": "th",
+                    "value": "ออตตาวา"
+                },
+                "tl": {
+                    "language": "tl",
+                    "value": "Ottawa"
+                },
+                "tpi": {
+                    "language": "tpi",
+                    "value": "Ottawa"
+                },
+                "tr": {
+                    "language": "tr",
+                    "value": "Ottawa"
+                },
+                "ug": {
+                    "language": "ug",
+                    "value": "Ottawa"
+                },
+                "uk": {
+                    "language": "uk",
+                    "value": "Оттава"
+                },
+                "ur": {
+                    "language": "ur",
+                    "value": "اوٹاوا"
+                },
+                "vi": {
+                    "language": "vi",
+                    "value": "Ottawa"
+                },
+                "vo": {
+                    "language": "vo",
+                    "value": "Ottawa"
+                },
+                "war": {
+                    "language": "war",
+                    "value": "Ottawa"
+                },
+                "yi": {
+                    "language": "yi",
+                    "value": "אטאווא"
+                },
+                "yo": {
+                    "language": "yo",
+                    "value": "Ottawa"
+                },
+                "zh": {
+                    "language": "zh",
+                    "value": "渥太華"
+                },
+                "yue": {
+                    "language": "yue",
+                    "value": "渥太華"
+                },
+                "ay": {
+                    "language": "ay",
+                    "value": "Ottawa"
+                },
+                "zh-hans": {
+                    "language": "zh-hans",
+                    "value": "渥太华"
+                },
+                "nb": {
+                    "language": "nb",
+                    "value": "Ottawa"
+                },
+                "my": {
+                    "language": "my",
+                    "value": "အော့တဝမြို့"
+                },
+                "or": {
+                    "language": "or",
+                    "value": "ଓଟାୱା"
+                },
+                "so": {
+                    "language": "so",
+                    "value": "Ottawa"
+                },
+                "new": {
+                    "language": "new",
+                    "value": "Template:Country data Ontario"
+                },
+                "uz": {
+                    "language": "uz",
+                    "value": "Ottava"
+                },
+                "hi": {
+                    "language": "hi",
+                    "value": "ओटावा"
+                },
+                "mg": {
+                    "language": "mg",
+                    "value": "Ottawa"
+                },
+                "tt": {
+                    "language": "tt",
+                    "value": "Ottawa"
+                },
+                "ce": {
+                    "language": "ce",
+                    "value": "Оттава"
+                },
+                "bar": {
+                    "language": "bar",
+                    "value": "Ottawa"
+                },
+                "gsw": {
+                    "language": "gsw",
+                    "value": "Ottawa"
+                },
+                "nan": {
+                    "language": "nan",
+                    "value": "Ottawa"
+                },
+                "be-tarask": {
+                    "language": "be-tarask",
+                    "value": "Атава"
+                },
+                "rup": {
+                    "language": "rup",
+                    "value": "Ottawa"
+                },
+                "gn": {
+                    "language": "gn",
+                    "value": "Ottawa"
+                },
+                "si": {
+                    "language": "si",
+                    "value": "ඕටවා"
+                },
+                "sn": {
+                    "language": "sn",
+                    "value": "Ottawa"
+                },
+                "kab": {
+                    "language": "kab",
+                    "value": "Ottawa"
+                },
+                "tw": {
+                    "language": "tw",
+                    "value": "Ottawa"
+                },
+                "kaa": {
+                    "language": "kaa",
+                    "value": "Ottava"
+                },
+                "te": {
+                    "language": "te",
+                    "value": "అటావా"
+                },
+                "zh-hk": {
+                    "language": "zh-hk",
+                    "value": "渥太華"
+                },
+                "zh-hant": {
+                    "language": "zh-hant",
+                    "value": "渥太華"
+                },
+                "zh-mo": {
+                    "language": "zh-mo",
+                    "value": "渥太華"
+                },
+                "zh-tw": {
+                    "language": "zh-tw",
+                    "value": "渥太華"
+                },
+                "zh-cn": {
+                    "language": "zh-cn",
+                    "value": "渥太华"
+                },
+                "zh-my": {
+                    "language": "zh-my",
+                    "value": "渥太华"
+                },
+                "zh-sg": {
+                    "language": "zh-sg",
+                    "value": "渥太华"
+                },
+                "cbk-zam": {
+                    "language": "cbk-zam",
+                    "value": "Ottawa"
+                },
+                "ceb": {
+                    "language": "ceb",
+                    "value": "Ottawa"
+                },
+                "vep": {
+                    "language": "vep",
+                    "value": "Ottav"
+                },
+                "cdo": {
+                    "language": "cdo",
+                    "value": "Ottawa"
+                },
+                "lrc": {
+                    "language": "lrc",
+                    "value": "اتاوا"
+                },
+                "za": {
+                    "language": "za",
+                    "value": "Ottawa"
+                },
+                "ky": {
+                    "language": "ky",
+                    "value": "Оттава"
+                },
+                "crh-latn": {
+                    "language": "crh-latn",
+                    "value": "Ottava"
+                },
+                "ady": {
+                    "language": "ady",
+                    "value": "Оттава"
+                },
+                "lij": {
+                    "language": "lij",
+                    "value": "Ottawa"
+                },
+                "nso": {
+                    "language": "nso",
+                    "value": "Ottawa"
+                },
+                "hak": {
+                    "language": "hak",
+                    "value": "Ottawa"
+                },
+                "lad": {
+                    "language": "lad",
+                    "value": "Ottawa"
+                },
+                "pcd": {
+                    "language": "pcd",
+                    "value": "Ottawa"
+                },
+                "lzh": {
+                    "language": "lzh",
+                    "value": "渥太華"
+                }
+            },
+            "descriptions": {
+                "en": {
+                    "language": "en",
+                    "value": "capital city of Canada"
+                },
+                "it": {
+                    "language": "it",
+                    "value": "comune del Canada"
+                },
+                "es": {
+                    "language": "es",
+                    "value": "capital de Canadá"
+                },
+                "ja": {
+                    "language": "ja",
+                    "value": "カナダの首都"
+                },
+                "fr": {
+                    "language": "fr",
+                    "value": "capitale du Canada"
+                },
+                "de": {
+                    "language": "de",
+                    "value": "Bundeshauptstadt Kanadas"
+                },
+                "zh-hans": {
+                    "language": "zh-hans",
+                    "value": "加拿大首都"
+                },
+                "nb": {
+                    "language": "nb",
+                    "value": "Canadas hovedstad"
+                },
+                "nl": {
+                    "language": "nl",
+                    "value": "hoofdstad van Canada"
+                },
+                "ru": {
+                    "language": "ru",
+                    "value": "столица Канады"
+                },
+                "uz": {
+                    "language": "uz",
+                    "value": "Kanada poytaxti"
+                },
+                "hu": {
+                    "language": "hu",
+                    "value": "Kanada fővárosa"
+                },
+                "el": {
+                    "language": "el",
+                    "value": "πρωτεύουσα του Καναδά"
+                },
+                "he": {
+                    "language": "he",
+                    "value": "עיר הבירה של קנדה"
+                }
+            },
+            "aliases": {
+                "de": [
+                    {
+                        "language": "de",
+                        "value": "Bytown"
+                    }
+                ]
+            },
+            "claims": {
+                "P31": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P31",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 5119,
+                                    "id": "Q5119"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "qualifiers": {
+                            "P642": [
+                                {
+                                    "snaktype": "value",
+                                    "property": "P642",
+                                    "hash": "385d1145990f69a64057ebb1e1ca50351c9c93e0",
+                                    "datavalue": {
+                                        "value": {
+                                            "entity-type": "item",
+                                            "numeric-id": 16,
+                                            "id": "Q16"
+                                        },
+                                        "type": "wikibase-entityid"
+                                    },
+                                    "datatype": "wikibase-item"
+                                }
+                            ]
+                        },
+                        "qualifiers-order": [
+                            "P642"
+                        ],
+                        "id": "q1930$1644DCC7-E8C2-4693-BE9F-00CE419E578E",
+                        "rank": "preferred"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P31",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 17457753,
+                                    "id": "Q17457753"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$6b73d882-4353-a735-1ceb-50aabe7a18b7",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P31",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 14762300,
+                                    "id": "Q14762300"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$d3cc8f2a-45ce-3bd7-9890-a7e8b7918dee",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P31",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 515,
+                                    "id": "Q515"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$0e78d4cf-4258-ccca-c688-4f7f4eaf13df",
+                        "rank": "normal"
+                    }
+                ],
+                "P190": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P190",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 85,
+                                    "id": "Q85"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$cd94f38a-4c69-81a2-43c2-9ea7812b0a87",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P190",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 956,
+                                    "id": "Q956"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$29365e08-428c-359c-9c05-656cbfc4f5e3",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P190",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 1903,
+                                    "id": "Q1903"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$cd580779-460e-3eb0-8e3b-f85489a753b2",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P190",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 10830,
+                                    "id": "Q10830"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$A54AD869-07E4-4B5C-A390-15CBABFB8175",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "50f57a3dbac4708ce4ae4a827c0afac7fcdb4a5c",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 11920,
+                                                    "id": "Q11920"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P190",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 1486,
+                                    "id": "Q1486"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$94D13321-9B12-4285-BBD9-66398E966DCE",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P190",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 2656,
+                                    "id": "Q2656"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$AA6A7B09-2643-499D-A484-148B277A9D79",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P190",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 3497,
+                                    "id": "Q3497"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$05F9C722-1FF7-42B5-B6ED-D0684AE5E481",
+                        "rank": "normal"
+                    }
+                ],
+                "P1151": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1151",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 11243755,
+                                    "id": "Q11243755"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$44669495-473e-ee67-2257-b017439ae479",
+                        "rank": "normal"
+                    }
+                ],
+                "P17": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P17",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 16,
+                                    "id": "Q16"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "q1930$7D6FA512-918F-479A-9A92-1BEBD4282725",
+                        "rank": "normal"
+                    }
+                ],
+                "P131": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P131",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 1904,
+                                    "id": "Q1904"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "q1930$9B514056-A8CD-4BE9-AE46-54A438D41FAC",
+                        "rank": "normal"
+                    }
+                ],
+                "P194": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P194",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 2994125,
+                                    "id": "Q2994125"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "q1930$E3AFD9FB-5EEE-48DD-96AC-DA5363EB7960",
+                        "rank": "normal"
+                    }
+                ],
+                "P373": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P373",
+                            "datavalue": {
+                                "value": "Ottawa",
+                                "type": "string"
+                            },
+                            "datatype": "string"
+                        },
+                        "type": "statement",
+                        "id": "q1930$279B38EF-B851-4862-837E-72E878416276",
+                        "rank": "normal"
+                    }
+                ],
+                "P1036": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1036",
+                            "datavalue": {
+                                "value": "2--71384",
+                                "type": "string"
+                            },
+                            "datatype": "string"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$70c74f17-43d7-30da-4d4a-3b055fb3d656",
+                        "rank": "normal"
+                    }
+                ],
+                "P163": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P163",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 2777623,
+                                    "id": "Q2777623"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "q1930$5615EB4B-0E90-4648-B87B-E84D2D21CE9E",
+                        "rank": "normal"
+                    }
+                ],
+                "P41": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P41",
+                            "datavalue": {
+                                "value": "Flag of Ottawa, Ontario.svg",
+                                "type": "string"
+                            },
+                            "datatype": "commonsMedia"
+                        },
+                        "type": "statement",
+                        "id": "q1930$3C50B4ED-8230-4504-AC92-190EFECFDBA8",
+                        "rank": "normal"
+                    }
+                ],
+                "P242": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P242",
+                            "datavalue": {
+                                "value": "Ontott.png",
+                                "type": "string"
+                            },
+                            "datatype": "commonsMedia"
+                        },
+                        "type": "statement",
+                        "id": "q1930$75D465E0-274F-4776-8A2C-ED69A7D69851",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "50f57a3dbac4708ce4ae4a827c0afac7fcdb4a5c",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 11920,
+                                                    "id": "Q11920"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P242",
+                            "datavalue": {
+                                "value": "Map of Ontario OTTAWA.svg",
+                                "type": "string"
+                            },
+                            "datatype": "commonsMedia"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$780d24d4-4e1c-73f1-0446-28daf1cbf64e",
+                        "rank": "normal"
+                    }
+                ],
+                "P18": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P18",
+                            "datavalue": {
+                                "value": "Canada Ottawa Panorama.jpg",
+                                "type": "string"
+                            },
+                            "datatype": "commonsMedia"
+                        },
+                        "type": "statement",
+                        "id": "q1930$2AB2D923-148C-4155-BB88-CB4F1F1BDF51",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "50f57a3dbac4708ce4ae4a827c0afac7fcdb4a5c",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 11920,
+                                                    "id": "Q11920"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P281": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P281",
+                            "datavalue": {
+                                "value": "K0A",
+                                "type": "string"
+                            },
+                            "datatype": "string"
+                        },
+                        "type": "statement",
+                        "id": "q1930$5120FA53-47FC-49C5-9AB4-92F570ADC822",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "50f57a3dbac4708ce4ae4a827c0afac7fcdb4a5c",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 11920,
+                                                    "id": "Q11920"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P281",
+                            "datavalue": {
+                                "value": "K1A-K4C",
+                                "type": "string"
+                            },
+                            "datatype": "string"
+                        },
+                        "type": "statement",
+                        "id": "q1930$ABB6D771-F957-433E-A669-6B95139D487F",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "50f57a3dbac4708ce4ae4a827c0afac7fcdb4a5c",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 11920,
+                                                    "id": "Q11920"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P421": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P421",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 941023,
+                                    "id": "Q941023"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "q1930$0745AB45-994D-4D91-BF92-A6641EAD2CBE",
+                        "rank": "normal"
+                    }
+                ],
+                "P473": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P473",
+                            "datavalue": {
+                                "value": "613",
+                                "type": "string"
+                            },
+                            "datatype": "string"
+                        },
+                        "type": "statement",
+                        "id": "q1930$6AD177F4-9D8E-415F-A5D5-DF031835F151",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "50f57a3dbac4708ce4ae4a827c0afac7fcdb4a5c",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 11920,
+                                                    "id": "Q11920"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P473",
+                            "datavalue": {
+                                "value": "343",
+                                "type": "string"
+                            },
+                            "datatype": "string"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$313b4498-4e58-8ba9-789a-1280978e1e0c",
+                        "rank": "normal"
+                    }
+                ],
+                "P625": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P625",
+                            "datavalue": {
+                                "value": {
+                                    "latitude": 45.416666666667,
+                                    "longitude": -75.7,
+                                    "altitude": null,
+                                    "precision": 0.016666666666667,
+                                    "globe": "http://www.wikidata.org/entity/Q2"
+                                },
+                                "type": "globecoordinate"
+                            },
+                            "datatype": "globe-coordinate"
+                        },
+                        "type": "statement",
+                        "id": "q1930$76134BB1-9605-4E6E-A20A-91FB8AAAF7E6",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "7eb64cf9621d34c54fd4bd040ed4b61a88c4a1a0",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 328,
+                                                    "id": "Q328"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P910": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P910",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 7165064,
+                                    "id": "Q7165064"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$5F83F54C-5EBF-42DC-AC87-E907E5D1C46B",
+                        "rank": "normal"
+                    }
+                ],
+                "P948": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P948",
+                            "datavalue": {
+                                "value": "Ottawa Panorama Cropped.jpg",
+                                "type": "string"
+                            },
+                            "datatype": "commonsMedia"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$E6376C3A-491F-46D2-8942-D9D136410758",
+                        "rank": "normal"
+                    }
+                ],
+                "P227": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P227",
+                            "datavalue": {
+                                "value": "4122012-2",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$E5061824-D7B7-44C1-8F1C-256CEE6E0EF2",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "004ec6fbee857649acdbdbad4f97b2c8571df97b",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 48183,
+                                                    "id": "Q48183"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            },
+                            {
+                                "hash": "e670f5e7a70dfb4b605a1ea38f3e0143240d023b",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 1961887,
+                                                    "id": "Q1961887"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P856": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P856",
+                            "datavalue": {
+                                "value": "http://www.ottawa.ca",
+                                "type": "string"
+                            },
+                            "datatype": "url"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$2B0AD5E1-7D0D-4F3A-B405-9A3F990FB682",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "7eb64cf9621d34c54fd4bd040ed4b61a88c4a1a0",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 328,
+                                                    "id": "Q328"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P998": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P998",
+                            "datavalue": {
+                                "value": "Regional/North_America/Canada/Ontario/Localities/O/Ottawa/",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$245FFACE-B155-4BAB-B18A-D429D312C1BE",
+                        "rank": "normal"
+                    }
+                ],
+                "P214": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P214",
+                            "datavalue": {
+                                "value": "238300567",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$040E7108-4339-40FB-8B3D-DD2CF24DA429",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "a51d6594fee36c7452eaed2db35a4833613a7078",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 54919,
+                                                    "id": "Q54919"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P982": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P982",
+                            "datavalue": {
+                                "value": "bbc88d72-1f32-4936-8dc6-b62b3318e1c4",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$882876C9-41AB-45C6-827D-98854F1E5F39",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "73057782312f850e2ed69c4c28ad162f57f6d390",
+                                "snaks": {
+                                    "P248": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P248",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 14005,
+                                                    "id": "Q14005"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P248"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P138": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P138",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 536116,
+                                    "id": "Q536116"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$6b9519a8-4f1b-2713-32e9-0606125333d8",
+                        "rank": "normal"
+                    }
+                ],
+                "P349": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P349",
+                            "datavalue": {
+                                "value": "00628311",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$FFFE732B-C312-491E-AC43-4445FEA759E6",
+                        "rank": "normal"
+                    }
+                ],
+                "P646": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P646",
+                            "datavalue": {
+                                "value": "/m/05ksh",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$C9130E72-A4DE-4E04-A186-BE8805E39E20",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "af38848ab5d9d9325cffd93a5ec656cc6ca889ed",
+                                "snaks": {
+                                    "P248": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P248",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 15241312,
+                                                    "id": "Q15241312"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ],
+                                    "P577": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P577",
+                                            "datavalue": {
+                                                "value": {
+                                                    "time": "+2013-10-28T00:00:00Z",
+                                                    "timezone": 0,
+                                                    "before": 0,
+                                                    "after": 0,
+                                                    "precision": 11,
+                                                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                                                },
+                                                "type": "time"
+                                            },
+                                            "datatype": "time"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P248",
+                                    "P577"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P1082": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1082",
+                            "datavalue": {
+                                "value": {
+                                    "amount": "+883391",
+                                    "unit": "1",
+                                    "upperBound": "+883391",
+                                    "lowerBound": "+883391"
+                                },
+                                "type": "quantity"
+                            },
+                            "datatype": "quantity"
+                        },
+                        "type": "statement",
+                        "qualifiers": {
+                            "P585": [
+                                {
+                                    "snaktype": "value",
+                                    "property": "P585",
+                                    "hash": "03e18d7347ccbe8f8ad66fbebeaa3a47f33c4243",
+                                    "datavalue": {
+                                        "value": {
+                                            "time": "+2011-01-01T00:00:00Z",
+                                            "timezone": 0,
+                                            "before": 0,
+                                            "after": 0,
+                                            "precision": 9,
+                                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                                        },
+                                        "type": "time"
+                                    },
+                                    "datatype": "time"
+                                }
+                            ]
+                        },
+                        "qualifiers-order": [
+                            "P585"
+                        ],
+                        "id": "Q1930$e450d664-4378-1bd3-1f70-01325ab6d94b",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "266e0a7bbc9a125c57bd05d9964cf9e4bc025c74",
+                                "snaks": {
+                                    "P248": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P248",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 5029304,
+                                                    "id": "Q5029304"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P248"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P571": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P571",
+                            "datavalue": {
+                                "value": {
+                                    "time": "+1850-01-01T00:00:00Z",
+                                    "timezone": 0,
+                                    "before": 0,
+                                    "after": 0,
+                                    "precision": 9,
+                                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                                },
+                                "type": "time"
+                            },
+                            "datatype": "time"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$b82180da-4aa7-91e1-9c2c-07e6406b39a4",
+                        "rank": "normal"
+                    }
+                ],
+                "P1566": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1566",
+                            "datavalue": {
+                                "value": "6094817",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$0E25D315-E632-4109-B028-2D4F54E7C9F0",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "d6193e4d78598db1a6aaa453fface1553022f1f2",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 830106,
+                                                    "id": "Q830106"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P47": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 141844,
+                                    "id": "Q141844"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$B72B533B-58ED-424C-9C40-B1F6B8D03A47",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 1517966,
+                                    "id": "Q1517966"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$9EC43502-698F-44D5-81BA-46D48946756A",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 3132987,
+                                    "id": "Q3132987"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$52b68bdf-42a9-a3a5-7a9c-840d6d514322",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 2364972,
+                                    "id": "Q2364972"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$159bc5e1-4929-b0c2-27b2-eb1dff61825c",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 2981843,
+                                    "id": "Q2981843"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$ce960699-4e49-b168-e992-798a358ef874",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 1932971,
+                                    "id": "Q1932971"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$36968b6e-40c4-1d4c-6209-9dedc4ce0ff6",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 3492577,
+                                    "id": "Q3492577"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$13bbcc14-42e0-5c4b-36e3-c0ee095da90a",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 6904088,
+                                    "id": "Q6904088"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$34325750-472b-cccd-2da6-39acdc7754ff",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 4081306,
+                                    "id": "Q4081306"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$e23902df-4740-f93c-9fb5-625737524c4a",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 2981802,
+                                    "id": "Q2981802"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$ee35fa41-48f7-2d8d-480e-d68c8bfabc72",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 543997,
+                                    "id": "Q543997"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$37f665da-46f1-7b53-ce38-0dfd69727ed5",
+                        "rank": "normal"
+                    },
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P47",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 3397733,
+                                    "id": "Q3397733"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$3818ac22-4520-2ba7-8254-041a03073823",
+                        "rank": "normal"
+                    }
+                ],
+                "P1464": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1464",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 9226286,
+                                    "id": "Q9226286"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$08A32086-8D0D-4A5F-A2E9-1BCDB5C6C5DF",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "d6e3ab4045fb3f3feea77895bc6b27e663fc878a",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 206855,
+                                                    "id": "Q206855"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P1465": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1465",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 9219385,
+                                    "id": "Q9219385"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$DB578C3E-E596-4465-9700-57F2528A8884",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "50f57a3dbac4708ce4ae4a827c0afac7fcdb4a5c",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 11920,
+                                                    "id": "Q11920"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P1740": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1740",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 8458179,
+                                    "id": "Q8458179"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$6DFDDD9E-5122-44E6-8F4F-937EA4651F85",
+                        "rank": "normal"
+                    }
+                ],
+                "P1792": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1792",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 7117191,
+                                    "id": "Q7117191"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$9759644B-12E8-4F46-8A61-A2C96A5142EE",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "d6e3ab4045fb3f3feea77895bc6b27e663fc878a",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 206855,
+                                                    "id": "Q206855"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P1376": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1376",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 16,
+                                    "id": "Q16"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$D706A78E-92B4-4B2D-B507-727B30AB8047",
+                        "rank": "preferred"
+                    }
+                ],
+                "P244": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P244",
+                            "datavalue": {
+                                "value": "n79063073",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$9B7CC4E3-08E8-4AB7-9BA7-C4ECBA5B33B4",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "004ec6fbee857649acdbdbad4f97b2c8571df97b",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 48183,
+                                                    "id": "Q48183"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P268": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P268",
+                            "datavalue": {
+                                "value": "11964046c",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$5E8F612D-9C4A-4BFC-B052-BFA854969863",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "c544d671be6fa439d0291a1408f0d8aa3315a3a1",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 20666306,
+                                                    "id": "Q20666306"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ],
+                                    "P813": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P813",
+                                            "datavalue": {
+                                                "value": {
+                                                    "time": "+2015-08-26T00:00:00Z",
+                                                    "timezone": 0,
+                                                    "before": 0,
+                                                    "after": 0,
+                                                    "precision": 11,
+                                                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                                                },
+                                                "type": "time"
+                                            },
+                                            "datatype": "time"
+                                        }
+                                    ],
+                                    "P248": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P248",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 20666306,
+                                                    "id": "Q20666306"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143",
+                                    "P813",
+                                    "P248"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P2044": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P2044",
+                            "datavalue": {
+                                "value": {
+                                    "amount": "+70",
+                                    "unit": "http://www.wikidata.org/entity/Q11573",
+                                    "upperBound": "+71",
+                                    "lowerBound": "+69"
+                                },
+                                "type": "quantity"
+                            },
+                            "datatype": "quantity"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$08FE8FEB-8C48-491F-82C1-9521489E410C",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "7eb64cf9621d34c54fd4bd040ed4b61a88c4a1a0",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 328,
+                                                    "id": "Q328"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P935": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P935",
+                            "datavalue": {
+                                "value": "Ottawa",
+                                "type": "string"
+                            },
+                            "datatype": "string"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$B99C907B-6BE6-4722-8EDE-4D2A88F1DC36",
+                        "rank": "normal"
+                    }
+                ],
+                "P1997": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P1997",
+                            "datavalue": {
+                                "value": "109870912368806",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$4e79d948-453d-6e50-6e90-544a9e905db7",
+                        "rank": "normal"
+                    }
+                ],
+                "P2633": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P2633",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 5535214,
+                                    "id": "Q5535214"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$80d5cabe-46d1-d97c-3dcb-c5b912e025f4",
+                        "rank": "normal"
+                    }
+                ],
+                "P949": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P949",
+                            "datavalue": {
+                                "value": "000991876",
+                                "type": "string"
+                            },
+                            "datatype": "external-id"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$7E412FF0-E3C4-410F-B81B-5F46B6EEF3AA",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "3c644367fefaf8da18e569e92dcda47fe692f89b",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 54919,
+                                                    "id": "Q54919"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ],
+                                    "P813": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P813",
+                                            "datavalue": {
+                                                "value": {
+                                                    "time": "+2016-04-01T00:00:00Z",
+                                                    "timezone": 0,
+                                                    "before": 0,
+                                                    "after": 0,
+                                                    "precision": 11,
+                                                    "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                                                },
+                                                "type": "time"
+                                            },
+                                            "datatype": "time"
+                                        }
+                                    ],
+                                    "P854": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P854",
+                                            "datavalue": {
+                                                "value": "http://www.viaf.org/viaf/238300567/",
+                                                "type": "string"
+                                            },
+                                            "datatype": "url"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143",
+                                    "P813",
+                                    "P854"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "P206": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P206",
+                            "datavalue": {
+                                "value": {
+                                    "entity-type": "item",
+                                    "numeric-id": 60974,
+                                    "id": "Q60974"
+                                },
+                                "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$5CBCC457-61C3-4A4B-B70B-FFD849A9C890",
+                        "rank": "normal"
+                    }
+                ],
+                "P2046": [
+                    {
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P2046",
+                            "datavalue": {
+                                "value": {
+                                    "amount": "+2778798243",
+                                    "unit": "http://www.wikidata.org/entity/Q25343",
+                                    "upperBound": "+2778798243",
+                                    "lowerBound": "+2778798243"
+                                },
+                                "type": "quantity"
+                            },
+                            "datatype": "quantity"
+                        },
+                        "type": "statement",
+                        "id": "Q1930$C682D8FE-7CC3-4CE1-A280-1880B4F5B7E8",
+                        "rank": "normal",
+                        "references": [
+                            {
+                                "hash": "592714cb87c0fc64425e45a185765982f444e5ad",
+                                "snaks": {
+                                    "P143": [
+                                        {
+                                            "snaktype": "value",
+                                            "property": "P143",
+                                            "datavalue": {
+                                                "value": {
+                                                    "entity-type": "item",
+                                                    "numeric-id": 465,
+                                                    "id": "Q465"
+                                                },
+                                                "type": "wikibase-entityid"
+                                            },
+                                            "datatype": "wikibase-item"
+                                        }
+                                    ]
+                                },
+                                "snaks-order": [
+                                    "P143"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "sitelinks": {
+                "acewiki": {
+                    "site": "acewiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "adywiki": {
+                    "site": "adywiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "afwiki": {
+                    "site": "afwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "alswiki": {
+                    "site": "alswiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "amwiki": {
+                    "site": "amwiki",
+                    "title": "ኦታዋ",
+                    "badges": []
+                },
+                "angwiki": {
+                    "site": "angwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "anwiki": {
+                    "site": "anwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "arwiki": {
+                    "site": "arwiki",
+                    "title": "أوتاوا",
+                    "badges": []
+                },
+                "avwiki": {
+                    "site": "avwiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "aywiki": {
+                    "site": "aywiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "azwiki": {
+                    "site": "azwiki",
+                    "title": "Ottava",
+                    "badges": []
+                },
+                "barwiki": {
+                    "site": "barwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "be_x_oldwiki": {
+                    "site": "be_x_oldwiki",
+                    "title": "Атава",
+                    "badges": []
+                },
+                "bewiki": {
+                    "site": "bewiki",
+                    "title": "Горад Атава",
+                    "badges": []
+                },
+                "bgwiki": {
+                    "site": "bgwiki",
+                    "title": "Отава",
+                    "badges": []
+                },
+                "bnwiki": {
+                    "site": "bnwiki",
+                    "title": "অটোয়া",
+                    "badges": []
+                },
+                "bowiki": {
+                    "site": "bowiki",
+                    "title": "ཨོ་ཏ་ཝ།",
+                    "badges": []
+                },
+                "brwiki": {
+                    "site": "brwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "bswiki": {
+                    "site": "bswiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "cawiki": {
+                    "site": "cawiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "cbk_zamwiki": {
+                    "site": "cbk_zamwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "cdowiki": {
+                    "site": "cdowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "cebwiki": {
+                    "site": "cebwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "cewiki": {
+                    "site": "cewiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "chrwiki": {
+                    "site": "chrwiki",
+                    "title": "ᎠᏔᏩ, ᎨᎾᏓ",
+                    "badges": []
+                },
+                "ckbwiki": {
+                    "site": "ckbwiki",
+                    "title": "ئۆتاوا",
+                    "badges": []
+                },
+                "commonswiki": {
+                    "site": "commonswiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "cowiki": {
+                    "site": "cowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "crhwiki": {
+                    "site": "crhwiki",
+                    "title": "Ottava",
+                    "badges": []
+                },
+                "cswiki": {
+                    "site": "cswiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "cvwiki": {
+                    "site": "cvwiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "cywiki": {
+                    "site": "cywiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "dawiki": {
+                    "site": "dawiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "dewiki": {
+                    "site": "dewiki",
+                    "title": "Ottawa",
+                    "badges": [
+                        "Q17437798"
+                    ]
+                },
+                "dewikivoyage": {
+                    "site": "dewikivoyage",
+                    "title": "Ottawa",
+                    "badges": [
+                        "Q17559452"
+                    ]
+                },
+                "elwiki": {
+                    "site": "elwiki",
+                    "title": "Οττάβα",
+                    "badges": []
+                },
+                "elwikivoyage": {
+                    "site": "elwikivoyage",
+                    "title": "Οττάβα",
+                    "badges": []
+                },
+                "enwiki": {
+                    "site": "enwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "enwikinews": {
+                    "site": "enwikinews",
+                    "title": "Category:Ottawa, Ontario",
+                    "badges": []
+                },
+                "enwikivoyage": {
+                    "site": "enwikivoyage",
+                    "title": "Ottawa",
+                    "badges": [
+                        "Q17437798"
+                    ]
+                },
+                "eowiki": {
+                    "site": "eowiki",
+                    "title": "Otavo",
+                    "badges": []
+                },
+                "eswiki": {
+                    "site": "eswiki",
+                    "title": "Ottawa",
+                    "badges": [
+                        "Q17437798"
+                    ]
+                },
+                "eswikivoyage": {
+                    "site": "eswikivoyage",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "etwiki": {
+                    "site": "etwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "euwiki": {
+                    "site": "euwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "extwiki": {
+                    "site": "extwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "fawiki": {
+                    "site": "fawiki",
+                    "title": "اتاوا",
+                    "badges": []
+                },
+                "fawikivoyage": {
+                    "site": "fawikivoyage",
+                    "title": "اتاوا",
+                    "badges": []
+                },
+                "fiwiki": {
+                    "site": "fiwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "fowiki": {
+                    "site": "fowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "frpwiki": {
+                    "site": "frpwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "frwiki": {
+                    "site": "frwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "frwikivoyage": {
+                    "site": "frwikivoyage",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "fywiki": {
+                    "site": "fywiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "gawiki": {
+                    "site": "gawiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "gdwiki": {
+                    "site": "gdwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "glwiki": {
+                    "site": "glwiki",
+                    "title": "Otava",
+                    "badges": []
+                },
+                "gnwiki": {
+                    "site": "gnwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "hakwiki": {
+                    "site": "hakwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "hewiki": {
+                    "site": "hewiki",
+                    "title": "אוטווה",
+                    "badges": []
+                },
+                "hewikivoyage": {
+                    "site": "hewikivoyage",
+                    "title": "אוטווה",
+                    "badges": []
+                },
+                "hifwiki": {
+                    "site": "hifwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "hiwiki": {
+                    "site": "hiwiki",
+                    "title": "ओटावा",
+                    "badges": []
+                },
+                "hrwiki": {
+                    "site": "hrwiki",
+                    "title": "Ottawa (Kanada)",
+                    "badges": []
+                },
+                "htwiki": {
+                    "site": "htwiki",
+                    "title": "Otawa",
+                    "badges": []
+                },
+                "huwiki": {
+                    "site": "huwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "hywiki": {
+                    "site": "hywiki",
+                    "title": "Օտտավա",
+                    "badges": []
+                },
+                "idwiki": {
+                    "site": "idwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "iewiki": {
+                    "site": "iewiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "iowiki": {
+                    "site": "iowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "iswiki": {
+                    "site": "iswiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "itwiki": {
+                    "site": "itwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "itwikivoyage": {
+                    "site": "itwikivoyage",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "iuwiki": {
+                    "site": "iuwiki",
+                    "title": "ᐊᑐᕚ/atavaa",
+                    "badges": []
+                },
+                "jawiki": {
+                    "site": "jawiki",
+                    "title": "オタワ",
+                    "badges": []
+                },
+                "jvwiki": {
+                    "site": "jvwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "kaawiki": {
+                    "site": "kaawiki",
+                    "title": "Ottava",
+                    "badges": []
+                },
+                "kabwiki": {
+                    "site": "kabwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "kawiki": {
+                    "site": "kawiki",
+                    "title": "ოტავა",
+                    "badges": []
+                },
+                "kkwiki": {
+                    "site": "kkwiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "klwiki": {
+                    "site": "klwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "knwiki": {
+                    "site": "knwiki",
+                    "title": "ಆಟ್ಟಾವಾ",
+                    "badges": []
+                },
+                "kowiki": {
+                    "site": "kowiki",
+                    "title": "오타와",
+                    "badges": []
+                },
+                "kuwiki": {
+                    "site": "kuwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "kwwiki": {
+                    "site": "kwwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "kywiki": {
+                    "site": "kywiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "ladwiki": {
+                    "site": "ladwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "lawiki": {
+                    "site": "lawiki",
+                    "title": "Ottavia",
+                    "badges": []
+                },
+                "lijwiki": {
+                    "site": "lijwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "lmowiki": {
+                    "site": "lmowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "lnwiki": {
+                    "site": "lnwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "lrcwiki": {
+                    "site": "lrcwiki",
+                    "title": "اتاوا",
+                    "badges": []
+                },
+                "ltwiki": {
+                    "site": "ltwiki",
+                    "title": "Otava",
+                    "badges": []
+                },
+                "lvwiki": {
+                    "site": "lvwiki",
+                    "title": "Otava",
+                    "badges": []
+                },
+                "mgwiki": {
+                    "site": "mgwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "mkwiki": {
+                    "site": "mkwiki",
+                    "title": "Отава",
+                    "badges": []
+                },
+                "mlwiki": {
+                    "site": "mlwiki",
+                    "title": "ഓട്ടവ",
+                    "badges": []
+                },
+                "mnwiki": {
+                    "site": "mnwiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "mrwiki": {
+                    "site": "mrwiki",
+                    "title": "ओटावा",
+                    "badges": []
+                },
+                "mswiki": {
+                    "site": "mswiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "mywiki": {
+                    "site": "mywiki",
+                    "title": "အော့တဝမြို့",
+                    "badges": []
+                },
+                "mznwiki": {
+                    "site": "mznwiki",
+                    "title": "اوتآوآ",
+                    "badges": []
+                },
+                "nahwiki": {
+                    "site": "nahwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "ndswiki": {
+                    "site": "ndswiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "nlwiki": {
+                    "site": "nlwiki",
+                    "title": "Ottawa (stad)",
+                    "badges": []
+                },
+                "nlwikivoyage": {
+                    "site": "nlwikivoyage",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "nnwiki": {
+                    "site": "nnwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "novwiki": {
+                    "site": "novwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "nowiki": {
+                    "site": "nowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "nrmwiki": {
+                    "site": "nrmwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "nsowiki": {
+                    "site": "nsowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "ocwiki": {
+                    "site": "ocwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "orwiki": {
+                    "site": "orwiki",
+                    "title": "ଓଟାୱା",
+                    "badges": []
+                },
+                "oswiki": {
+                    "site": "oswiki",
+                    "title": "Оттавæ",
+                    "badges": []
+                },
+                "papwiki": {
+                    "site": "papwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "pawiki": {
+                    "site": "pawiki",
+                    "title": "ਓਟਾਵਾ",
+                    "badges": []
+                },
+                "pcdwiki": {
+                    "site": "pcdwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "pdcwiki": {
+                    "site": "pdcwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "plwiki": {
+                    "site": "plwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "plwikivoyage": {
+                    "site": "plwikivoyage",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "pmswiki": {
+                    "site": "pmswiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "pnbwiki": {
+                    "site": "pnbwiki",
+                    "title": "اٹاوہ",
+                    "badges": []
+                },
+                "ptwiki": {
+                    "site": "ptwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "ptwikivoyage": {
+                    "site": "ptwikivoyage",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "quwiki": {
+                    "site": "quwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "rmwiki": {
+                    "site": "rmwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "roa_rupwiki": {
+                    "site": "roa_rupwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "rowiki": {
+                    "site": "rowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "ruwiki": {
+                    "site": "ruwiki",
+                    "title": "Оттава",
+                    "badges": [
+                        "Q17437796"
+                    ]
+                },
+                "ruwikinews": {
+                    "site": "ruwikinews",
+                    "title": "Категория:Оттава",
+                    "badges": []
+                },
+                "ruwikiquote": {
+                    "site": "ruwikiquote",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "sahwiki": {
+                    "site": "sahwiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "scnwiki": {
+                    "site": "scnwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "scowiki": {
+                    "site": "scowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "scwiki": {
+                    "site": "scwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "shwiki": {
+                    "site": "shwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "simplewiki": {
+                    "site": "simplewiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "siwiki": {
+                    "site": "siwiki",
+                    "title": "ඕටවා",
+                    "badges": []
+                },
+                "skwiki": {
+                    "site": "skwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "slwiki": {
+                    "site": "slwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "snwiki": {
+                    "site": "snwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "sowiki": {
+                    "site": "sowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "sqwiki": {
+                    "site": "sqwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "srwiki": {
+                    "site": "srwiki",
+                    "title": "Отава",
+                    "badges": []
+                },
+                "stqwiki": {
+                    "site": "stqwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "svwiki": {
+                    "site": "svwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "svwikivoyage": {
+                    "site": "svwikivoyage",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "swwiki": {
+                    "site": "swwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "tawiki": {
+                    "site": "tawiki",
+                    "title": "ஒட்டாவா",
+                    "badges": []
+                },
+                "tewiki": {
+                    "site": "tewiki",
+                    "title": "అటావా",
+                    "badges": []
+                },
+                "thwiki": {
+                    "site": "thwiki",
+                    "title": "ออตตาวา",
+                    "badges": []
+                },
+                "tlwiki": {
+                    "site": "tlwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "tpiwiki": {
+                    "site": "tpiwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "trwiki": {
+                    "site": "trwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "ttwiki": {
+                    "site": "ttwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "twwiki": {
+                    "site": "twwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "ugwiki": {
+                    "site": "ugwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "ukwiki": {
+                    "site": "ukwiki",
+                    "title": "Оттава",
+                    "badges": []
+                },
+                "urwiki": {
+                    "site": "urwiki",
+                    "title": "اوٹاوا",
+                    "badges": []
+                },
+                "uzwiki": {
+                    "site": "uzwiki",
+                    "title": "Ottava (Kanada)",
+                    "badges": []
+                },
+                "vepwiki": {
+                    "site": "vepwiki",
+                    "title": "Ottav",
+                    "badges": []
+                },
+                "viwiki": {
+                    "site": "viwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "viwikivoyage": {
+                    "site": "viwikivoyage",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "vowiki": {
+                    "site": "vowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "warwiki": {
+                    "site": "warwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "yiwiki": {
+                    "site": "yiwiki",
+                    "title": "אטאווא",
+                    "badges": []
+                },
+                "yowiki": {
+                    "site": "yowiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "zawiki": {
+                    "site": "zawiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "zh_classicalwiki": {
+                    "site": "zh_classicalwiki",
+                    "title": "渥太華",
+                    "badges": []
+                },
+                "zh_min_nanwiki": {
+                    "site": "zh_min_nanwiki",
+                    "title": "Ottawa",
+                    "badges": []
+                },
+                "zh_yuewiki": {
+                    "site": "zh_yuewiki",
+                    "title": "渥太華",
+                    "badges": []
+                },
+                "zhwiki": {
+                    "site": "zhwiki",
+                    "title": "渥太華",
+                    "badges": []
+                },
+                "zhwikivoyage": {
+                    "site": "zhwikivoyage",
+                    "title": "渥太华",
+                    "badges": []
+                }
+            }
+        }
+    },
+    "success": 1
+}
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "description": "capital city of Canada",
+                "id": "Q1930",
+                "label": "Ottawa"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.7,
+                    45.416666666667
+                ]
+            },
+            "id": "Q1930"
+        }
+    ]
+}
