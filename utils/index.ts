@@ -9,7 +9,7 @@ import * as distance from '@turf/distance'
 export interface Options {
   nearest?: LngLat
   distance?: number
-  in?: Array<string>
+  places?: Array<string>
 }
 
 /**

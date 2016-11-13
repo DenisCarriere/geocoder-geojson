@@ -13,12 +13,12 @@ test('wikidata.nearest', async t => {
   t.true(!!g.features)
 })
 
-test('wikidata.nearest.distance', async t => {
+test('wikidata.nearest + distance', async t => {
   const g = await geocoder.wikidata(CITY, {distance: 50, nearest: [-75, 45]})
   t.true(!!g.features)
 })
 
-test('wikidata.nearest.in', async t => {
-  const g = await geocoder.wikidata(CITY, {in: ['capital city'], nearest: [-75, 45]})
+test('wikidata.nearest + places', async t => {
+  const g = await geocoder.wikidata(CITY, {places: ['capital', 'city'], nearest: [-75, 45]})
   t.true(!!g.features)
 })

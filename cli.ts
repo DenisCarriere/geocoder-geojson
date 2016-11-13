@@ -11,7 +11,7 @@ interface CLI extends program.ICommand {
   location?: string
   provider?: string
   nearest?: LngLat
-  in?: Array<string>
+  places?: Array<string>
   distance?: number
 }
 
@@ -35,7 +35,7 @@ program
   .option('-p, --provider [string="bing"]', 'Geocoding Provider')
   .option('--limit [number]', 'Limit the results', value => Number(value))
   .option('--nearest [LngLat]', 'Nearest result from a given LngLat', value => JSON.parse(value))
-  .option('--in [Array<string>]', 'Filter by place=*', value => JSON.parse(value))
+  .option('--places [Array<string>]', 'Filter by places=*', value => JSON.parse(value))
   .option('--distance [number]', 'Maximum distance of nearest results', value => Number(value))
   .on('--help', customHelp)
   .parse(process.argv)

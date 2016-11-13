@@ -1,5 +1,6 @@
 /// <reference path="index.d.ts" />
 import axios from 'axios'
+import * as lodash from 'lodash'
 import * as turf from '@turf/helpers'
 import * as nearest from '@turf/nearest'
 import * as distance from '@turf/distance'
@@ -127,7 +128,7 @@ export async function bing(address: string, options = Bing.Options): Promise<Geo
  * @param {number} [options.limit] Limit the amount of results
  * @param {LngLat} [options.nearest] Nearest location from a given LngLat
  * @param {number} [options.distance] Maximum distance from nearest LngLat
- * @param {Array<string>} [options.in] Filter results by place=*
+ * @param {Array<string>} [options.places] Filter results by place=*
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')
@@ -160,21 +161,19 @@ async function get(url: string, geojsonParser: Function, params = {}, options?: 
   const json = response.data
   const geojson: Points = geojsonParser(json, options)
 
-  // Filter by in
-  if (options.in) {
+  // Filter by places
+  if (options.places) {
     geojson.features = geojson.features.filter(feature => {
-      const place = feature.properties.place
-      if (place) {
-        return (options.in.indexOf(feature.properties.place) !== -1)
-      }
+      return lodash.intersection(feature.properties.places, options.places).length !== 0
     })
   }
-  // Filter by nearest
+
+  // Filter by nearest (1.601ms)
   if (geojson.features[0]) {
     if (options.nearest) {
       const point = turf.point(options.nearest)
       const result = nearest(point, geojson)
-      const dist = distance(point, result)
+      const dist = Number(distance(point, result).toFixed(6))
       result.properties.distance = dist
       geojson.features = [result]
 
@@ -184,6 +183,12 @@ async function get(url: string, geojsonParser: Function, params = {}, options?: 
       }
     }
   }
+
+  // Convert coordinate precision to 6 (0.240ms)
+  geojson.features = geojson.features.map(feature => {
+    feature.geometry.coordinates = feature.geometry.coordinates.map(coord => Number(coord.toFixed(6)))
+    return feature
+  })
   return geojson
 }
 

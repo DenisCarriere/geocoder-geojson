@@ -1,6 +1,6 @@
 {
   "name": "geocoder-geojson",
-  "version": "1.7.11",
+  "version": "1.7.12",
   "description": "Geocoding results in GeoJSON format",
   "main": "index.js",
   "jsnext:main": "index.js",
@@ -65,11 +65,13 @@
     "@types/colors": "^0.6.33",
     "@types/commander": "^2.3.30",
     "@types/geojson": "0.0.31",
+    "@types/lodash": "^4.14.38",
     "@types/node": "^6.0.46",
     "@types/turf": "^3.5.32",
     "axios": "^0.15.2",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
+    "lodash": "^4.16.6",
     "wikidata-sdk": "^4.1.0"
   }
 }
