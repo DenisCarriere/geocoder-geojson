@@ -174,6 +174,8 @@ function getPlaces(description: string, claims: Claims): Array<string> {
  */
 export function toGeoJSON(json: Results, options: Options): Points {
   const collection: Points = turf.featureCollection([])
+  if (!json.entities) { return collection }
+
   Object.keys(json.entities).map(id => {
     const entity = json.entities[id]
     if (entity.claims.P625) {
