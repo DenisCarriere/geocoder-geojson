@@ -169,18 +169,19 @@ async function get(url: string, geojsonParser: Function, params = {}, options?: 
       }
     })
   }
-
   // Filter by nearest
-  if (options.nearest) {
-    const point = turf.point(options.nearest)
-    const result = nearest(point, geojson)
-    const dist = distance(point, result)
-    result.properties.distance = dist
-    geojson.features = [result]
+  if (geojson.features[0]) {
+    if (options.nearest) {
+      const point = turf.point(options.nearest)
+      const result = nearest(point, geojson)
+      const dist = distance(point, result)
+      result.properties.distance = dist
+      geojson.features = [result]
 
-    // Remove features if nearest feature is not within maximum distance
-    if (dist > options.distance) {
-      geojson.features = []
+      // Remove features if nearest feature is not within maximum distance
+      if (dist > options.distance) {
+        geojson.features = []
+      }
     }
   }
   return geojson
