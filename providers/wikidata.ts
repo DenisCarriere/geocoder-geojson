@@ -154,12 +154,16 @@ function getPlaces(description: string, claims: Claims): Array<string> {
   const places: Array<string> = []
 
   // Extract tags from instance of
-  claims.P31.map(claim => {
-    const id = claim.mainsnak.datavalue.value.id
-    if (wikidataPlaces.hasOwnProperty(id)) {
-      places.push(wikidataPlaces[id])
+  if (claims) {
+    if (claims.P31) {
+      claims.P31.map(claim => {
+        const id = claim.mainsnak.datavalue.value.id
+        if (wikidataPlaces.hasOwnProperty(id)) {
+          places.push(wikidataPlaces[id])
+        }
+      })
     }
-  })
+  }
 
   // Fallback - Regex description "city in Ontario" = "city"
   if (description && places.length === 0) {
