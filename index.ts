@@ -159,36 +159,39 @@ export async function wikidata(address: string, options = Wikidata.Options): Pro
 async function get(url: string, geojsonParser: Function, params = {}, options?: utils.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const response = await axios.get(url, {params})
   const json = response.data
-  const geojson: Points = geojsonParser(json, options)
+  let geojson: Points = turf.featureCollection([])
+  if (json) {
+    geojson = geojsonParser(json, options)
 
-  // Filter by places
-  if (options.places) {
-    geojson.features = geojson.features.filter(feature => {
-      return lodash.intersection(feature.properties.places, options.places).length !== 0
-    })
-  }
+    // Filter by places
+    if (options.places) {
+      geojson.features = geojson.features.filter(feature => {
+        return lodash.intersection(feature.properties.places, options.places).length !== 0
+      })
+    }
 
-  // Filter by nearest (1.601ms)
-  if (geojson.features[0]) {
-    if (options.nearest) {
-      const point = turf.point(options.nearest)
-      const result = nearest(point, geojson)
-      const dist = Number(distance(point, result).toFixed(6))
-      result.properties.distance = dist
-      geojson.features = [result]
+    // Filter by nearest (1.601ms)
+    if (geojson.features[0]) {
+      if (options.nearest) {
+        const point = turf.point(options.nearest)
+        const result = nearest(point, geojson)
+        const dist = Number(distance(point, result).toFixed(6))
+        result.properties.distance = dist
+        geojson.features = [result]
 
-      // Remove features if nearest feature is not within maximum distance
-      if (dist > options.distance) {
-        geojson.features = []
+        // Remove features if nearest feature is not within maximum distance
+        if (dist > options.distance) {
+          geojson.features = []
+        }
       }
     }
-  }
 
-  // Convert coordinate precision to 6 (0.240ms)
-  geojson.features = geojson.features.map(feature => {
-    feature.geometry.coordinates = feature.geometry.coordinates.map(coord => Number(coord.toFixed(6)))
-    return feature
-  })
+    // Convert coordinate precision to 6 (0.240ms)
+    geojson.features = geojson.features.map(feature => {
+      feature.geometry.coordinates = feature.geometry.coordinates.map(coord => Number(coord.toFixed(6)))
+      return feature
+    })
+  }
   return geojson
 }
 
