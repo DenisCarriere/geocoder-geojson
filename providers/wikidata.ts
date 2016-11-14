@@ -145,8 +145,10 @@ export interface Results {
 }
 
 function getEnglish(value: Value) {
-  if (value.en) {
-    return value.en.value
+  if (value) {
+    if (value.en) {
+      return value.en.value
+    }
   }
 }
 

@@ -203,3 +203,6 @@ export default {
   bing,
   wikidata,
 }
+
+wikidata('Whitedog', {nearest: [-75, 45], distance: 10, places: ['town', 'city']})
+  .then(data => console.log(data))
