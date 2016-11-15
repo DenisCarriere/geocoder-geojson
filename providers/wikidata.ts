@@ -1,8 +1,7 @@
 import * as turf from '@turf/helpers'
+import { uniq } from 'lodash'
 import * as utils from '../utils'
 import { Points } from '../utils'
-
-type LngLat = [number, number]
 
 const wikidataPlaces = require('./wikidataPlaces.json')
 
@@ -76,7 +75,6 @@ interface P1082 extends Mainsnak {
     }
   }
 }
-
 
 // Country Code
 interface P17 extends Mainsnak {
@@ -172,7 +170,7 @@ function getPlaces(description: string, claims: Claims): Array<string> {
     const match = description.match(/^(.+) [in|of]/)
     if (match) { places.push(match[1]) }
   }
-  return places
+  return uniq(places)
 }
 
 /**
