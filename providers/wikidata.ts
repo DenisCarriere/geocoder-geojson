@@ -157,9 +157,12 @@ function getPlaces(description: string, claims: Claims): Array<string> {
   if (claims) {
     if (claims.P31) {
       claims.P31.map(claim => {
-        const id = claim.mainsnak.datavalue.value.id
-        if (wikidataPlaces.hasOwnProperty(id)) {
-          places.push(wikidataPlaces[id])
+        const datavalue = claim.mainsnak.datavalue
+        if (datavalue) {
+          const id = datavalue.value.id
+          if (wikidataPlaces.hasOwnProperty(id)) {
+            places.push(wikidataPlaces[id])
+          }
         }
       })
     }
@@ -183,18 +186,21 @@ export function toGeoJSON(json: Results, options: Options): Points {
   Object.keys(json.entities).map(id => {
     const entity = json.entities[id]
     if (entity.claims.P625) {
-      const {longitude, latitude} = entity.claims.P625[0].mainsnak.datavalue.value
-      const description = getEnglish(entity.descriptions)
-      const places = getPlaces(description, entity.claims)
-      const properties = {
-        description,
-        id,
-        places,
-        label: getEnglish(entity.labels),
+      const coords = entity.claims.P625[0].mainsnak.datavalue
+      if (coords !== undefined) {
+        const {longitude, latitude} = coords.value
+        const description = getEnglish(entity.descriptions)
+        const places = getPlaces(description, entity.claims)
+        const properties = {
+          description,
+          id,
+          places,
+          label: getEnglish(entity.labels),
+        }
+        const point = turf.point([longitude, latitude], properties)
+        point.id = id
+        collection.features.push(point)
       }
-      const point = turf.point([longitude, latitude], properties)
-      point.id = id
-      collection.features.push(point)
     }
   })
   return collection
