@@ -180,7 +180,7 @@ async function get(url: string, geojsonParser: Function, params = {}, options?: 
         geojson.features = [result]
 
         // Remove features if nearest feature is not within maximum distance
-        if (dist > options.distance) {
+        if (dist > options.radius) {
           geojson.features = []
         }
       }

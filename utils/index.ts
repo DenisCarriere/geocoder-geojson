@@ -8,7 +8,7 @@ import * as distance from '@turf/distance'
  */
 export interface Options {
   nearest?: LngLat
-  distance?: number
+  radius?: number
   places?: Array<string>
 }
 

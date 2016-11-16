@@ -1,8 +1,9 @@
 import * as turf from '@turf/helpers'
+import * as utils from '../utils'
 import { Points } from '../utils'
 
 export const Options: Options = { }
-export interface Options { }
+export interface Options extends utils.Options { }
 export interface Result { }
 export interface Results { }
 
