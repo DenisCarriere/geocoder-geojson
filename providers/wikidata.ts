@@ -1,207 +1,85 @@
 import * as turf from '@turf/helpers'
-import { uniq } from 'lodash'
 import * as utils from '../utils'
-import { Points } from '../utils'
+import { Points, LngLat } from '../utils'
+const wikidataCodes = require('./wikidata/codes.json')
+const wikidataLanguages: Array<string> = require('./wikidata/languages.json')
 
-const wikidataPlaces = require('./wikidataPlaces.json')
-
-export const Options: Options = { }
 export interface Options extends utils.Options {
-  language?: string
   limit?: number
+  nearest?: LngLat
+  radius?: number
+  subclasses?: Array<string>
+  languages?: Array<string>
 }
+export interface Result { }
+export interface Results { }
 
-interface Match {
-  type: string
-  language: string
-  text: string
-}
+export function createQuery(address: string, options: Options) {
+  // Options
+  const [lng, lat] = options.nearest
+  const radius = options.radius || 15
+  const subclasses = options.subclasses || ['Q486972']
+  const languages = options.languages || ['en', 'fr', 'es', 'de', 'it', 'ru']
 
-interface Entity {
-  id: string
-  concepturi: string
-  url: string
-  title: string
-  pageid: number
-  label: string
-  description: string
-  match: Match
-}
-
-export interface SearchEntities {
-  searchinfo: {search: string}
-  search: Array<Entity>
-  'search-continue': number
-  success: number
-}
-
-interface Mainsnak {
-  mainsnak: {
-    snaktype?: string
-    property?: string
-    datatype?: string
-    datavalue?: {
-      value?: any
-      type?: string
+  // Validate languages
+  languages.map(language => {
+    if (wikidataLanguages.indexOf(language) === -1) {
+      utils.error(`wikidata language code [${ language }] is invalid`)
     }
+  })
+
+  // Convert Arrays into Strings
+  const subclassesString = subclasses.map(code => {
+    code = wikidataCodes[code] || code
+    return `wd:${code.replace('wd:', '')}`
+  }).join(', ')
+
+  // Build SPARQL Query
+  let query = `SELECT DISTINCT ?place ?location ?distance ?placeDescription `
+  query += languages.map(language => `?name_${ language }`).join(' ')
+  query += ` WHERE { 
+  # Search Instance of & Subclasses
+  ?place wdt:P31/wdt:P279* ?subclass
+  FILTER (?subclass in (${ subclassesString }))
+  `
+  if (options.nearest) {
+    query += `
+  # Search by Nearest
+  SERVICE wikibase:around { 
+    ?place wdt:P625 ?location . 
+    bd:serviceParam wikibase:center "Point(${ lng } ${ lat })"^^geo:wktLiteral .
+    bd:serviceParam wikibase:radius "${ radius }" . 
+    bd:serviceParam wikibase:distance ?distance .
   }
-  type?: string
-  qualifiers?: any
-  'qualifiers-order'?: any
-  id?: string
-  rank?: string
-}
-
-// Coordinates
-interface P625 extends Mainsnak {
-  mainsnak: {
-    datavalue: {
-      value: {
-        latitude: number
-        longitude: number
-        altitude: number
-        precision: number
-        globe: string
-      }
-    }
+    `
   }
-}
+  query += `
+  # Filter by Exact Name
+  OPTIONAL {
+`
+  languages.map(language => {
+    query += `    ?place rdfs:label ?name_${ language } FILTER (lang(?name_${ language }) = "${ language }") .\n`
+  })
 
-// Population
-interface P1082 extends Mainsnak {
-  mainsnak: {
-    datavalue: {
-      value: any
-    }
-  }
-}
+  query += `  }\n\n`
+  query += ` FILTER (`
+  query += languages.map(language => `regex(?name_${ language }, "^${ address }$")`).join(' || ')
+  query += `) .`
 
-// Country Code
-interface P17 extends Mainsnak {
-  mainsnak: {
-    datavalue: {
-      value: any
-    }
-  }
-}
-
-// Instance of
-interface P31 extends Mainsnak {
-  mainsnak: {
-    datavalue: {
-      value: {
-        'entity-type': string
-        'numeric-id': number
-        id: string
-      }
-    }
-  }
-}
-
-interface Item {
-  language: string
-  value: string
-}
-
-interface Value {
-  [language: string]: Item
-  en: Item
-  fr: Item
-  ru: Item
-  es: Item
-  uk: Item
-  zh: Item
-  ja: Item
-}
-
-type Claims = {
-  [key: string]: Array<any>
-  P625: Array<P625>
-  P31: Array<P31>
-}
-
-type Sitelinks = any
-
-export interface Result {
-  pageid: number
-  ns: number
-  title: string
-  lastrevid: string
-  modified: string
-  type: string
-  id: string
-  labels: Value
-  descriptions: Value
-  aliases: Value
-  claims: Claims
-  sitelinks: Sitelinks
-}
-export interface Results {
-  entities: {
-    [key: string]: Result
-  }
-}
-
-function getEnglish(value: Value) {
-  if (value) {
-    if (value.en) {
-      return value.en.value
-    }
-  }
-}
-
-function getPlaces(description: string, claims: Claims): Array<string> {
-  const places: Array<string> = []
-
-  // Extract tags from instance of
-  if (claims) {
-    if (claims.P31) {
-      claims.P31.map(claim => {
-        const datavalue = claim.mainsnak.datavalue
-        if (datavalue) {
-          const id = datavalue.value.id
-          if (wikidataPlaces.hasOwnProperty(id)) {
-            places.push(wikidataPlaces[id])
-          }
-        }
-      })
-    }
+  // Descriptions
+  query += `
+# Get Descriptions
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "${ languages.join(',') }"
   }
 
-  // Fallback - Regex description "city in Ontario" = "city"
-  if (description && places.length === 0) {
-    const match = description.match(/^(.+) [in|of]/)
-    if (match) { places.push(match[1]) }
-  }
-  return uniq(places)
+} ORDER BY ASC(?dist)`
 }
 
 /**
- * Convert Wikidata results into GeoJSON
+ * Convert Wikidata SPARQL results into GeoJSON
  */
-export function toGeoJSON(json: Results, options: Options): Points {
+export function toGeoJSON(json: Results, options?: Options): Points {
   const collection: Points = turf.featureCollection([])
-  if (!json.entities) { return collection }
-
-  Object.keys(json.entities).map(id => {
-    const entity = json.entities[id]
-    if (entity.claims.P625) {
-      const coords = entity.claims.P625[0].mainsnak.datavalue
-      if (coords !== undefined) {
-        const {longitude, latitude} = coords.value
-        const description = getEnglish(entity.descriptions)
-        const places = getPlaces(description, entity.claims)
-        const properties = {
-          description,
-          id,
-          places,
-          label: getEnglish(entity.labels),
-        }
-        const point = turf.point([longitude, latitude], properties)
-        point.id = id
-        collection.features.push(point)
-      }
-    }
-  })
   return collection
 }
