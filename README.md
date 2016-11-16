@@ -59,6 +59,7 @@ $ geocode -p wikidata --nearest [-75.7,45.4] Ottawa | jq .features[0].id
 ## Future Goals
 
 - Implement all geocoding providers from [`Python Geocoder`](https://github.com/DenisCarriere/geocoder)
+
 # mapbox
 
 Mapbox Provider
