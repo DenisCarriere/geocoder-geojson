@@ -2,6 +2,7 @@ import * as turf from '@turf/helpers'
 import * as utils from '../utils'
 import { Points, LngLat } from '../utils'
 const wikidataCodes = require('./wikidataCodes.json')
+const wikidataLanguages: Array<string> = require('./wikidataLanguages.json')
 
 export interface Options extends utils.Options {
   limit?: number
@@ -17,8 +18,8 @@ export function createQuery(address: string, options: Options) {
   // Options
   const [lng, lat] = options.nearest
   const radius = options.radius || 15
-  const subclasses = options.subclasses || ['Q486972', 'city']
-  const languages = options.languages || ['en', 'fr', 'it', 'de']
+  const subclasses = options.subclasses || ['Q486972']
+  const languages = options.languages || wikidataLanguages
 
   // Convert Arrays into Strings
   const subclassesString = subclasses.map(code => {
@@ -27,7 +28,9 @@ export function createQuery(address: string, options: Options) {
   }).join(', ')
 
   // Build SPARQL Query
-  let query = `SELECT DISTINCT * WHERE { 
+  let query = `SELECT DISTINCT ?place ?location ?distance `
+  query += languages.map(language => `?name_${ language }`).join(' ')
+  query += ` WHERE { 
   # Search Instance of & Subclasses
   ?place wdt:P31/wdt:P279* ?subclass
   FILTER (?subclass in (${ subclassesString }))
@@ -47,19 +50,20 @@ export function createQuery(address: string, options: Options) {
   # Filter by Exact Name
   OPTIONAL {
 `
+  languages.map(language => {
+    query += `    ?place rdfs:label ?name_${ language } FILTER (lang(?name_${ language }) = "${ language }") .\n`
+  })
+
+  query += `  }\n\n`
+  query += ` FILTER (`
+  query += languages.map(language => `regex(?name_${ language }, "^${ address }$")`).join(' || ')
+  query += `) .`
+
+  // Descriptions
   query += `
-    ?place rdfs:label ?name_en FILTER (lang(?name_en) = "en") .
-    ?place rdfs:label ?name_fr FILTER (lang(?name_fr) = "fr") .
-    ?place rdfs:label ?name_de FILTER (lang(?name_de) = "de") .
-`
-  query += `
-  }
-`
-  query += ` FILTER (regex(?name_en, "^Quebec City$") || regex(?name_fr, "^Québec$") || regex(?name_de, "^Québec$")) .`
-  query += `
-  # Get Descriptions
+# Get Descriptions
   SERVICE wikibase:label {
-    bd:serviceParam wikibase:language "en,fr,de"
+    bd:serviceParam wikibase:language "${ languages.join(',') }"
   }
 
 } ORDER BY ASC(?dist)`
