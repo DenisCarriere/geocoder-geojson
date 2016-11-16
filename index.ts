@@ -153,7 +153,12 @@ export async function wikidata(address: string, options = Wikidata.Options): Pro
 async function get(url: string, geojsonParser: Function, params = {}, options?: utils.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const response = await axios.get(url, {params})
   const json = response.data
-  let geojson: Points = geojsonParser(json, options)
+  let geojson: Points
+  if (json !== undefined) {
+    geojson = geojsonParser(json, options)
+  } else {
+    geojson = turf.featureCollection([])
+  }
   return geojson
 }
 

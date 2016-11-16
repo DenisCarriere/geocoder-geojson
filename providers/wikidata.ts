@@ -100,31 +100,37 @@ export function createQuery(address: string, options?: Options) {
 export function toGeoJSON(json: Results, options?: Options): Points {
   const languages = options.languages || Options.languages
   const collection: Points = turf.featureCollection([])
-  json.results.bindings.map(result => {
-    // Standard Wikidata tags
-    const id = result.place.value.match(/entity\/(.+)/)[1]
-    const [lng, lat] = result.location.value.match(/\(([\-\.\d]+) ([\-\.\d]+)\)/).slice(1, 3).map(n => Number(n))
-    const distance = Number(result.distance.value)
-    const description = result.placeDescription.value
-    const properties: any = {
-      id,
-      distance,
-      description,
+  if (json.results !== undefined) {
+    if (json.results.bindings !== undefined) {
+      json.results.bindings.map(result => {
+        // Standard Wikidata tags
+        const id = result.place.value.match(/entity\/(.+)/)[1]
+        const [lng, lat] = result.location.value.match(/\(([\-\.\d]+) ([\-\.\d]+)\)/).slice(1, 3).map(n => Number(n))
+        const distance = Number(result.distance.value)
+        const properties: any = {
+          id,
+          distance,
+        }
+        if (result.placeDescription) {
+          properties.description = result.placeDescription.value
+        }
+        // Parse languages
+        languages.map(language => {
+          const match = result[`name_${ language }`]
+          if (match !== undefined) {
+            properties[`name:${ language }`] = match.value
+          }
+        })
+
+        // Create Point
+        const point = turf.point([lng, lat], properties)
+        point.id = id
+
+        // Add to GeoJSON Feature Collection
+        collection.features.push(point)
+      })
     }
-    // Parse languages
-    languages.map(language => {
-      const match = result[`name_${ language }`]
-      if (match !== undefined) {
-        properties[`name:${ language }`] = match.value
-      }
-    })
+  }
 
-    // Create Point
-    const point = turf.point([lng, lat], properties)
-    point.id = id
-
-    // Add to GeoJSON Feature Collection
-    collection.features.push(point)
-  })
   return collection
 }
