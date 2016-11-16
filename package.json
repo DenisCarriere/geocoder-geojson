@@ -71,7 +71,6 @@
     "axios": "^0.15.2",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "lodash": "^4.16.6",
-    "wikidata-sdk": "^4.1.0"
+    "lodash": "^4.16.6"
   }
 }

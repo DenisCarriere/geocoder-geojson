@@ -4,7 +4,6 @@ import * as lodash from 'lodash'
 import * as turf from '@turf/helpers'
 import * as nearest from '@turf/nearest'
 import * as distance from '@turf/distance'
-import * as wdk from 'wikidata-sdk'
 import * as Bing from './providers/bing'
 import * as Google from './providers/google'
 import * as Mapbox from './providers/mapbox'
@@ -124,26 +123,21 @@ export async function bing(address: string, options = Bing.Options): Promise<Geo
  *
  * @param {string} address Location for your search
  * @param {Options} [options] Wikidata Options
- * @param {string} [options.language] Language
- * @param {number} [options.limit] Limit the amount of results
  * @param {LngLat} [options.nearest] Nearest location from a given LngLat
- * @param {number} [options.distance] Maximum distance from nearest LngLat
- * @param {Array<string>} [options.places] Filter results by place=*
+ * @param {number} [options.radius] Maximum radius from nearest LngLat
+ * @param {Array<string>} [options.languages] Exact match on a list of languages
+ * @param {Array<string>} [options.subclasses] Filter results by Wikidata subclasses
  * @returns {GeoJSON<Point>} GeoJSON Feature Collection
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')
  */
 export async function wikidata(address: string, options = Wikidata.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
-  const urlEntities = wdk.searchEntities({
-    language: options.language,
-    limit: options.limit,
-    search: address,
-  })
-  const response = await axios.get(urlEntities)
-  const entities: Wikidata.SearchEntities = response.data
-  const ids = entities.search.map(entity => entity.id)
-  const url = wdk.getEntities(ids)
-  return get(url, Wikidata.toGeoJSON, {}, options)
+  const url = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql'
+  const query = Wikidata.createQuery(address, options)
+  const params = {
+    query,
+  }
+  return get(url, Wikidata.toGeoJSON, params, options)
 }
 
 /**
@@ -159,39 +153,7 @@ export async function wikidata(address: string, options = Wikidata.Options): Pro
 async function get(url: string, geojsonParser: Function, params = {}, options?: utils.Options): Promise<GeoJSON.FeatureCollection<GeoJSON.Point>> {
   const response = await axios.get(url, {params})
   const json = response.data
-  let geojson: Points = turf.featureCollection([])
-  if (json) {
-    geojson = geojsonParser(json, options)
-
-    // Filter by places
-    if (options.places) {
-      geojson.features = geojson.features.filter(feature => {
-        return lodash.intersection(feature.properties.places, options.places).length !== 0
-      })
-    }
-
-    // Filter by nearest (1.601ms)
-    if (geojson.features[0]) {
-      if (options.nearest) {
-        const point = turf.point(options.nearest)
-        const result = nearest(point, geojson)
-        const dist = Number(distance(point, result).toFixed(6))
-        result.properties.distance = dist
-        geojson.features = [result]
-
-        // Remove features if nearest feature is not within maximum distance
-        if (dist > options.radius) {
-          geojson.features = []
-        }
-      }
-    }
-
-    // Convert coordinate precision to 6 (0.240ms)
-    geojson.features = geojson.features.map(feature => {
-      feature.geometry.coordinates = feature.geometry.coordinates.map(coord => Number(coord.toFixed(6)))
-      return feature
-    })
-  }
+  let geojson: Points = geojsonParser(json, options)
   return geojson
 }
 

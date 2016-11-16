@@ -1,6 +1,10 @@
 
 # Changelog
 
+## 1.8.0 - 2016-11-16
+
+- Implemented Wikidata SPARQL
+
 ## 1.7.0 - 2016-11-11
 
 - Add Command Line Interface (CLI)

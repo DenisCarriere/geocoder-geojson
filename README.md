@@ -161,11 +161,10 @@ Wikidata Provider
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
 -   `options` **\[Options]** Wikidata Options
-    -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Language
-    -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit the amount of results
     -   `options.nearest` **\[[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)]** Nearest location from a given LngLat
-    -   `options.distance` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Maximum distance from nearest LngLat
-    -   `options.places` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Filter results by place=\*
+    -   `options.radius` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Maximum radius from nearest LngLat
+    -   `options.languages` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Exact match on a list of languages
+    -   `options.subclasses` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Filter results by Wikidata subclasses
 
 **Examples**
 
@@ -176,6 +175,10 @@ const geojson = await geocoder.wikidata('Ottawa')
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
 # Changelog
+
+## 1.8.0 - 2016-11-16
+
+- Implemented Wikidata SPARQL
 
 ## 1.7.0 - 2016-11-11
 
