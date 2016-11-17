@@ -1,4 +1,5 @@
-import { point, featureCollection } from '@turf/helpers'
+import * as turf from '@turf/helpers'
+import * as utils from '../utils'
 import { BBox, confidenceScore, Points } from '../utils'
 
 export const Options: Options = {
@@ -6,7 +7,7 @@ export const Options: Options = {
   sensor: false,
   short: false,
 }
-export interface Options {
+export interface Options extends utils.Options {
   client?: string
   key?: string
   language?: string
@@ -79,7 +80,7 @@ function parsePoint(result: Result): GeoJSON.Feature<GeoJSON.Point> {
   if (result.geometry) {
     if (result.geometry.location) {
       const {lng, lat} = result.geometry.location
-      return point([lng, lat])
+      return turf.point([lng, lat])
     }
   }
 }
@@ -88,7 +89,7 @@ function parsePoint(result: Result): GeoJSON.Feature<GeoJSON.Point> {
  * Convert Google results into GeoJSON
  */
 export function toGeoJSON(json: Results, options?: Options): Points {
-  const collection: Points = featureCollection([])
+  const collection: Points = turf.featureCollection([])
 
   json.results.map(result => {
     // Get Geometries

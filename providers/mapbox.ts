@@ -1,8 +1,9 @@
 import { featureCollection } from '@turf/helpers'
+import * as utils from '../utils'
 import { LngLat, Points } from '../utils'
 
 export const Options: Options = {}
-export interface Options {
+export interface Options extends utils.Options {
   access_token?: string
 }
 

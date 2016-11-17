@@ -4,21 +4,6 @@ import * as geocoder from '../index'
 const CITY = 'Ottawa'
 
 test('wikidata', async t => {
-  const g = await geocoder.wikidata(CITY)
-  t.true(!!g.features)
-})
-
-test('wikidata.nearest', async t => {
-  const g = await geocoder.wikidata(CITY, {nearest: [-75, 45]})
-  t.true(!!g.features)
-})
-
-test('wikidata.nearest + distance', async t => {
-  const g = await geocoder.wikidata(CITY, {radius: 50, nearest: [-75, 45]})
-  t.true(!!g.features)
-})
-
-test('wikidata.nearest + places', async t => {
-  const g = await geocoder.wikidata(CITY, {places: ['capital', 'city'], nearest: [-75, 45]})
+  const g = await geocoder.wikidata(CITY, {nearest: [-75.7, 45.416667]})
   t.true(!!g.features)
 })
