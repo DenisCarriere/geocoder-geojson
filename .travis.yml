@@ -5,4 +5,4 @@ notifications:
   email:
     - carriere.denis@gmail.com
 after_success:
-  - 'coveralls'
+  - 'cat ./coverage/lcov.info | coveralls'
