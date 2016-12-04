@@ -13,7 +13,7 @@ Geocoding results according to the [GeoJSON specification](http://geojson.org/ge
 $ npm install --save geocoder-geojson
 ```
 
-Install globaly to access `geocode` via your command prompt. 
+Install globaly to access `geocode` via your command prompt.
 
 ```bash
 $ npm install -g geocoder-geojson

@@ -1,10 +1,13 @@
 import * as turf from '@turf/helpers'
-import * as utils from '../utils'
-import { Points, BBox, LngLat, confidenceScore } from '../utils'
+import * as utils from '../../utils'
+import { Points, BBox, LngLat, confidenceScore } from '../../utils'
 
-export const Options: Options = {}
+export const Options: Options = {
+  maxResults: 5,
+}
 export interface Options extends utils.Options {
   key?: string
+  maxResults?: number
 }
 
 interface Point {

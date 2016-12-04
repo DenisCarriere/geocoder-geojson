@@ -6,14 +6,13 @@
         "noImplicitAny": true,
         "removeComments": false,
         "preserveConstEnums": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "noEmitOnError": true
     },
     "exclude": [
         "node_modules"
     ],
     "filesGlob": [
-        "**/*.ts",
-        "index.d.ts"
+        "**/*.ts"
     ]
 }

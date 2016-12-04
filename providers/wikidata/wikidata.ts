@@ -1,19 +1,22 @@
 import * as turf from '@turf/helpers'
-import * as utils from '../utils'
-import { Points, LngLat } from '../utils'
-const wikidataCodes = require('./wikidata/codes.json')
-const wikidataLanguages: Array<string> = require('./wikidata/languages.json')
+import * as utils from '../../utils'
+import { Points, LngLat, error } from '../../utils'
+import * as iso639 from '../../utils/ISO_639-2_alpha-2'
+const wikidataCodes = require('./fixtures/codes.json')
 
 export const Options: Options = {
   subclasses: ['Q486972'],
   languages: ['en', 'fr', 'es', 'de', 'it', 'ru'],
   radius: 15,
+  sparql: false,
 }
+
 export interface Options extends utils.Options {
   nearest?: LngLat
   radius?: number
   subclasses?: Array<string>
   languages?: Array<string>
+  sparql?: boolean
 }
 
 interface Entity {
@@ -30,12 +33,16 @@ export interface Result {
   placeDescription?: Entity
   [lanugage: string]: Entity
 }
+
 export interface Results {
   head: { vars: Array<string> }
   results: { bindings: Array<Result> }
 }
 
-export function createQuery(address: string, options?: Options) {
+export function createQuery(address: string, options = Options) {
+  // Validation
+  if (!options.nearest) { error('--nearest is required') }
+
   // Options
   const [lng, lat] = options.nearest
   const radius = options.radius || Options.radius
@@ -44,9 +51,7 @@ export function createQuery(address: string, options?: Options) {
 
   // Validate languages
   languages.map(language => {
-    if (wikidataLanguages.indexOf(language) === -1) {
-      utils.error(`wikidata language code [${ language }] is invalid`)
-    }
+    if (iso639.codes[language] === undefined) { error(`wikidata language code [${language}] is invalid`) }
   })
 
   // Convert Arrays into Strings
@@ -58,21 +63,21 @@ export function createQuery(address: string, options?: Options) {
   // Build SPARQL Query
   let query = `SELECT DISTINCT ?place ?location ?distance ?placeDescription `
   query += languages.map(language => `?name_${ language }`).join(' ')
-  query += ` WHERE { 
+  query += ` WHERE {
   # Search Instance of & Subclasses
   ?place wdt:P31/wdt:P279* ?subclass
   FILTER (?subclass in (${ subclassesString }))
-  `
+`
   if (options.nearest) {
     query += `
   # Search by Nearest
-  SERVICE wikibase:around { 
-    ?place wdt:P625 ?location . 
+  SERVICE wikibase:around {
+    ?place wdt:P625 ?location .
     bd:serviceParam wikibase:center "Point(${ lng } ${ lat })"^^geo:wktLiteral .
-    bd:serviceParam wikibase:radius "${ radius }" . 
+    bd:serviceParam wikibase:radius "${ radius }" .
     bd:serviceParam wikibase:distance ?distance .
   }
-    `
+`
   }
   query += `\n  # Filter by Exact Name\n`
   languages.map(language => {
@@ -90,14 +95,15 @@ export function createQuery(address: string, options?: Options) {
     bd:serviceParam wikibase:language "${ languages.join(',') }"
   }
 
-} ORDER BY ASC(?dist)`
+} ORDER BY ASC(?dist)
+`
   return query
 }
 
 /**
  * Convert Wikidata SPARQL results into GeoJSON
  */
-export function toGeoJSON(json: Results, options?: Options): Points {
+export function toGeoJSON(json: Results, options = Options): Points {
   const languages = options.languages || Options.languages
   const collection: Points = turf.featureCollection([])
   if (json.results !== undefined) {

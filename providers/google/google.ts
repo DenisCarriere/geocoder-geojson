@@ -1,6 +1,6 @@
 import * as turf from '@turf/helpers'
-import * as utils from '../utils'
-import { BBox, confidenceScore, Points } from '../utils'
+import * as utils from '../../utils'
+import { BBox, confidenceScore, Points } from '../../utils'
 
 export const Options: Options = {
   language: 'en',
@@ -52,7 +52,7 @@ export interface Results {
 /**
  * Parses Address Component into a single layer Object
  */
-function parseAddressComponents(components: Array<AddressComponent>, short = true) {
+function parseAddressComponents(components: Array<AddressComponent>, short = Options.short) {
   const results: any = {}
   components.map(component => {
     if (short) { results[component.types[0]] = component.short_name
@@ -88,9 +88,9 @@ function parsePoint(result: Result): GeoJSON.Feature<GeoJSON.Point> {
 /**
  * Convert Google results into GeoJSON
  */
-export function toGeoJSON(json: Results, options?: Options): Points {
+export function toGeoJSON(json: Results, options = Options): Points {
+  const short = options.short || Options.short
   const collection: Points = turf.featureCollection([])
-
   json.results.map(result => {
     // Get Geometries
     const point = parsePoint(result)
@@ -111,7 +111,7 @@ export function toGeoJSON(json: Results, options?: Options): Points {
     }
 
     // Google Specific Properties
-    const components = parseAddressComponents(result.address_components, options.short)
+    const components = parseAddressComponents(result.address_components, short)
     Object.assign(properties, components)
 
     // Store Point to GeoJSON feature collection

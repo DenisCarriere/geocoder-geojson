@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Q1930",
+        "distance": 71.786,
+        "description": "capital city of Canada",
+        "name:en": "Ottawa",
+        "name:fr": "Ottawa",
+        "name:es": "Ottawa",
+        "name:de": "Ottawa",
+        "name:it": "Ottawa",
+        "name:ru": "Оттава"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7,
+          45.416666666
+        ]
+      },
+      "id": "Q1930"
+    }
+  ]
+}

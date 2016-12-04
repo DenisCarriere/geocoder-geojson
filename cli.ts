@@ -1,22 +1,21 @@
 #!/usr/bin/env node
 import * as program from 'commander'
-import { error, LngLat } from './utils'
-
-const geocoder = require('.')
-delete geocoder.default
-const providers = Object.keys(geocoder)
+import { error, LngLat, Points } from './utils'
+import * as geocoder from './'
+import * as wikidata from './providers/wikidata'
 
 interface CLI extends program.ICommand {
   limit?: number
   location?: string
-  provider?: string
+  provider?: geocoder.Providers
   nearest?: LngLat
   places?: Array<string>
   radius?: number
+  sparql?: boolean
 }
 
 function customHelp() {
-  console.log(`
+  process.stdout.write(`
   Examples:
 
     $ geocode --provider bing "Ottawa ON"
@@ -25,7 +24,7 @@ function customHelp() {
 
   Providers:
 `)
-  providers.map(provider => console.log(`    * ${provider}`))
+  Object.keys(geocoder).map(provider => process.stdout.write(`    * ${provider}`))
 }
 
 program
@@ -37,6 +36,9 @@ program
   .option('--nearest [LngLat]', 'Nearest result from a given LngLat', value => JSON.parse(value))
   .option('--places [Array<string>]', 'Filter by places=*', value => JSON.parse(value))
   .option('--radius [number]', 'Maximum radius distance (in kilometers) of nearest results', value => Number(value))
+  .option('--raw', 'Returns the raw geocoded result as json')
+  .option('--short', 'Short property values')
+  .option('--sparql', 'Outputs only SPARQL query')
   .on('--help', customHelp)
   .parse(process.argv)
 
@@ -51,20 +53,25 @@ if (cli.args[0]) {
 }
 
 // Handle Providers
-let provider = cli.provider || 'bing'
-provider = provider.toLowerCase()
-if (providers.indexOf(provider) === -1) {
+let provider: geocoder.Providers = cli.provider || 'bing'
+if (Object.keys(geocoder).indexOf(provider) === -1) {
   error(`--provider is invalid`)
 }
 
-// Handle Options
-/**
- * options
- */
+function printGeoJSON(geojson: any) {
+  process.stdout.write(JSON.stringify(geojson, null, 2))
+}
 
 // Geocoder
-async function main() {
-  const geojson = await geocoder[provider](location, cli)
-  console.log(JSON.stringify(geojson, null, 4))
+function main() {
+  // Generates SPARQL query
+  if (provider === 'wikidata' && cli.sparql !== undefined) {
+    const query = wikidata.createQuery(location, cli)
+    process.stdout.write(query)
+
+  // Default Geocoder
+  } else {
+    geocoder.get(provider, location, cli).then(printGeoJSON)
+  }
 }
 main()

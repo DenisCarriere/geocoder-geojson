@@ -1,6 +1,12 @@
 
 # Changelog
 
+## 1.9.0 - 2016-12-3
+
+- Replace all test cases with `Jest` - Major refactoring
+- Added more Mapbox Options
+- Added ISO_3166 & ISO_639 codes to `utils`
+
 ## 1.8.0 - 2016-11-16
 
 - Implemented Wikidata SPARQL

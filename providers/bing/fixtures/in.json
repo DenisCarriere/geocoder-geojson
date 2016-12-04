@@ -1,0 +1,57 @@
+{
+  "authenticationResultCode": "ValidCredentials",
+  "brandLogoUri": "http://dev.virtualearth.net/Branding/logo_powered_by.png",
+  "copyright": "Copyright © 2016 Microsoft and its suppliers. All rights reserved. This API cannot be accessed and the content and any results may not be used, reproduced or transmitted in any manner without express written permission from Microsoft Corporation.",
+  "resourceSets": [
+    {
+      "estimatedTotal": 1,
+      "resources": [
+        {
+          "__type": "Location:http://schemas.microsoft.com/search/local/ws/rest/v1",
+          "bbox": [
+            45.07920837402344,
+            -76.4996109008789,
+            45.77197265625,
+            -74.90253448486328
+          ],
+          "name": "Ottawa, ON",
+          "point": {
+            "type": "Point",
+            "coordinates": [
+              45.389198303222656,
+              -75.68800354003906
+            ]
+          },
+          "address": {
+            "adminDistrict": "ON",
+            "adminDistrict2": "Ottawa",
+            "countryRegion": "Canada",
+            "formattedAddress": "Ottawa, ON",
+            "locality": "Ottawa"
+          },
+          "confidence": "High",
+          "entityType": "PopulatedPlace",
+          "geocodePoints": [
+            {
+              "type": "Point",
+              "coordinates": [
+                45.389198303222656,
+                -75.68800354003906
+              ],
+              "calculationMethod": "Rooftop",
+              "usageTypes": [
+                "Display"
+              ]
+            }
+          ],
+          "matchCodes": [
+            "Good"
+          ]
+        }
+      ]
+    }
+  ],
+  "statusCode": 200,
+  "statusDescription": "OK",
+  "traceId": "890c5bcd9a9e4d30b6faed41fff38b90|BN20320618|7.7.0.0|BN2SCH020180831, i-024736a50720bec40.us-east-1b, BN2SCH020210354, BN2SCH020181450"
+}

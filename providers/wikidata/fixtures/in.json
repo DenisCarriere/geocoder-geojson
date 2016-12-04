@@ -1,0 +1,71 @@
+{
+  "head": {
+    "vars": [
+      "place",
+      "location",
+      "distance",
+      "placeDescription",
+      "name_en",
+      "name_fr",
+      "name_es",
+      "name_de",
+      "name_it",
+      "name_ru"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "place": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1930"
+        },
+        "location": {
+          "datatype": "http://www.opengis.net/ont/geosparql#wktLiteral",
+          "type": "literal",
+          "value": "Point(-75.7 45.416666666)"
+        },
+        "distance": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#double",
+          "type": "literal",
+          "value": "71.786"
+        },
+        "placeDescription": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "capital city of Canada"
+        },
+        "name_en": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Ottawa"
+        },
+        "name_fr": {
+          "xml:lang": "fr",
+          "type": "literal",
+          "value": "Ottawa"
+        },
+        "name_es": {
+          "xml:lang": "es",
+          "type": "literal",
+          "value": "Ottawa"
+        },
+        "name_de": {
+          "xml:lang": "de",
+          "type": "literal",
+          "value": "Ottawa"
+        },
+        "name_it": {
+          "xml:lang": "it",
+          "type": "literal",
+          "value": "Ottawa"
+        },
+        "name_ru": {
+          "xml:lang": "ru",
+          "type": "literal",
+          "value": "Оттава"
+        }
+      }
+    ]
+  }
+}

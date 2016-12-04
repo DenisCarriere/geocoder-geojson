@@ -1,0 +1,243 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "confidence": 10,
+        "location_type": "ROOFTOP",
+        "formatted_address": "38 Ault Dr, Ingleside, ON K0C 1M0, Canada",
+        "place_id": "ChIJX8SIHzI6zEwRkgnkRjr1b7E",
+        "types": [
+          "street_address"
+        ],
+        "street_number": "38",
+        "route": "Ault Drive",
+        "locality": "Ingleside",
+        "administrative_area_level_3": "South Stormont",
+        "administrative_area_level_2": "Stormont, Dundas and Glengarry United Counties",
+        "administrative_area_level_1": "Ontario",
+        "country": "Canada",
+        "postal_code": "K0C 1M0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.99861530000001,
+          44.9976232
+        ]
+      },
+      "bbox": [
+        -74.99996428029152,
+        44.9962742197085,
+        -74.99726631970852,
+        44.9989721802915
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "confidence": 7,
+        "location_type": "APPROXIMATE",
+        "formatted_address": "Ingleside, ON K0C, Canada",
+        "place_id": "ChIJ17j-VzI6zEwRFfHWws1_N2M",
+        "types": [
+          "locality",
+          "political"
+        ],
+        "locality": "Ingleside",
+        "administrative_area_level_3": "South Stormont",
+        "administrative_area_level_2": "Stormont, Dundas and Glengarry United Counties",
+        "administrative_area_level_1": "Ontario",
+        "country": "Canada",
+        "postal_code": "K0C"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.9897993,
+          44.9988842
+        ]
+      },
+      "bbox": [
+        -75.00577849999999,
+        44.98897789999999,
+        -74.9784123,
+        45.0103187
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "confidence": 1,
+        "location_type": "APPROXIMATE",
+        "formatted_address": "Ingleside, ON K0C 1M0, Canada",
+        "place_id": "ChIJffTVeSQ6zEwRBWfyrAeIHPs",
+        "types": [
+          "postal_code"
+        ],
+        "postal_code": "K0C 1M0",
+        "locality": "Ingleside",
+        "administrative_area_level_2": "Stormont, Dundas and Glengarry United Counties",
+        "administrative_area_level_1": "Ontario",
+        "country": "Canada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.06060219999999,
+          45.0142655
+        ]
+      },
+      "bbox": [
+        -75.1551499,
+        44.94264889999999,
+        -74.89547720000002,
+        45.0801859
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "confidence": 1,
+        "location_type": "APPROXIMATE",
+        "formatted_address": "South Stormont, ON, Canada",
+        "place_id": "ChIJdZzsODc7zEwRqGtcVa3FgWo",
+        "types": [
+          "administrative_area_level_3",
+          "political"
+        ],
+        "administrative_area_level_3": "South Stormont",
+        "administrative_area_level_2": "Stormont, Dundas and Glengarry United Counties",
+        "administrative_area_level_1": "Ontario",
+        "country": "Canada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.9262624,
+          45.0725756
+        ]
+      },
+      "bbox": [
+        -75.1566021,
+        44.946396,
+        -74.7084639,
+        45.18822489999999
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "confidence": 1,
+        "location_type": "APPROXIMATE",
+        "formatted_address": "Ontario K0C, Canada",
+        "place_id": "ChIJw4gNX6knzEwR7yl8updX2k0",
+        "types": [
+          "postal_code",
+          "postal_code_prefix"
+        ],
+        "postal_code": "K0C",
+        "administrative_area_level_1": "Ontario",
+        "country": "Canada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.87332959999999,
+          45.1227553
+        ]
+      },
+      "bbox": [
+        -75.46455999999999,
+        44.871597,
+        -74.3447369,
+        45.46862
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "confidence": 1,
+        "location_type": "APPROXIMATE",
+        "formatted_address": "Stormont, Dundas and Glengarry United Counties, ON, Canada",
+        "place_id": "ChIJtSpRbsq20UwRnZuWhLLGCvY",
+        "types": [
+          "administrative_area_level_2",
+          "political"
+        ],
+        "administrative_area_level_2": "Stormont, Dundas and Glengarry United Counties",
+        "administrative_area_level_1": "Ontario",
+        "country": "Canada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.87332959999999,
+          45.1227553
+        ]
+      },
+      "bbox": [
+        -75.5950469,
+        44.798131,
+        -74.3206479,
+        45.5094499
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "confidence": 1,
+        "location_type": "APPROXIMATE",
+        "formatted_address": "Ontario, Canada",
+        "place_id": "ChIJrxNRX7IFzkwRCR5iKVZC-HA",
+        "types": [
+          "administrative_area_level_1",
+          "political"
+        ],
+        "administrative_area_level_1": "Ontario",
+        "country": "Canada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.3232139,
+          51.253775
+        ]
+      },
+      "bbox": [
+        -95.15480099999999,
+        41.68134879999999,
+        -74.3206479,
+        56.85444219999999
+      ]
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "confidence": 1,
+        "location_type": "APPROXIMATE",
+        "formatted_address": "Canada",
+        "place_id": "ChIJ2WrMN9MDDUsRpY9Doiq3aJk",
+        "types": [
+          "country",
+          "political"
+        ],
+        "country": "Canada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.346771,
+          56.130366
+        ]
+      },
+      "bbox": [
+        -142,
+        42,
+        -50,
+        70
+      ]
+    }
+  ]
+}
