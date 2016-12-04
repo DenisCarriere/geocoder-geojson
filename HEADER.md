@@ -1,6 +1,7 @@
 # [Geocoder GeoJSON](https://www.npmjs.com/package/geocoder-geojson)
 
 [![Build Status](https://travis-ci.org/DenisCarriere/geocoder-geojson.svg?branch=master)](https://travis-ci.org/DenisCarriere/geocoder-geojson)
+[![Circle CI](https://circleci.com/gh/DenisCarriere/geocoder-geojson.svg?style=svg)](https://circleci.com/gh/DenisCarriere/geocoder-geojson)
 [![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/geocoder-geojson/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/geocoder-geojson?branch=master)
 [![npm version](https://badge.fury.io/js/geocoder-geojson.svg)](https://badge.fury.io/js/geocoder-geojson)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DenisCarriere/geocoder-geojson/master/LICENSE)
