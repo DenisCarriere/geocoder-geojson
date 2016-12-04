@@ -95,7 +95,7 @@ export function createQuery(address: string, options = Options) {
     bd:serviceParam wikibase:language "${ languages.join(',') }"
   }
 
-} ORDER BY ASC(?dist)
+} ORDER BY ASC(?distance)
 `
   return query
 }
