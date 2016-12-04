@@ -26,4 +26,4 @@ SELECT DISTINCT ?place ?location ?distance ?placeDescription ?name_en ?name_fr ?
     bd:serviceParam wikibase:language "en,fr,es,de,it,ru"
   }
 
-} ORDER BY ASC(?dist)
+} ORDER BY ASC(?distance)
