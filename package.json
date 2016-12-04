@@ -26,11 +26,11 @@
   },
   "homepage": "https://github.com/DenisCarriere/geocoder-geojson#readme",
   "devDependencies": {
-    "@types/jest": "^16.0.1",
-    "documentation": "^4.0.0-beta10",
-    "jest-cli": "^17.0.3",
-    "tslint": "^3.15.1",
-    "typescript": "^2.0.3"
+    "@types/jest": "16.0.1",
+    "documentation": "4.0.0-beta10",
+    "jest-cli": "17.0.3",
+    "tslint": "3.15.1",
+    "typescript": "2.0.10"
   },
   "keywords": [
     "gis",
