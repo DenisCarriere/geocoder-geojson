@@ -1,11 +1,11 @@
 {
   "name": "geocoder-geojson",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Geocoding results in GeoJSON format",
   "main": "index.js",
   "jsnext:main": "index.js",
   "scripts": {
-    "test": "npm run lint && jest --coverage",
+    "test": "npm run lint && jest --coverage && cat ./coverage/lcov.info",
     "docs": "tsc && cat HEADER.md > README.md && documentation build index.js -c documentation.yml -f md --shallow >> README.md && cat CHANGELOG.md >> README.md",
     "lint": "tsc && tslint index.ts test.ts && documentation lint index.js"
   },
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/DenisCarriere/geocoder-geojson#readme",
   "devDependencies": {
     "@types/jest": "^16.0.1",
+    "coveralls": "^2.11.15",
     "documentation": "^4.0.0-beta10",
     "jest-cli": "^17.0.3",
     "tslint": "^3.15.1",

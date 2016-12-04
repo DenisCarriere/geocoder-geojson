@@ -13,7 +13,7 @@ Geocoding results according to the [GeoJSON specification](http://geojson.org/ge
 $ npm install --save geocoder-geojson
 ```
 
-Install globaly to access `geocode` via your command prompt. 
+Install globaly to access `geocode` via your command prompt.
 
 ```bash
 $ npm install -g geocoder-geojson
@@ -59,17 +59,24 @@ $ geocode -p wikidata --nearest [-75.7,45.4] Ottawa | jq .features[0].id
 ## Future Goals
 
 - Implement all geocoding providers from [`Python Geocoder`](https://github.com/DenisCarriere/geocoder)
-
 # mapbox
 
 Mapbox Provider
+
+<https://www.mapbox.com/api-documentation/#geocoding>
 
 **Parameters**
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
 -   `options` **\[MapboxOptions]** Mapbox Options
     -   `options.access_token` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Access token or environment variable `MAPBOX_ACCESS_TOKEN`
-    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
+    -   `options.mode` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Mode mapbox.places or mapbox.places-permanent (optional, default `'mapbox.places'`)
+    -   `options.country` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** ISO 3166 alpha 2 country codes, separated by commas
+    -   `options.proximity` **\[[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)]** Location around which to bias results, given as longitude,latitude
+    -   `options.types` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Filter results by one or more type.
+    -   `options.autocomplete` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Whether or not to return autocomplete results. (optional, default `true`)
+    -   `options.bbox` **\[[BBox](http://geojson.org/geojson-spec.html#bounding-boxes)]** Bounding box within which to limit results, given as minX,minY,maxX,maxY
+    -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit the number of results returned. (optional, default `5`)
 
 **Examples**
 
@@ -83,12 +90,20 @@ Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
 Mapbox Provider (Reverse)
 
+<https://www.mapbox.com/api-documentation/#geocoding>
+
 **Parameters**
 
 -   `lnglat` **[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)** Longitude & Latitude [x, y]
 -   `options` **\[MapboxOptions]** Mapbox Options
     -   `options.access_token` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Access token or environment variable `MAPBOX_ACCESS_TOKEN`
-    -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
+    -   `options.mode` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Mode mapbox.places or mapbox.places-permanent (optional, default `'mapbox.places'`)
+    -   `options.country` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** ISO 3166 alpha 2 country codes, separated by commas
+    -   `options.proximity` **\[[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)]** Location around which to bias results, given as longitude,latitude
+    -   `options.types` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Filter results by one or more type.
+    -   `options.autocomplete` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Whether or not to return autocomplete results. (optional, default `true`)
+    -   `options.bbox` **\[[BBox](http://geojson.org/geojson-spec.html#bounding-boxes)]** Bounding box within which to limit results, given as minX,minY,maxX,maxY
+    -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit the number of results returned. (optional, default `1`)
 
 **Examples**
 
@@ -101,6 +116,8 @@ Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 # google
 
 Google Provider
+
+<https://developers.google.com/maps/documentation/geocoding>
 
 **Parameters**
 
@@ -121,6 +138,8 @@ Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
 Google Provider (Reverse)
 
+<https://developers.google.com/maps/documentation/geocoding>
+
 **Parameters**
 
 -   `lnglat` **[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)** Longitude & Latitude [x, y]
@@ -140,11 +159,14 @@ Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
 Bing Provider
 
+<https://msdn.microsoft.com/en-us/library/ff701714.aspx>
+
 **Parameters**
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
 -   `options` **\[BingOptions]** Bing Options
     -   `options.key` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** API key or environment variable `BING_API_KEY`
+    -   `options.maxResults` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the maximum number of locations to return in the response.
 
 **Examples**
 
@@ -157,6 +179,8 @@ Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 # wikidata
 
 Wikidata Provider
+
+<https://query.wikidata.org/>
 
 **Parameters**
 
@@ -176,6 +200,12 @@ const geojson = await geocoder.wikidata('Ottawa')
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
 # Changelog
+
+## 1.9.0 - 2016-12-3
+
+- Replace all test cases with `Jest` - Major refactoring
+- Added more Mapbox Options
+- Added ISO_3166 & ISO_639 codes to `utils`
 
 ## 1.8.0 - 2016-11-16
 
