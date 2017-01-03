@@ -57,12 +57,12 @@
     "@types/colors": "^0.6.33",
     "@types/commander": "^2.3.30",
     "@types/geojson": "0.0.31",
-    "@types/lodash": "^4.14.38",
     "@types/node": "^6.0.46",
-    "@types/turf": "^3.5.32",
     "axios": "^0.15.2",
     "colors": "^1.1.2",
-    "commander": "^2.9.0",
-    "lodash": "^4.16.6"
+    "commander": "^2.9.0"
+  },
+  "jest": {
+    "verbose": true
   }
 }
