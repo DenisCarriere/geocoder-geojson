@@ -89,7 +89,7 @@ Mapbox Provider
 const geojson = await geocoder.mapbox('Ottawa, ON')
 ```
 
-Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** GeoJSON Point FeatureCollection
 
 ### mapboxReverse
 
@@ -116,7 +116,7 @@ Mapbox Provider (Reverse)
 const geojson = await geocoder.mapbox('Ottawa, ON')
 ```
 
-Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** GeoJSON Point FeatureCollection
 
 ### google
 
@@ -137,7 +137,7 @@ Google Provider
 const geojson = await geocoder.google('Ottawa, ON')
 ```
 
-Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** GeoJSON Point FeatureCollection
 
 ### googleReverse
 
@@ -158,7 +158,7 @@ Google Provider (Reverse)
 const geojson = await geocoder.googleReverse([-75.1, 45.1])
 ```
 
-Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** GeoJSON Point FeatureCollection
 
 ### bing
 
@@ -179,7 +179,7 @@ Bing Provider
 const geojson = await geocoder.bing('Ottawa, ON')
 ```
 
-Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** GeoJSON Point FeatureCollection
 
 ### wikidata
 
@@ -202,4 +202,17 @@ Wikidata Provider
 const geojson = await geocoder.wikidata('Ottawa')
 ```
 
-Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** GeoJSON Point FeatureCollection
+
+### request
+
+Generic GET function to normalize all of the requests
+
+**Parameters**
+
+-   `url` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** URL
+-   `geojsonParser` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Customized function to generate a GeoJSON Point FeatureCollection
+-   `params` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default {})** Query String
+-   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options used for HTTP request & GeoJSON Parser function
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** Results in GeoJSON FeatureCollection Points

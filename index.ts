@@ -4,10 +4,11 @@ import * as Google from './providers/google'
 import * as Mapbox from './providers/mapbox'
 import * as Wikidata from './providers/wikidata'
 import * as utils from './utils'
-import { LngLat, Points, error } from './utils'
+import { LngLat, error, GeoJSONParser } from './utils'
 import * as iso3166 from './utils/ISO_3166-1_alpha-2'
 
 export type Providers = 'bing' | 'google' | 'mapbox' | 'mapboxReverse' | 'wikidata' | 'googleReverse' | 'mapboxReverse'
+export type Points = GeoJSON.FeatureCollection<GeoJSON.Point>
 
 /**
  * Mapbox Provider
@@ -24,7 +25,7 @@ export type Providers = 'bing' | 'google' | 'mapbox' | 'mapboxReverse' | 'wikida
  * @param {boolean} [options.autocomplete=true] Whether or not to return autocomplete results.
  * @param {BBox} [options.bbox] Bounding box within which to limit results, given as minX,minY,maxX,maxY
  * @param {number} [options.limit=5] Limit the number of results returned.
- * @returns {GeoJSON<Point>} GeoJSON Feature Collection
+ * @returns {Promise<Points>} GeoJSON Point FeatureCollection
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
@@ -67,7 +68,7 @@ export async function mapbox(address: string, options = Mapbox.Options): Promise
  * @param {boolean} [options.autocomplete=true] Whether or not to return autocomplete results.
  * @param {BBox} [options.bbox] Bounding box within which to limit results, given as minX,minY,maxX,maxY
  * @param {number} [options.limit=1] Limit the number of results returned.
- * @returns {GeoJSON<Point>} GeoJSON Feature Collection
+ * @returns {Promise<Points>} GeoJSON Point FeatureCollection
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
@@ -102,7 +103,7 @@ export async function mapboxReverse(lnglat: string | LngLat, options = Mapbox.Op
  * @param {GoogleOptions} [options] Google Options
  * @param {string} [options.language=en] The language in which to return results
  * @param {boolean} [options.short=false] Address components have long or short results
- * @returns {GeoJSON<Point>} GeoJSON Feature Collection
+ * @returns {Promise<Points>} GeoJSON Point FeatureCollection
  * @example
  * const geojson = await geocoder.google('Ottawa, ON')
  */
@@ -127,7 +128,7 @@ export async function google(address: string, options = Google.Options): Promise
  * @param {GoogleOptions} [options] Google Options
  * @param {string} [options.language=en] The language in which to return results
  * @param {boolean} [options.short=false] Address components have long or short results
- * @returns {GeoJSON<Point>} GeoJSON Feature Collection
+ * @returns {Promise<Points>} GeoJSON Point FeatureCollection
  * @example
  * const geojson = await geocoder.googleReverse([-75.1, 45.1])
  */
@@ -156,7 +157,7 @@ export async function googleReverse(lnglat: string | LngLat, options = Google.Op
  * @param {BingOptions} [options] Bing Options
  * @param {string} [options.key] API key or environment variable `BING_API_KEY`
  * @param {string} [options.maxResults] Specifies the maximum number of locations to return in the response.
- * @returns {GeoJSON<Point>} GeoJSON Feature Collection
+ * @returns {Promise<Points>} GeoJSON Point FeatureCollection
  * @example
  * const geojson = await geocoder.bing('Ottawa, ON')
  */
@@ -193,7 +194,7 @@ export async function bing(address: string, options = Bing.Options): Promise<Poi
  * @param {number} [options.radius] Maximum radius from nearest LngLat
  * @param {Array<string>} [options.languages] Exact match on a list of languages
  * @param {Array<string>} [options.subclasses] Filter results by Wikidata subclasses
- * @returns {GeoJSON<Point>} GeoJSON Feature Collection
+ * @returns {Promise<Points>} GeoJSON Point FeatureCollection
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')
  */
@@ -217,14 +218,13 @@ export async function wikidata(address: string, options = Wikidata.Options): Pro
 /**
  * Generic GET function to normalize all of the requests
  *
- * @private
  * @param {string} url URL
- * @param {Object} params Query String
  * @param {function} geojsonParser Customized function to generate a GeoJSON Point FeatureCollection
- * @param {Object} options Options used for both request & geojsonParser
- * @returns {Promise<Points>} GeoJSON Results
+ * @param {Object} params Query String
+ * @param {Object} options Options used for HTTP request & GeoJSON Parser function
+ * @returns {Promise<Points>} Results in GeoJSON FeatureCollection Points
  */
-async function request(url: string, geojsonParser: Function, params = {}, options?: utils.Options): Promise<Points> {
+export async function request(url: string, geojsonParser: GeoJSONParser, params = {}, options?: utils.Options): Promise<Points> {
   const response = await axios.get(url, {params})
   if (options.raw !== undefined) { return response.data }
   const geojson = geojsonParser(response.data, options)
