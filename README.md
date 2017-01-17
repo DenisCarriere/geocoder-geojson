@@ -31,7 +31,7 @@ geocoder.google('Ottawa, ON')
   .then(geojson => console.log(geojson))
 ```
 
-### CLI
+## CLI
 
 ```bash
 $ geocode --provider bing "Ottawa ON"
@@ -48,20 +48,23 @@ $ geocode -p wikidata --nearest [-75.7,45.4] Ottawa | jq .features[0].id
 
 ## Features
 
-| Name                              | Coverage    | Restrictions                 |
-|-----------------------------------|:------------|:-----------------------------|
-| [google](#google)                 | Global      | Free & API Key - RateLimit 2500/day
-| [googleReverse](#googlereverse)   | Global      | Free & API Key - RateLimit 2500/day
-| [mapbox](#mapbox)                 | Global      | API Key
-| [mapboxReverse](#mapboxreverse)   | Global      | API Key
-| [bing](#bing)                     | Global      | API Key
-| [wikdata](#wikidata)              | Global      | Free
+| Name                            | Coverage | Restrictions                        |
+| ------------------------------- | :------- | :---------------------------------- |
+| [google](#google)               | Global   | Free & API Key - RateLimit 2500/day |
+| [googleReverse](#googlereverse) | Global   | Free & API Key - RateLimit 2500/day |
+| [mapbox](#mapbox)               | Global   | API Key                             |
+| [mapboxReverse](#mapboxreverse) | Global   | API Key                             |
+| [bing](#bing)                   | Global   | API Key                             |
+| [wikdata](#wikidata)            | Global   | Free                                |
 
 ## Future Goals
 
-- Implement all geocoding providers from [`Python Geocoder`](https://github.com/DenisCarriere/geocoder)
+-   Implement all geocoding providers from [`Python Geocoder`](https://github.com/DenisCarriere/geocoder)
+-   Use the `Fetch` native library instead of `axios`
 
-# mapbox
+## API
+
+### mapbox
 
 Mapbox Provider
 
@@ -74,10 +77,10 @@ Mapbox Provider
     -   `options.access_token` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Access token or environment variable `MAPBOX_ACCESS_TOKEN`
     -   `options.mode` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Mode mapbox.places or mapbox.places-permanent (optional, default `'mapbox.places'`)
     -   `options.country` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** ISO 3166 alpha 2 country codes, separated by commas
-    -   `options.proximity` **\[[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)]** Location around which to bias results, given as longitude,latitude
+    -   `options.proximity` **\[LngLat]** Location around which to bias results, given as longitude,latitude
     -   `options.types` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Filter results by one or more type.
     -   `options.autocomplete` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Whether or not to return autocomplete results. (optional, default `true`)
-    -   `options.bbox` **\[[BBox](http://geojson.org/geojson-spec.html#bounding-boxes)]** Bounding box within which to limit results, given as minX,minY,maxX,maxY
+    -   `options.bbox` **\[BBox]** Bounding box within which to limit results, given as minX,minY,maxX,maxY
     -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit the number of results returned. (optional, default `5`)
 
 **Examples**
@@ -88,7 +91,7 @@ const geojson = await geocoder.mapbox('Ottawa, ON')
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
-# mapboxReverse
+### mapboxReverse
 
 Mapbox Provider (Reverse)
 
@@ -96,15 +99,15 @@ Mapbox Provider (Reverse)
 
 **Parameters**
 
--   `lnglat` **[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)** Longitude & Latitude [x, y]
+-   `lnglat` **LngLat** Longitude & Latitude [x, y]
 -   `options` **\[MapboxOptions]** Mapbox Options
     -   `options.access_token` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Access token or environment variable `MAPBOX_ACCESS_TOKEN`
     -   `options.mode` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Mode mapbox.places or mapbox.places-permanent (optional, default `'mapbox.places'`)
     -   `options.country` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** ISO 3166 alpha 2 country codes, separated by commas
-    -   `options.proximity` **\[[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)]** Location around which to bias results, given as longitude,latitude
+    -   `options.proximity` **\[LngLat]** Location around which to bias results, given as longitude,latitude
     -   `options.types` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Filter results by one or more type.
     -   `options.autocomplete` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Whether or not to return autocomplete results. (optional, default `true`)
-    -   `options.bbox` **\[[BBox](http://geojson.org/geojson-spec.html#bounding-boxes)]** Bounding box within which to limit results, given as minX,minY,maxX,maxY
+    -   `options.bbox` **\[BBox]** Bounding box within which to limit results, given as minX,minY,maxX,maxY
     -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Limit the number of results returned. (optional, default `1`)
 
 **Examples**
@@ -115,7 +118,7 @@ const geojson = await geocoder.mapbox('Ottawa, ON')
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
-# google
+### google
 
 Google Provider
 
@@ -136,7 +139,7 @@ const geojson = await geocoder.google('Ottawa, ON')
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
-# googleReverse
+### googleReverse
 
 Google Provider (Reverse)
 
@@ -144,7 +147,7 @@ Google Provider (Reverse)
 
 **Parameters**
 
--   `lnglat` **[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)** Longitude & Latitude [x, y]
+-   `lnglat` **LngLat** Longitude & Latitude [x, y]
 -   `options` **\[GoogleOptions]** Google Options
     -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results (optional, default `en`)
     -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
@@ -157,7 +160,7 @@ const geojson = await geocoder.googleReverse([-75.1, 45.1])
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
-# bing
+### bing
 
 Bing Provider
 
@@ -178,7 +181,7 @@ const geojson = await geocoder.bing('Ottawa, ON')
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
 
-# wikidata
+### wikidata
 
 Wikidata Provider
 
@@ -188,7 +191,7 @@ Wikidata Provider
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
 -   `options` **\[Options]** Wikidata Options
-    -   `options.nearest` **\[[LngLat](https://en.wikipedia.org/wiki/World_Geodetic_System)]** Nearest location from a given LngLat
+    -   `options.nearest` **\[LngLat]** Nearest location from a given LngLat
     -   `options.radius` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Maximum radius from nearest LngLat
     -   `options.languages` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Exact match on a list of languages
     -   `options.subclasses` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>]** Filter results by Wikidata subclasses
@@ -200,73 +203,3 @@ const geojson = await geocoder.wikidata('Ottawa')
 ```
 
 Returns **GeoJSON&lt;Point>** GeoJSON Feature Collection
-
-# Changelog
-
-## 1.9.0 - 2016-12-3
-
-- Replace all test cases with `Jest` - Major refactoring
-- Added more Mapbox Options
-- Added ISO_3166 & ISO_639 codes to `utils`
-
-## 1.8.0 - 2016-11-16
-
-- Implemented Wikidata SPARQL
-
-## 1.7.0 - 2016-11-11
-
-- Add Command Line Interface (CLI)
-- Add Wikidata provider
-- Add `--nearest` to Wikidata
-- Add wikidata `places` precision
-- Add `places` to filter out `places=*` when using `nearest`
-- Seperate tests per providers `test/test.<provider>.ts`
-
-## 1.6.0 - 2016-11-3
-
-- Replace `isomorphic-fetch` & `qs` with `axios` (less headaches)
-- Deprecate `replaceStreetSuffix` function
-
-## 1.5.2 - 2016-10-26
-
-- Add `@types` to dependencies
-- Replaced `request` dependency for `isomorphic-fetch`.
-
-## 1.4.0 - 2016-10-22
-
-- Replaced `@turf/turf` for namespaced modules `@turf/helpers`, `@turf/distance` & `@turf/bbox-polygon`
-- Removed `lodash` from dependencies
-- Change docs to `await` instead of `.then()`
-- Add default export
-- Update JSDocs options
-
-## 1.2.1 - 2016-10-20
-
-- Remove OSM attribute creation from Google & Bing
-- Validatation of LngLat - Common mistake is rerversing the coordinates to LatLng
-- Added Mapbox & Mapbox Reverse providers
-- Added generic GET function to normalize all of the requests
-
-```javascript
-// Environment Variable MAPBOX_API_KEY
-geocoder.mapbox('Ottawa, ON')
-geocoder.mapboxReverse([-75.1, 45.1])
-```
-
-## 1.1.0 - 2016-10-17
-
-- Added Google Reverse method
-- Changed default Google option `short=false`
-```javascript
-geocoder.googleReverse([-75.1, 45.1])
-```
-
-## 1.0.0 - 2016-10-14
-
-First Stable release was created
-
-Features:
-
-- `google` provider
-- `confidenceScore`
-- `replaceStreetSuffix`
