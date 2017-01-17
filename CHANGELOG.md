@@ -1,5 +1,9 @@
-
 # Changelog
+
+## 1.10.0 - 2017-01-17
+
+-   Updated docs
+-   Removed `colors` dependency
 
 ## 1.9.0 - 2016-12-3
 

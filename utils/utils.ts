@@ -1,4 +1,3 @@
-import * as colors from 'colors'
 import { point } from '@turf/helpers'
 import * as bboxPolygon from '@turf/bbox-polygon'
 import * as distance from '@turf/distance'
@@ -13,6 +12,13 @@ export interface Options {
   places?: Array<string>
   raw?: boolean
   key?: string
+}
+
+/**
+ * GeoJSON Parser
+ */
+export interface GeoJSONParser {
+  (json: any, options: any): Points
 }
 
 /**
@@ -44,7 +50,7 @@ export interface OpenStreetMap {
  * Pretty Error message
  */
 export function error (message: string) {
-  process.stdout.write(colors.bgRed(`[Error] ${ message }\n`))
+  process.stdout.write(`[Error] ${ message }\n`)
   throw new Error(message)
 }
 
