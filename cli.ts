@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import * as program from 'commander'
-import { error, LngLat, Points } from './utils'
+import { error, LngLat } from './utils'
 import * as geocoder from './'
-import * as wikidata from './providers/wikidata'
+import * as wikidata from './providers/wikidata/wikidata'
 
 interface CLI extends program.ICommand {
   limit?: number
