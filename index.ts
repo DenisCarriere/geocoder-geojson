@@ -1,8 +1,9 @@
 import axios from 'axios'
-import * as Bing from './providers/bing'
-import * as Google from './providers/google'
-import * as Mapbox from './providers/mapbox'
-import * as Wikidata from './providers/wikidata'
+import {
+  Bing,
+  Google,
+  Mapbox,
+  Wikidata } from './providers'
 import * as utils from './utils'
 import { LngLat, error, GeoJSONParser } from './utils'
 import * as iso3166 from './utils/ISO_3166-1_alpha-2'

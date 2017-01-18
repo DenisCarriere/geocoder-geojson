@@ -1,10 +1,10 @@
-import * as bing from './bing/bing'
-import * as google from './google/google'
-import * as mapbox from './mapbox/mapbox'
-import * as wikidata from './wikidata/wikidata'
+import * as Bing from './bing/bing'
+import * as Google from './google/google'
+import * as Mapbox from './mapbox/mapbox'
+import * as Wikidata from './wikidata/wikidata'
 export {
-  bing,
-  google,
-  mapbox,
-  wikidata
+  Bing,
+  Google,
+  Mapbox,
+  Wikidata,
 }
