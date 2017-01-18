@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import * as wikidata from './index'
+import * as wikidata from './wikidata'
 
 test('wikidata.toGeoJSON', () => {
   const geojson = wikidata.toGeoJSON(require('./fixtures/in'))

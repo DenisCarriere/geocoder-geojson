@@ -1,4 +1,4 @@
-import * as google from './index'
+import * as google from './google'
 
 test('google.toGeoJSON', () => {
   const geojson = google.toGeoJSON(require('./fixtures/in'))

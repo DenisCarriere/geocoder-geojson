@@ -1,4 +1,4 @@
-import * as mapbox from './index'
+import * as mapbox from './mapbox'
 
 test('mapbox.toGeoJSON', () => {
   const geojson = mapbox.toGeoJSON(require('./fixtures/in'))
