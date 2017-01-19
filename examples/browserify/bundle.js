@@ -12,11 +12,19 @@ geocoder.google('Ottawa, ON')
 },{"../":2}],2:[function(require,module,exports){
 (function (process){
 "use strict";
-var axios_1 = require("axios");
-var utils = require("./utils");
-var utils_1 = require("./utils");
-var iso3166 = require("./utils/ISO_3166-1_alpha-2");
-var providers_1 = require("./providers");
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const axios_1 = require("axios");
+const utils = require("./utils");
+const utils_1 = require("./utils");
+const iso3166 = require("./utils/ISO_3166-1_alpha-2");
+const providers_1 = require("./providers");
 /**
  * Mapbox Provider
  *
@@ -36,13 +44,12 @@ var providers_1 = require("./providers");
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
-function mapbox(address, options) {
-    if (options === void 0) { options = providers_1.Mapbox.Options; }
+function mapbox(address, options = providers_1.Mapbox.Options) {
     // Define options
-    var mode = options.mode || providers_1.Mapbox.Options.mode;
-    var access_token = options.access_token || options.key || process.env.MAPBOX_ACCESS_TOKEN;
-    var country = options.country;
-    var limit = options.limit || providers_1.Mapbox.Options.limit;
+    const mode = options.mode || providers_1.Mapbox.Options.mode;
+    const access_token = options.access_token || options.key || process.env.MAPBOX_ACCESS_TOKEN;
+    const country = options.country;
+    const limit = options.limit || providers_1.Mapbox.Options.limit;
     // Validation
     if (!access_token) {
         utils_1.error('[options.access_token] is required');
@@ -54,13 +61,13 @@ function mapbox(address, options) {
         utils_1.error('--country is invalid');
     }
     // URL Parameters
-    var params = {
-        access_token: access_token,
-        country: country,
-        limit: limit,
+    const params = {
+        access_token,
+        country,
+        limit,
     };
     // Request
-    var url = "https://api.mapbox.com/geocoding/v5/" + mode + "/" + address + ".json";
+    const url = `https://api.mapbox.com/geocoding/v5/${mode}/${address}.json`;
     return request(url, providers_1.Mapbox.toGeoJSON, params, options);
 }
 exports.mapbox = mapbox;
@@ -83,13 +90,12 @@ exports.mapbox = mapbox;
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
-function mapboxReverse(lnglat, options) {
-    if (options === void 0) { options = providers_1.Mapbox.Options; }
+function mapboxReverse(lnglat, options = providers_1.Mapbox.Options) {
     // Define options
-    var mode = options.mode || providers_1.Mapbox.Options.mode;
-    var access_token = options.access_token || options.key || process.env.MAPBOX_ACCESS_TOKEN;
-    var country = options.country;
-    var limit = options.limit || providers_1.Mapbox.Options.limit;
+    const mode = options.mode || providers_1.Mapbox.Options.mode;
+    const access_token = options.access_token || options.key || process.env.MAPBOX_ACCESS_TOKEN;
+    const country = options.country;
+    const limit = options.limit || providers_1.Mapbox.Options.limit;
     // Validation
     if (['mapbox.places', 'mapbox.places-permanent'].indexOf(mode) > 0) {
         utils_1.error('--mode is invalid');
@@ -99,13 +105,13 @@ function mapboxReverse(lnglat, options) {
         utils_1.error('--access_token is required');
     }
     // URL Parameters
-    var params = {
-        access_token: access_token,
-        country: country,
-        limit: limit,
+    const params = {
+        access_token,
+        country,
+        limit,
     };
     // Request
-    var url = "https://api.mapbox.com/geocoding/v5/" + mode + "/" + lnglat.join(',') + ".json";
+    const url = `https://api.mapbox.com/geocoding/v5/${mode}/${lnglat.join(',')}.json`;
     return request(url, providers_1.Mapbox.toGeoJSON, params, options);
 }
 exports.mapboxReverse = mapboxReverse;
@@ -122,19 +128,18 @@ exports.mapboxReverse = mapboxReverse;
  * @example
  * const geojson = await geocoder.google('Ottawa, ON')
  */
-function google(address, options) {
-    if (options === void 0) { options = providers_1.Google.Options; }
+function google(address, options = providers_1.Google.Options) {
     // Define Options
     options.language = options.language || providers_1.Google.Options.language;
     options.sensor = options.sensor || providers_1.Google.Options.sensor;
     options.short = options.short || providers_1.Google.Options.short;
     // URL Parameters
-    var params = {
-        address: address,
+    const params = {
+        address,
         sensor: options.sensor,
     };
     // Request
-    var url = 'https://maps.googleapis.com/maps/api/geocode/json';
+    const url = 'https://maps.googleapis.com/maps/api/geocode/json';
     return request(url, providers_1.Google.toGeoJSON, params, options);
 }
 exports.google = google;
@@ -151,20 +156,19 @@ exports.google = google;
  * @example
  * const geojson = await geocoder.googleReverse([-75.1, 45.1])
  */
-function googleReverse(lnglat, options) {
-    if (options === void 0) { options = providers_1.Google.Options; }
+function googleReverse(lnglat, options = providers_1.Google.Options) {
     // Define Options
     options.language = options.language || providers_1.Google.Options.language;
     options.sensor = options.sensor || providers_1.Google.Options.sensor;
     options.short = options.short || providers_1.Google.Options.short;
-    var _a = utils.validateLngLat(lnglat), lng = _a[0], lat = _a[1];
+    const [lng, lat] = utils.validateLngLat(lnglat);
     // URL Parameters
-    var params = {
-        sensor: options.sensor,
+    const params = {
         address: [lat, lng].join(','),
+        sensor: options.sensor,
     };
     // Request
-    var url = 'https://maps.googleapis.com/maps/api/geocode/json';
+    const url = 'https://maps.googleapis.com/maps/api/geocode/json';
     return request(url, providers_1.Google.toGeoJSON, params, options);
 }
 exports.googleReverse = googleReverse;
@@ -181,25 +185,24 @@ exports.googleReverse = googleReverse;
  * @example
  * const geojson = await geocoder.bing('Ottawa, ON')
  */
-function bing(address, options) {
-    if (options === void 0) { options = providers_1.Bing.Options; }
+function bing(address, options = providers_1.Bing.Options) {
     // Define Options
-    var key = options.key || process.env.BING_API_KEY;
-    var maxResults = options.maxResults || options.limit || providers_1.Bing.Options.maxResults;
+    const key = options.key || process.env.BING_API_KEY;
+    const maxResults = options.maxResults || options.limit || providers_1.Bing.Options.maxResults;
     // Validation
     if (!key) {
         utils_1.error('--key is required');
     }
     // URL Parameters
-    var params = {
+    const params = {
         inclnb: 1,
-        key: key,
+        key,
         o: 'json',
         q: address,
-        maxResults: maxResults,
+        maxResults,
     };
     // Request
-    var url = 'http://dev.virtualearth.net/REST/v1/Locations';
+    const url = 'http://dev.virtualearth.net/REST/v1/Locations';
     return request(url, providers_1.Bing.toGeoJSON, params, options);
 }
 exports.bing = bing;
@@ -218,8 +221,7 @@ exports.bing = bing;
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')
  */
-function wikidata(address, options) {
-    if (options === void 0) { options = providers_1.Wikidata.Options; }
+function wikidata(address, options = providers_1.Wikidata.Options) {
     // Define Options
     options.subclasses = options.subclasses || providers_1.Wikidata.Options.subclasses;
     options.languages = options.languages || providers_1.Wikidata.Options.languages;
@@ -230,13 +232,13 @@ function wikidata(address, options) {
         utils_1.error('--nearest is required');
     }
     // SPARQL Query
-    var query = providers_1.Wikidata.createQuery(address, options);
+    const query = providers_1.Wikidata.createQuery(address, options);
     // URL Parameters
-    var params = {
-        query: query,
+    const params = {
+        query,
     };
     // Request
-    var url = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql';
+    const url = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql';
     return request(url, providers_1.Wikidata.toGeoJSON, params, options);
 }
 exports.wikidata = wikidata;
@@ -249,14 +251,13 @@ exports.wikidata = wikidata;
  * @param {Object} options Options used for HTTP request & GeoJSON Parser function
  * @returns {Promise<Points>} Results in GeoJSON FeatureCollection Points
  */
-function request(url, geojsonParser, params, options) {
-    if (params === void 0) { params = {}; }
-    if (options === void 0) { options = utils.Options; }
-    return axios_1.default.get(url, { params: params }).then(function (response) {
+function request(url, geojsonParser, params = {}, options = utils.Options) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield axios_1.default.get(url, { params });
         if (options.raw !== undefined) {
             return response.data;
         }
-        var geojson = geojsonParser(response.data, options);
+        const geojson = geojsonParser(response.data, options);
         return geojson;
     });
 }
@@ -2648,32 +2649,31 @@ module.exports = (function () {
 }).call(this,require('_process'))
 },{"_process":37}],40:[function(require,module,exports){
 "use strict";
-var turf = require("@turf/helpers");
-var utils_1 = require("../../utils");
+const turf = require("@turf/helpers");
+const utils_1 = require("../../utils");
 exports.Options = {
     maxResults: 5,
 };
 function parseBBox(result) {
-    var _a = result.bbox, south = _a[0], west = _a[1], north = _a[2], east = _a[3];
+    const [south, west, north, east] = result.bbox;
     return [west, south, east, north];
 }
 function parsePoint(result) {
-    var _a = result.point.coordinates, lat = _a[0], lng = _a[1];
+    const [lat, lng] = result.point.coordinates;
     return turf.point([lng, lat]);
 }
 /**
  * Convert Bing results into GeoJSON
  */
-function toGeoJSON(json, options) {
-    if (options === void 0) { options = exports.Options; }
-    var collection = turf.featureCollection([]);
-    json.resourceSets[0].resources.map(function (result) {
+function toGeoJSON(json, options = exports.Options) {
+    const collection = turf.featureCollection([]);
+    json.resourceSets[0].resources.map(result => {
         // Point GeoJSON
-        var point = parsePoint(result);
-        var bbox = parseBBox(result);
-        var confidence = utils_1.confidenceScore(bbox);
-        var properties = {
-            confidence: confidence,
+        const point = parsePoint(result);
+        const bbox = parseBBox(result);
+        let confidence = utils_1.confidenceScore(bbox);
+        const properties = {
+            confidence,
             authenticationResultCode: json.authenticationResultCode,
             brandLogoUri: json.brandLogoUri,
             copyright: json.copyright,
@@ -2684,7 +2684,7 @@ function toGeoJSON(json, options) {
             statusDescription: json.statusDescription,
             traceId: json.traceId,
         };
-        Object.keys(result.address).forEach(function (key) { return properties[key] = result.address[key]; });
+        Object.keys(result.address).forEach(key => properties[key] = result.address[key]);
         // Store Point to GeoJSON feature collection
         if (point) {
             point.bbox = bbox;
@@ -2698,8 +2698,8 @@ exports.toGeoJSON = toGeoJSON;
 
 },{"../../utils":48,"@turf/helpers":5}],41:[function(require,module,exports){
 "use strict";
-var turf = require("@turf/helpers");
-var utils_1 = require("../../utils");
+const turf = require("@turf/helpers");
+const utils_1 = require("../../utils");
 exports.Options = {
     language: 'en',
     sensor: false,
@@ -2708,10 +2708,9 @@ exports.Options = {
 /**
  * Parses Address Component into a single layer Object
  */
-function parseAddressComponents(components, short) {
-    if (short === void 0) { short = exports.Options.short; }
-    var results = {};
-    components.map(function (component) {
+function parseAddressComponents(components, short = exports.Options.short) {
+    const results = {};
+    components.map(component => {
         if (short) {
             results[component.types[0]] = component.short_name;
         }
@@ -2727,7 +2726,7 @@ function parseAddressComponents(components, short) {
 function parseBBox(result) {
     if (result.geometry) {
         if (result.geometry.viewport) {
-            var viewport = result.geometry.viewport;
+            const viewport = result.geometry.viewport;
             return [viewport.southwest.lng, viewport.southwest.lat, viewport.northeast.lng, viewport.northeast.lat];
         }
     }
@@ -2738,7 +2737,7 @@ function parseBBox(result) {
 function parsePoint(result) {
     if (result.geometry) {
         if (result.geometry.location) {
-            var _a = result.geometry.location, lng = _a.lng, lat = _a.lat;
+            const { lng, lat } = result.geometry.location;
             return turf.point([lng, lat]);
         }
     }
@@ -2746,31 +2745,30 @@ function parsePoint(result) {
 /**
  * Convert Google results into GeoJSON
  */
-function toGeoJSON(json, options) {
-    if (options === void 0) { options = exports.Options; }
-    var short = options.short || exports.Options.short;
-    var collection = turf.featureCollection([]);
-    json.results.map(function (result) {
+function toGeoJSON(json, options = exports.Options) {
+    const short = options.short || exports.Options.short;
+    const collection = turf.featureCollection([]);
+    json.results.map(result => {
         // Get Geometries
-        var point = parsePoint(result);
-        var bbox = parseBBox(result);
+        const point = parsePoint(result);
+        const bbox = parseBBox(result);
         // Calculate Confidence score
-        var location_type = result.geometry.location_type;
-        var confidence = utils_1.confidenceScore(bbox);
+        const location_type = result.geometry.location_type;
+        let confidence = utils_1.confidenceScore(bbox);
         if (location_type === 'ROOFTOP') {
             confidence = 10;
         }
         // GeoJSON Point properties
-        var properties = {
-            confidence: confidence,
-            location_type: location_type,
+        const properties = {
+            confidence,
+            location_type,
             formatted_address: result.formatted_address,
             place_id: result.place_id,
             types: result.types,
         };
         // Google Specific Properties
-        var components = parseAddressComponents(result.address_components, short);
-        Object.keys(components).forEach(function (key) { return properties[key] = components[key]; });
+        const components = parseAddressComponents(result.address_components, short);
+        Object.keys(components).forEach(key => properties[key] = components[key]);
         // Store Point to GeoJSON feature collection
         if (point) {
             point.bbox = bbox;
@@ -2784,18 +2782,18 @@ exports.toGeoJSON = toGeoJSON;
 
 },{"../../utils":48,"@turf/helpers":5}],42:[function(require,module,exports){
 "use strict";
-var Bing = require("./bing/bing");
+const Bing = require("./bing/bing");
 exports.Bing = Bing;
-var Google = require("./google/google");
+const Google = require("./google/google");
 exports.Google = Google;
-var Mapbox = require("./mapbox/mapbox");
+const Mapbox = require("./mapbox/mapbox");
 exports.Mapbox = Mapbox;
-var Wikidata = require("./wikidata/wikidata");
+const Wikidata = require("./wikidata/wikidata");
 exports.Wikidata = Wikidata;
 
 },{"./bing/bing":40,"./google/google":41,"./mapbox/mapbox":43,"./wikidata/wikidata":45}],43:[function(require,module,exports){
 "use strict";
-var helpers_1 = require("@turf/helpers");
+const helpers_1 = require("@turf/helpers");
 exports.Options = {
     mode: 'mapbox.places',
     limit: 5,
@@ -2803,10 +2801,9 @@ exports.Options = {
 /**
  * Convert Mapbox results into GeoJSON
  */
-function toGeoJSON(json, options) {
-    if (options === void 0) { options = exports.Options; }
-    var collection = helpers_1.featureCollection([]);
-    json.features.map(function (result) {
+function toGeoJSON(json, options = exports.Options) {
+    const collection = helpers_1.featureCollection([]);
+    json.features.map(result => {
         collection.features.push(result);
     });
     return collection;
@@ -2814,101 +2811,121 @@ function toGeoJSON(json, options) {
 exports.toGeoJSON = toGeoJSON;
 
 },{"@turf/helpers":5}],44:[function(require,module,exports){
-module.exports={
-  "country": "Q6256",
-  "province": "Q11828004",
-  "capital": "Q5119",
-  "city": "Q515",
-  "town": "Q3957",
-  "village": "Q532",
-  "municipality": "Q15284",
-  "suburb": "Q188509",
-  "neighborhood": "Q123705"
-}
+"use strict";
+const codes = {
+    country: 'Q6256',
+    province: 'Q11828004',
+    capital: 'Q5119',
+    city: 'Q515',
+    town: 'Q3957',
+    village: 'Q532',
+    municipality: 'Q15284',
+    suburb: 'Q188509',
+    neighborhood: 'Q123705',
+};
+module.exports = codes;
 
 },{}],45:[function(require,module,exports){
 "use strict";
-var turf = require("@turf/helpers");
-var utils_1 = require("../../utils");
-var iso639 = require("../../utils/ISO_639-2_alpha-2");
-var wikidataCodes = require('./fixtures/codes.json');
+const turf = require("@turf/helpers");
+const utils_1 = require("../../utils");
+const iso639 = require("../../utils/ISO_639-2_alpha-2");
+const wikidataCodes = require("./codes");
 exports.Options = {
     subclasses: ['Q486972'],
     languages: ['en', 'fr', 'es', 'de', 'it', 'ru'],
     radius: 15,
     sparql: false,
 };
-function createQuery(address, options) {
-    if (options === void 0) { options = exports.Options; }
+function createQuery(address, options = exports.Options) {
     // Validation
     if (!options.nearest) {
         utils_1.error('--nearest is required');
     }
     // Options
-    var _a = options.nearest, lng = _a[0], lat = _a[1];
-    var radius = options.radius || exports.Options.radius;
-    var subclasses = options.subclasses || exports.Options.subclasses;
-    var languages = options.languages || exports.Options.languages;
+    const [lng, lat] = options.nearest;
+    const radius = options.radius || exports.Options.radius;
+    const subclasses = options.subclasses || exports.Options.subclasses;
+    const languages = options.languages || exports.Options.languages;
     // Validate languages
-    languages.map(function (language) {
+    languages.map(language => {
         if (iso639.codes[language] === undefined) {
-            utils_1.error("wikidata language code [" + language + "] is invalid");
+            utils_1.error(`wikidata language code [${language}] is invalid`);
         }
     });
     // Convert Arrays into Strings
-    var subclassesString = subclasses.map(function (code) {
-        code = wikidataCodes[code] || code;
-        return "wd:" + code.replace('wd:', '');
+    const subclassesString = subclasses.map(code => {
+        const wikidata = wikidataCodes;
+        code = wikidata[code] || code;
+        return `wd:${code.replace('wd:', '')}`;
     }).join(', ');
     // Build SPARQL Query
-    var query = "SELECT DISTINCT ?place ?location ?distance ?placeDescription ";
-    query += languages.map(function (language) { return "?name_" + language; }).join(' ');
-    query += " WHERE {\n  # Search Instance of & Subclasses\n  ?place wdt:P31/wdt:P279* ?subclass\n  FILTER (?subclass in (" + subclassesString + "))\n";
+    let query = `SELECT DISTINCT ?place ?location ?distance ?placeDescription `;
+    query += languages.map(language => `?name_${language}`).join(' ');
+    query += ` WHERE {
+  # Search Instance of & Subclasses
+  ?place wdt:P31/wdt:P279* ?subclass
+  FILTER (?subclass in (${subclassesString}))
+`;
     if (options.nearest) {
-        query += "\n  # Search by Nearest\n  SERVICE wikibase:around {\n    ?place wdt:P625 ?location .\n    bd:serviceParam wikibase:center \"Point(" + lng + " " + lat + ")\"^^geo:wktLiteral .\n    bd:serviceParam wikibase:radius \"" + radius + "\" .\n    bd:serviceParam wikibase:distance ?distance .\n  }\n";
+        query += `
+  # Search by Nearest
+  SERVICE wikibase:around {
+    ?place wdt:P625 ?location .
+    bd:serviceParam wikibase:center "Point(${lng} ${lat})"^^geo:wktLiteral .
+    bd:serviceParam wikibase:radius "${radius}" .
+    bd:serviceParam wikibase:distance ?distance .
+  }
+`;
     }
-    query += "\n  # Filter by Exact Name\n";
-    languages.map(function (language) {
-        query += "  OPTIONAL {?place rdfs:label ?name_" + language + " FILTER (lang(?name_" + language + ") = \"" + language + "\") . }\n";
+    query += `\n  # Filter by Exact Name\n`;
+    languages.map(language => {
+        query += `  OPTIONAL {?place rdfs:label ?name_${language} FILTER (lang(?name_${language}) = "${language}") . }\n`;
     });
-    query += "\n  FILTER (";
-    query += languages.map(function (language) { return "regex(?name_" + language + ", \"^" + address + "$\")"; }).join(' || ');
-    query += ") .\n";
+    query += `\n  FILTER (`;
+    query += languages.map(language => `regex(?name_${language}, "^${address}$")`).join(' || ');
+    query += `) .\n`;
     // Descriptions
-    query += "\n  # Get Descriptions\n  SERVICE wikibase:label {\n    bd:serviceParam wikibase:language \"" + languages.join(',') + "\"\n  }\n\n} ORDER BY ASC(?distance)\n";
+    query += `
+  # Get Descriptions
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "${languages.join(',')}"
+  }
+
+} ORDER BY ASC(?distance)
+`;
     return query;
 }
 exports.createQuery = createQuery;
 /**
  * Convert Wikidata SPARQL results into GeoJSON
  */
-function toGeoJSON(json, options) {
-    if (options === void 0) { options = exports.Options; }
-    var languages = options.languages || exports.Options.languages;
-    var collection = turf.featureCollection([]);
+function toGeoJSON(json, options = exports.Options) {
+    const languages = options.languages || exports.Options.languages;
+    const collection = turf.featureCollection([]);
     if (json.results !== undefined) {
         if (json.results.bindings !== undefined) {
-            json.results.bindings.map(function (result) {
+            json.results.bindings.map(result => {
                 // Standard Wikidata tags
-                var id = result.place.value.match(/entity\/(.+)/)[1];
-                var _a = result.location.value.match(/\(([\-\.\d]+) ([\-\.\d]+)\)/).slice(1, 3).map(function (n) { return Number(n); }), lng = _a[0], lat = _a[1];
-                var distance = Number(result.distance.value);
-                var properties = {
-                    id: id,
-                    distance: distance,
+                const id = result.place.value.match(/entity\/(.+)/)[1];
+                const [lng, lat] = result.location.value.match(/\(([\-\.\d]+) ([\-\.\d]+)\)/).slice(1, 3).map(n => Number(n));
+                const distance = Number(result.distance.value);
+                const properties = {
+                    id,
+                    distance,
                 };
                 if (result.placeDescription) {
                     properties.description = result.placeDescription.value;
                 }
                 // Parse languages
-                languages.map(function (language) {
-                    var match = result["name_" + language];
+                languages.map(language => {
+                    const match = result[`name_${language}`];
                     if (match !== undefined) {
-                        properties["name:" + language] = match.value;
+                        properties[`name:${language}`] = match.value;
                     }
                 });
                 // Create Point
-                var point = turf.point([lng, lat], properties);
+                const point = turf.point([lng, lat], properties);
                 point.id = id;
                 // Add to GeoJSON Feature Collection
                 collection.features.push(point);
@@ -2919,7 +2936,7 @@ function toGeoJSON(json, options) {
 }
 exports.toGeoJSON = toGeoJSON;
 
-},{"../../utils":48,"../../utils/ISO_639-2_alpha-2":47,"./fixtures/codes.json":44,"@turf/helpers":5}],46:[function(require,module,exports){
+},{"../../utils":48,"../../utils/ISO_639-2_alpha-2":47,"./codes":44,"@turf/helpers":5}],46:[function(require,module,exports){
 "use strict";
 /* tslint:enable */
 exports.codes = {
@@ -3328,16 +3345,16 @@ exports.default = { codes: exports.codes };
 
 },{}],48:[function(require,module,exports){
 "use strict";
-var utils = require("./utils");
+const utils = require("./utils");
 module.exports = utils;
 
 },{"./utils":49}],49:[function(require,module,exports){
 "use strict";
-var helpers_1 = require("@turf/helpers");
-var bboxPolygon = require("@turf/bbox-polygon");
-var distance = require("@turf/distance");
-var chalk = require("chalk");
-var log = console.log;
+const helpers_1 = require("@turf/helpers");
+const bboxPolygon = require("@turf/bbox-polygon");
+const distance = require("@turf/distance");
+const chalk = require("chalk");
+const log = console.log;
 exports.Options = {
     limit: 1,
 };
@@ -3352,7 +3369,7 @@ exports.error = error;
 /**
  * Score (2 worst to 10 best) Distance (kilometers)
  */
-var scoreMatrix = [
+const scoreMatrix = [
     [2, 25],
     [3, 20],
     [4, 15],
@@ -3378,13 +3395,13 @@ function confidenceScore(bbox) {
     if (bbox === undefined) {
         return 0;
     }
-    var result = 0;
-    var poly = bboxPolygon(bbox);
-    var sw = helpers_1.point(poly.geometry.coordinates[0][0]);
-    var ne = helpers_1.point(poly.geometry.coordinates[0][2]);
-    var d = distance(sw, ne, 'kilometers');
-    scoreMatrix.map(function (step) {
-        var score = step[0], maximum = step[1];
+    let result = 0;
+    const poly = bboxPolygon(bbox);
+    const sw = helpers_1.point(poly.geometry.coordinates[0][0]);
+    const ne = helpers_1.point(poly.geometry.coordinates[0][2]);
+    const d = distance(sw, ne, 'kilometers');
+    scoreMatrix.map(step => {
+        const [score, maximum] = step;
         if (d < maximum) {
             result = score;
         }
@@ -3408,24 +3425,23 @@ exports.confidenceScore = confidenceScore;
  * //= Error: LngLat [lng] must be within -180 to 180 degrees
  */
 function validateLngLat(lnglat) {
-    var lat;
-    var lng;
+    let lat;
+    let lng;
     if (typeof (lnglat) === 'string') {
-        _a = JSON.parse(lnglat), lng = _a[0], lat = _a[1];
+        [lng, lat] = JSON.parse(lnglat);
     }
     else {
-        lng = lnglat[0], lat = lnglat[1];
+        [lng, lat] = lnglat;
     }
     if (lat < -90 || lat > 90) {
-        var message = 'LngLat [lat] must be within -90 to 90 degrees';
+        const message = 'LngLat [lat] must be within -90 to 90 degrees';
         error(message);
     }
     else if (lng < -180 || lng > 180) {
-        var message = 'LngLat [lng] must be within -180 to 180 degrees';
+        const message = 'LngLat [lng] must be within -180 to 180 degrees';
         error(message);
     }
     return [lng, lat];
-    var _a;
 }
 exports.validateLngLat = validateLngLat;
 
