@@ -14,10 +14,3 @@ test('validateLngLat', () => {
   expect(utils.validateLngLat([110, 90])).toEqual([110, 90])
   expect(utils.validateLngLat('[110, 90]')).toEqual([110, 90])
 })
-
-test('replaceStreetSuffix', async () => {
-  expect(utils.replaceStreetSuffix('Foo Bar St')).toBe('Foo Bar Street')
-  expect(utils.replaceStreetSuffix('Foo Bar Dr')).toBe('Foo Bar Drive')
-  expect(utils.replaceStreetSuffix('Foo Bar Ave')).toBe('Foo Bar Avenue')
-  expect(utils.replaceStreetSuffix('Foo Bar Rd')).toBe('Foo Bar Road')
-})

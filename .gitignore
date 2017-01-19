@@ -2,8 +2,10 @@
 logs
 *.log
 npm-debug.log*
-*.js
 *.js.map
+*.js
+!bundle.js
+!webpack.config.js
 
 typings/
 

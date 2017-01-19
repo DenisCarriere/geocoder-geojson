@@ -1,6 +1,9 @@
 import { point } from '@turf/helpers'
 import * as bboxPolygon from '@turf/bbox-polygon'
 import * as distance from '@turf/distance'
+import * as chalk from 'chalk'
+
+const log = console.log
 
 /**
  * Options for all providers
@@ -50,7 +53,7 @@ export interface OpenStreetMap {
  * Pretty Error message
  */
 export function error (message: string) {
-  process.stdout.write(`[Error] ${ message }\n`)
+  log(chalk.bgRed.white('[Error]' + message))
   throw new Error(message)
 }
 
@@ -93,33 +96,6 @@ export function confidenceScore(bbox: BBox): number {
     if (d >= 25) { result = 1 }
   })
   return result
-}
-
-/**
- * Street Suffix
- */
-const suffix: Suffix = require('./suffix.json')
-interface Suffix { [key: string]: string }
-
-/**
- * Replaces Street Suffix with a complete word
- *
- * @param {string} name street name
- * @returns {string} name replace street suffix
- * @example
- * replaceStreetSuffix('Foo Bar St')
- * //='Foo Bar Street'
- * replaceStreetSuffix('Foo Bar Dr.')
- * //='Foo Bar Drive'
- */
-export function replaceStreetSuffix(name: string): string {
-  if (name) {
-    Object.keys(suffix).map(key => {
-      const pattern = new RegExp(`${ key }[\.]?$`, 'i')
-      name = name.replace(pattern, suffix[key])
-    })
-  }
-  return name
 }
 
 /**

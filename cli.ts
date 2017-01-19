@@ -71,7 +71,7 @@ function main() {
 
   // Default Geocoder
   } else {
-    geocoder.get(provider, location, cli).then(printGeoJSON)
+    geocoder.get(provider, location, cli).then(printGeoJSON).catch(error => '')
   }
 }
 main()
