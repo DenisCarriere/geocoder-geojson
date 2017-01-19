@@ -9,7 +9,7 @@ interface CLI extends program.ICommand {
   location?: string
   provider?: geocoder.Providers
   nearest?: LngLat
-  places?: Array<string>
+  places?: string[]
   radius?: number
   sparql?: boolean
 }
@@ -53,7 +53,7 @@ if (cli.args[0]) {
 }
 
 // Handle Providers
-let provider: geocoder.Providers = cli.provider || 'bing'
+const provider: geocoder.Providers = cli.provider || 'bing'
 if (Object.keys(geocoder).indexOf(provider) === -1) {
   error(`--provider is invalid`)
 }
@@ -71,7 +71,7 @@ function main() {
 
   // Default Geocoder
   } else {
-    geocoder.get(provider, location, cli).then(printGeoJSON).catch(error => '')
+    geocoder.get(provider, location, cli).then(printGeoJSON).catch(error)
   }
 }
 main()

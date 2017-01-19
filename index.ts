@@ -149,8 +149,8 @@ export function googleReverse(lnglat: string | LngLat, options = Google.Options)
 
   // URL Parameters
   const params = {
-    sensor: options.sensor,
     address: [lat, lng].join(','),
+    sensor: options.sensor,
   }
 
   // Request
@@ -240,12 +240,11 @@ export function wikidata(address: string, options = Wikidata.Options): Promise<P
  * @param {Object} options Options used for HTTP request & GeoJSON Parser function
  * @returns {Promise<Points>} Results in GeoJSON FeatureCollection Points
  */
-export function request(url: string, geojsonParser: GeoJSONParser, params = {}, options = utils.Options): Promise<Points> {
-  return axios.get(url, {params}).then(response => {
-    if (options.raw !== undefined) { return response.data }
-    const geojson = geojsonParser(response.data, options)
-    return geojson
-  })
+export async function request(url: string, geojsonParser: GeoJSONParser, params = {}, options = utils.Options): Promise<Points> {
+  const response = await axios.get(url, {params})
+  if (options.raw !== undefined) { return response.data }
+  const geojson = geojsonParser(response.data, options)
+  return geojson
 }
 
 export function get(provider: Providers, query: string, options?: any): Promise<Points> {

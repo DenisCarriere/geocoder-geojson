@@ -14,8 +14,8 @@ export const Options: Options = {
 export interface Options extends utils.Options {
   nearest?: LngLat
   radius?: number
-  subclasses?: Array<string>
-  languages?: Array<string>
+  subclasses?: string[]
+  languages?: string[]
   sparql?: boolean
 }
 
@@ -35,8 +35,8 @@ export interface Result {
 }
 
 export interface Results {
-  head: { vars: Array<string> }
-  results: { bindings: Array<Result> }
+  head: { vars: string[] }
+  results: { bindings: Result[] }
 }
 
 export function createQuery(address: string, options = Options) {
