@@ -4,6 +4,7 @@ logs
 npm-debug.log*
 *.js.map
 *.js
+!main.js
 !bundle.js
 !webpack.config.js
 
