@@ -88,7 +88,7 @@ function parsePoint(result: Result): GeoJSON.Feature<GeoJSON.Point> {
 /**
  * Convert Google results into GeoJSON
  */
-export function toGeoJSON(json: Results, options?: Options): Points {
+export function toGeoJSON(json: Results, options = Options): Points {
   const short = options.short || Options.short
   const collection: Points = turf.featureCollection([])
   json.results.map(result => {
@@ -102,7 +102,7 @@ export function toGeoJSON(json: Results, options?: Options): Points {
     if (location_type === 'ROOFTOP') { confidence = 10 }
 
     // GeoJSON Point properties
-    const properties = {
+    const properties: any = {
       confidence,
       location_type,
       formatted_address: result.formatted_address,
@@ -112,7 +112,7 @@ export function toGeoJSON(json: Results, options?: Options): Points {
 
     // Google Specific Properties
     const components = parseAddressComponents(result.address_components, short)
-    Object.assign(properties, components)
+    Object.keys(components).forEach(key => properties[key] = components[key])
 
     // Store Point to GeoJSON feature collection
     if (point) {

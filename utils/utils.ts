@@ -5,6 +5,10 @@ import * as chalk from 'chalk'
 
 const log = console.log
 
+export const Options: Options = {
+  limit: 1,
+}
+
 /**
  * Options for all providers
  */

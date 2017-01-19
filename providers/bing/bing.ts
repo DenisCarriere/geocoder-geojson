@@ -39,6 +39,7 @@ interface Result {
     neighborhood: string
     locality: string
     postalCode: string
+    [key: string]: string
   }
   confidence: string
   entityType: string
@@ -69,7 +70,7 @@ function parsePoint(result: Result): GeoJSON.Feature<GeoJSON.Point> {
 /**
  * Convert Bing results into GeoJSON
  */
-export function toGeoJSON(json: Results, options?: Options): Points {
+export function toGeoJSON(json: Results, options = Options): Points {
   const collection: Points = turf.featureCollection([])
   json.resourceSets[0].resources.map(result => {
     // Point GeoJSON
@@ -88,7 +89,7 @@ export function toGeoJSON(json: Results, options?: Options): Points {
       statusDescription: json.statusDescription,
       traceId: json.traceId,
     }
-    Object.assign(properties, result.address)
+    Object.keys(result.address).forEach(key => properties[key] = result.address[key])
 
     // Store Point to GeoJSON feature collection
     if (point) {

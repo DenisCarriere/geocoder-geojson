@@ -30,10 +30,8 @@ export type Points = GeoJSON.FeatureCollection<GeoJSON.Point>
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
-export async function mapbox(address: string, options?: Mapbox.Options): Promise<Points> {
-  // Define Options
-  options = Object.assign(options, Mapbox.Options)
-
+export function mapbox(address: string, options = Mapbox.Options): Promise<Points> {
+  // Define options
   const mode = options.mode || Mapbox.Options.mode
   const access_token = options.access_token || options.key || process.env.MAPBOX_ACCESS_TOKEN
   const country = options.country
@@ -75,10 +73,8 @@ export async function mapbox(address: string, options?: Mapbox.Options): Promise
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
-export async function mapboxReverse(lnglat: string | LngLat, options?: Mapbox.Options): Promise<Points> {
-  // Define Options
-  options = Object.assign(options, Mapbox.Options)
-
+export function mapboxReverse(lnglat: string | LngLat, options = Mapbox.Options): Promise<Points> {
+  // Define options
   const mode = options.mode || Mapbox.Options.mode
   const access_token = options.access_token || options.key || process.env.MAPBOX_ACCESS_TOKEN
   const country = options.country
@@ -114,9 +110,11 @@ export async function mapboxReverse(lnglat: string | LngLat, options?: Mapbox.Op
  * @example
  * const geojson = await geocoder.google('Ottawa, ON')
  */
-export async function google(address: string, options?: Google.Options): Promise<Points> {
+export function google(address: string, options = Google.Options): Promise<Points> {
   // Define Options
-  options = Object.assign(options, Google.Options)
+  options.language = options.language || Google.Options.language
+  options.sensor = options.sensor || Google.Options.sensor
+  options.short = options.short || Google.Options.short
 
   // URL Parameters
   const params = {
@@ -142,17 +140,16 @@ export async function google(address: string, options?: Google.Options): Promise
  * @example
  * const geojson = await geocoder.googleReverse([-75.1, 45.1])
  */
-export async function googleReverse(lnglat: string | LngLat, options?: Google.Options): Promise<Points> {
+export function googleReverse(lnglat: string | LngLat, options = Google.Options): Promise<Points> {
   // Define Options
-  options = Object.assign(options, Google.Options)
-
-  // Options
+  options.language = options.language || Google.Options.language
+  options.sensor = options.sensor || Google.Options.sensor
+  options.short = options.short || Google.Options.short
   const [lng, lat] = utils.validateLngLat(lnglat)
-  const sensor = options.sensor || Google.Options.sensor
 
   // URL Parameters
   const params = {
-    sensor,
+    sensor: options.sensor,
     address: [lat, lng].join(','),
   }
 
@@ -174,9 +171,8 @@ export async function googleReverse(lnglat: string | LngLat, options?: Google.Op
  * @example
  * const geojson = await geocoder.bing('Ottawa, ON')
  */
-export async function bing(address: string, options?: Bing.Options): Promise<Points> {
+export function bing(address: string, options = Bing.Options): Promise<Points> {
   // Define Options
-  options = Object.assign(options, Bing.Options)
   const key = options.key || process.env.BING_API_KEY
   const maxResults = options.maxResults || options.limit || Bing.Options.maxResults
 
@@ -212,9 +208,12 @@ export async function bing(address: string, options?: Bing.Options): Promise<Poi
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')
  */
-export async function wikidata(address: string, options?: Wikidata.Options): Promise<Points> {
+export function wikidata(address: string, options = Wikidata.Options): Promise<Points> {
   // Define Options
-  options = Object.assign(options, Wikidata.Options)
+  options.subclasses = options.subclasses || Wikidata.Options.subclasses
+  options.languages = options.languages || Wikidata.Options.languages
+  options.radius = options.radius || Wikidata.Options.radius
+  options.sparql = options.sparql || Wikidata.Options.sparql
 
   // Validation
   if (!options.nearest) { error('--nearest is required') }
@@ -241,12 +240,12 @@ export async function wikidata(address: string, options?: Wikidata.Options): Pro
  * @param {Object} options Options used for HTTP request & GeoJSON Parser function
  * @returns {Promise<Points>} Results in GeoJSON FeatureCollection Points
  */
-export async function request(url: string, geojsonParser: GeoJSONParser, params?: {}, options?: utils.Options): Promise<Points> {
-  params = params || {}
-  const response = await axios.get(url, {params})
-  if (options.raw !== undefined) { return response.data }
-  const geojson = geojsonParser(response.data, options)
-  return geojson
+export function request(url: string, geojsonParser: GeoJSONParser, params = {}, options = utils.Options): Promise<Points> {
+  return axios.get(url, {params}).then(response => {
+    if (options.raw !== undefined) { return response.data }
+    const geojson = geojsonParser(response.data, options)
+    return geojson
+  })
 }
 
 export function get(provider: Providers, query: string, options?: any): Promise<Points> {

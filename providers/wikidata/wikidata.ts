@@ -103,7 +103,7 @@ export function createQuery(address: string, options = Options) {
 /**
  * Convert Wikidata SPARQL results into GeoJSON
  */
-export function toGeoJSON(json: Results, options?: Options): Points {
+export function toGeoJSON(json: Results, options = Options): Points {
   const languages = options.languages || Options.languages
   const collection: Points = turf.featureCollection([])
   if (json.results !== undefined) {
