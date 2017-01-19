@@ -284,7 +284,7 @@ function get(provider, query, options) {
 exports.get = get;
 
 }).call(this,require('_process'))
-},{"./providers":41,"./utils":47,"./utils/ISO_3166-1_alpha-2":45,"_process":49,"axios":9}],3:[function(require,module,exports){
+},{"./providers":42,"./utils":48,"./utils/ISO_3166-1_alpha-2":46,"_process":37,"axios":9}],3:[function(require,module,exports){
 var polygon = require('@turf/helpers').polygon;
 
 /**
@@ -1055,7 +1055,7 @@ module.exports = function xhrAdapter(config) {
 };
 
 }).call(this,require('_process'))
-},{"../core/createError":17,"./../core/settle":20,"./../helpers/btoa":24,"./../helpers/buildURL":25,"./../helpers/cookies":27,"./../helpers/isURLSameOrigin":29,"./../helpers/parseHeaders":31,"./../utils":33,"_process":49}],11:[function(require,module,exports){
+},{"../core/createError":17,"./../core/settle":20,"./../helpers/btoa":24,"./../helpers/buildURL":25,"./../helpers/cookies":27,"./../helpers/isURLSameOrigin":29,"./../helpers/parseHeaders":31,"./../utils":33,"_process":37}],11:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -1604,7 +1604,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 }).call(this,require('_process'))
-},{"./adapters/http":10,"./adapters/xhr":10,"./helpers/normalizeHeaderName":30,"./utils":33,"_process":49}],23:[function(require,module,exports){
+},{"./adapters/http":10,"./adapters/xhr":10,"./helpers/normalizeHeaderName":30,"./utils":33,"_process":37}],23:[function(require,module,exports){
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -2383,7 +2383,7 @@ module.exports.stripColor = stripAnsi;
 module.exports.supportsColor = supportsColor;
 
 }).call(this,require('_process'))
-},{"_process":49,"ansi-styles":8,"escape-string-regexp":35,"has-ansi":36,"strip-ansi":37,"supports-color":38}],35:[function(require,module,exports){
+},{"_process":37,"ansi-styles":8,"escape-string-regexp":35,"has-ansi":36,"strip-ansi":38,"supports-color":39}],35:[function(require,module,exports){
 'use strict';
 
 var matchOperatorsRe = /[|\\{}()[\]^$+*?.]/g;
@@ -2403,6 +2403,188 @@ var re = new RegExp(ansiRegex().source); // remove the `g` flag
 module.exports = re.test.bind(re);
 
 },{"ansi-regex":7}],37:[function(require,module,exports){
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],38:[function(require,module,exports){
 'use strict';
 var ansiRegex = require('ansi-regex')();
 
@@ -2410,7 +2592,7 @@ module.exports = function (str) {
 	return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
 };
 
-},{"ansi-regex":7}],38:[function(require,module,exports){
+},{"ansi-regex":7}],39:[function(require,module,exports){
 (function (process){
 'use strict';
 var argv = process.argv;
@@ -2464,7 +2646,7 @@ module.exports = (function () {
 })();
 
 }).call(this,require('_process'))
-},{"_process":49}],39:[function(require,module,exports){
+},{"_process":37}],40:[function(require,module,exports){
 "use strict";
 var turf = require("@turf/helpers");
 var utils_1 = require("../../utils");
@@ -2514,7 +2696,7 @@ function toGeoJSON(json, options) {
 }
 exports.toGeoJSON = toGeoJSON;
 
-},{"../../utils":47,"@turf/helpers":5}],40:[function(require,module,exports){
+},{"../../utils":48,"@turf/helpers":5}],41:[function(require,module,exports){
 "use strict";
 var turf = require("@turf/helpers");
 var utils_1 = require("../../utils");
@@ -2600,7 +2782,7 @@ function toGeoJSON(json, options) {
 }
 exports.toGeoJSON = toGeoJSON;
 
-},{"../../utils":47,"@turf/helpers":5}],41:[function(require,module,exports){
+},{"../../utils":48,"@turf/helpers":5}],42:[function(require,module,exports){
 "use strict";
 var Bing = require("./bing/bing");
 exports.Bing = Bing;
@@ -2611,7 +2793,7 @@ exports.Mapbox = Mapbox;
 var Wikidata = require("./wikidata/wikidata");
 exports.Wikidata = Wikidata;
 
-},{"./bing/bing":39,"./google/google":40,"./mapbox/mapbox":42,"./wikidata/wikidata":44}],42:[function(require,module,exports){
+},{"./bing/bing":40,"./google/google":41,"./mapbox/mapbox":43,"./wikidata/wikidata":45}],43:[function(require,module,exports){
 "use strict";
 var helpers_1 = require("@turf/helpers");
 exports.Options = {
@@ -2631,7 +2813,7 @@ function toGeoJSON(json, options) {
 }
 exports.toGeoJSON = toGeoJSON;
 
-},{"@turf/helpers":5}],43:[function(require,module,exports){
+},{"@turf/helpers":5}],44:[function(require,module,exports){
 module.exports={
   "country": "Q6256",
   "province": "Q11828004",
@@ -2644,7 +2826,7 @@ module.exports={
   "neighborhood": "Q123705"
 }
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 "use strict";
 var turf = require("@turf/helpers");
 var utils_1 = require("../../utils");
@@ -2737,7 +2919,7 @@ function toGeoJSON(json, options) {
 }
 exports.toGeoJSON = toGeoJSON;
 
-},{"../../utils":47,"../../utils/ISO_639-2_alpha-2":46,"./fixtures/codes.json":43,"@turf/helpers":5}],45:[function(require,module,exports){
+},{"../../utils":48,"../../utils/ISO_639-2_alpha-2":47,"./fixtures/codes.json":44,"@turf/helpers":5}],46:[function(require,module,exports){
 "use strict";
 /* tslint:enable */
 exports.codes = {
@@ -2994,7 +3176,7 @@ exports.codes = {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = { codes: exports.codes };
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 "use strict";
 /* tslint:enable */
 exports.codes = {
@@ -3144,12 +3326,12 @@ exports.codes = {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = { codes: exports.codes };
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 "use strict";
 var utils = require("./utils");
 module.exports = utils;
 
-},{"./utils":48}],48:[function(require,module,exports){
+},{"./utils":49}],49:[function(require,module,exports){
 "use strict";
 var helpers_1 = require("@turf/helpers");
 var bboxPolygon = require("@turf/bbox-polygon");
@@ -3247,186 +3429,4 @@ function validateLngLat(lnglat) {
 }
 exports.validateLngLat = validateLngLat;
 
-},{"@turf/bbox-polygon":3,"@turf/distance":4,"@turf/helpers":5,"chalk":34}],49:[function(require,module,exports){
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-},{}]},{},[1]);
+},{"@turf/bbox-polygon":3,"@turf/distance":4,"@turf/helpers":5,"chalk":34}]},{},[1]);

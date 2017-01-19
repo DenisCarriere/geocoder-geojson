@@ -2,7 +2,7 @@ import * as turf from '@turf/helpers'
 import * as utils from '../../utils'
 import { Points, LngLat, error } from '../../utils'
 import * as iso639 from '../../utils/ISO_639-2_alpha-2'
-const wikidataCodes = require('./fixtures/codes.json')
+import * as wikidataCodes from './codes'
 
 export const Options: Options = {
   subclasses: ['Q486972'],
@@ -56,7 +56,8 @@ export function createQuery(address: string, options = Options) {
 
   // Convert Arrays into Strings
   const subclassesString = subclasses.map(code => {
-    code = wikidataCodes[code] || code
+    const wikidata: any = wikidataCodes
+    code = wikidata[code] || code
     return `wd:${code.replace('wd:', '')}`
   }).join(', ')
 
