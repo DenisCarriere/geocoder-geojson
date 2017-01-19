@@ -7,7 +7,9 @@
   "scripts": {
     "test": "npm run lint && jest --coverage",
     "docs": "tsc && documentation readme index.js -c documentation.yml --section=API --shallow",
-    "lint": "tsc && tslint index.ts index.test.ts && documentation lint index.js"
+    "lint": "tsc && tslint index.ts index.test.ts && documentation lint index.js",
+    "browserify": "browserify ./examples/main.js -o ./examples/browserify/bundle.js",
+    "webpack": "webpack --entry ./examples/main.js --output-path ./examples/webpack --output-filename bundle.js"
   },
   "bin": {
     "geocode": "cli.js"
@@ -27,11 +29,13 @@
   "homepage": "https://github.com/DenisCarriere/geocoder-geojson#readme",
   "devDependencies": {
     "@types/jest": "16.0.1",
+    "browserify": "^13.3.0",
     "coveralls": "^2.11.15",
     "documentation": "^4.0.0-beta.18",
     "jest-cli": "17.0.3",
     "tslint": "3.15.1",
-    "typescript": "^2.0.10"
+    "typescript": "^2.0.10",
+    "webpack": "^1.14.0"
   },
   "keywords": [
     "gis",
@@ -56,6 +60,7 @@
     "@turf/nearest": "^3.7.0",
     "@types/chalk": "^0.4.31",
     "@types/commander": "^2.3.30",
+    "@types/es6-promise": "0.0.32",
     "@types/geojson": "0.0.31",
     "@types/node": "^7.0.0",
     "axios": "^0.15.2",
