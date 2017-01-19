@@ -45,7 +45,7 @@ export interface Results {
 /**
  * Convert Mapbox results into GeoJSON
  */
-export function toGeoJSON(json: Results, options = Options): Points {
+export function toGeoJSON(json: Results, options?: Options): Points {
   const collection: Points = featureCollection([])
   json.features.map(result => {
     collection.features.push(result)

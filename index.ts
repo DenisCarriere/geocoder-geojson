@@ -1,12 +1,12 @@
 import axios from 'axios'
+import * as utils from './utils'
+import { LngLat, error, GeoJSONParser } from './utils'
+import * as iso3166 from './utils/ISO_3166-1_alpha-2'
 import {
   Bing,
   Google,
   Mapbox,
   Wikidata } from './providers'
-import * as utils from './utils'
-import { LngLat, error, GeoJSONParser } from './utils'
-import * as iso3166 from './utils/ISO_3166-1_alpha-2'
 
 export type Providers = 'bing' | 'google' | 'mapbox' | 'mapboxReverse' | 'wikidata' | 'googleReverse' | 'mapboxReverse'
 export type Points = GeoJSON.FeatureCollection<GeoJSON.Point>
@@ -30,8 +30,10 @@ export type Points = GeoJSON.FeatureCollection<GeoJSON.Point>
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
-export async function mapbox(address: string, options = Mapbox.Options): Promise<Points> {
-  // Options
+export async function mapbox(address: string, options?: Mapbox.Options): Promise<Points> {
+  // Define Options
+  options = Object.assign(options, Mapbox.Options)
+
   const mode = options.mode || Mapbox.Options.mode
   const access_token = options.access_token || options.key || process.env.MAPBOX_ACCESS_TOKEN
   const country = options.country
@@ -73,11 +75,14 @@ export async function mapbox(address: string, options = Mapbox.Options): Promise
  * @example
  * const geojson = await geocoder.mapbox('Ottawa, ON')
  */
-export async function mapboxReverse(lnglat: string | LngLat, options = Mapbox.Options): Promise<Points> {
-  // Options
-  const mode = options.mode || 'mapbox.places'
+export async function mapboxReverse(lnglat: string | LngLat, options?: Mapbox.Options): Promise<Points> {
+  // Define Options
+  options = Object.assign(options, Mapbox.Options)
+
+  const mode = options.mode || Mapbox.Options.mode
   const access_token = options.access_token || options.key || process.env.MAPBOX_ACCESS_TOKEN
-  const limit = options.limit || 1
+  const country = options.country
+  const limit = options.limit || Mapbox.Options.limit
 
   // Validation
   if (['mapbox.places', 'mapbox.places-permanent'].indexOf(mode) > 0) { error('--mode is invalid') }
@@ -87,6 +92,7 @@ export async function mapboxReverse(lnglat: string | LngLat, options = Mapbox.Op
   // URL Parameters
   const params = {
     access_token,
+    country,
     limit,
   }
 
@@ -108,7 +114,10 @@ export async function mapboxReverse(lnglat: string | LngLat, options = Mapbox.Op
  * @example
  * const geojson = await geocoder.google('Ottawa, ON')
  */
-export async function google(address: string, options = Google.Options): Promise<Points> {
+export async function google(address: string, options?: Google.Options): Promise<Points> {
+  // Define Options
+  options = Object.assign(options, Google.Options)
+
   // URL Parameters
   const params = {
     address,
@@ -133,7 +142,10 @@ export async function google(address: string, options = Google.Options): Promise
  * @example
  * const geojson = await geocoder.googleReverse([-75.1, 45.1])
  */
-export async function googleReverse(lnglat: string | LngLat, options = Google.Options): Promise<Points> {
+export async function googleReverse(lnglat: string | LngLat, options?: Google.Options): Promise<Points> {
+  // Define Options
+  options = Object.assign(options, Google.Options)
+
   // Options
   const [lng, lat] = utils.validateLngLat(lnglat)
   const sensor = options.sensor || Google.Options.sensor
@@ -162,8 +174,9 @@ export async function googleReverse(lnglat: string | LngLat, options = Google.Op
  * @example
  * const geojson = await geocoder.bing('Ottawa, ON')
  */
-export async function bing(address: string, options = Bing.Options): Promise<Points> {
-  // Options
+export async function bing(address: string, options?: Bing.Options): Promise<Points> {
+  // Define Options
+  options = Object.assign(options, Bing.Options)
   const key = options.key || process.env.BING_API_KEY
   const maxResults = options.maxResults || options.limit || Bing.Options.maxResults
 
@@ -199,7 +212,10 @@ export async function bing(address: string, options = Bing.Options): Promise<Poi
  * @example
  * const geojson = await geocoder.wikidata('Ottawa')
  */
-export async function wikidata(address: string, options = Wikidata.Options): Promise<Points> {
+export async function wikidata(address: string, options?: Wikidata.Options): Promise<Points> {
+  // Define Options
+  options = Object.assign(options, Wikidata.Options)
+
   // Validation
   if (!options.nearest) { error('--nearest is required') }
 
@@ -225,14 +241,15 @@ export async function wikidata(address: string, options = Wikidata.Options): Pro
  * @param {Object} options Options used for HTTP request & GeoJSON Parser function
  * @returns {Promise<Points>} Results in GeoJSON FeatureCollection Points
  */
-export async function request(url: string, geojsonParser: GeoJSONParser, params = {}, options?: utils.Options): Promise<Points> {
+export async function request(url: string, geojsonParser: GeoJSONParser, params?: {}, options?: utils.Options): Promise<Points> {
+  params = params || {}
   const response = await axios.get(url, {params})
   if (options.raw !== undefined) { return response.data }
   const geojson = geojsonParser(response.data, options)
   return geojson
 }
 
-export function get(provider: Providers, query: string, options: any): Promise<Points> {
+export function get(provider: Providers, query: string, options?: any): Promise<Points> {
   if (provider === 'bing') { return bing(query, options) }
   if (provider === 'google') { return google(query, options) }
   if (provider === 'mapbox') { return mapbox(query, options) }
