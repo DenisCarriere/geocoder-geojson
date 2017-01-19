@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npm run lint && jest --coverage",
     "docs": "tsc && documentation readme index.js -c documentation.yml --section=API --shallow",
-    "lint": "tsc && tslint index.ts test.ts && documentation lint index.js",
+    "lint": "tsc && tslint *.ts && documentation lint index.js",
     "browserify": "browserify ./examples/main.js -o ./examples/browserify/bundle.js",
     "webpack": "webpack --entry ./examples/main.js --output-path ./examples/webpack --output-filename bundle.js"
   },
