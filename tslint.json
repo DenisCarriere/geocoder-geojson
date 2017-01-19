@@ -9,6 +9,7 @@
     "arrow-parens": false,
     "no-var-requires": false,
     "ordered-imports": [false],
-    "variable-name": false
+    "variable-name": false,
+    "space-before-function-paren": false
   }
 }

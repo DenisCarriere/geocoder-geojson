@@ -241,7 +241,15 @@ export function wikidata(address: string, options = Wikidata.Options): Promise<P
  * @returns {Promise<Points>} Results in GeoJSON FeatureCollection Points
  */
 export async function request(url: string, geojsonParser: GeoJSONParser, params = {}, options = utils.Options): Promise<Points> {
-  const response = await axios.get(url, {params})
+  // Create custom Axios instance
+  const instance = axios.create({})
+
+  // Remove any existing default Authorization headers
+  if (instance.defaults.headers.common.Authorization) { delete instance.defaults.headers.common.Authorization }
+  if (instance.defaults.headers.Authorization) { delete instance.defaults.headers.Authorization }
+
+  // Handle request
+  const response = await instance.get(url, {params})
   if (options.raw !== undefined) { return response.data }
   const geojson = geojsonParser(response.data, options)
   return geojson
