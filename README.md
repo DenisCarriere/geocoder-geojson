@@ -36,6 +36,7 @@ geocoder.google('Ottawa, ON')
 -   [Webpack](https://webpack.js.org/)
 -   [Browserify](http://browserify.org/)
 -   [ES6 (ES2015)](https://babeljs.io/learn-es2015/)
+-   [NodeJS 6 & 7](https://nodejs.org/en/)
 
 ## Features
 
