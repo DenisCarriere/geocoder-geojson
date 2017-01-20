@@ -245,7 +245,7 @@ export async function request(url: string, geojsonParser: GeoJSONParser, params 
   const instance = axios.create({})
 
   // Remove any existing default Authorization headers
-  if (instance.defaults.headers.common.Authorization) { delete instance.defaults.headers.common.Authorization }
+  if (instance.defaults.headers.common && instance.defaults.headers.common.Authorization) { delete instance.defaults.headers.common.Authorization }
   if (instance.defaults.headers.Authorization) { delete instance.defaults.headers.Authorization }
 
   // Handle request
