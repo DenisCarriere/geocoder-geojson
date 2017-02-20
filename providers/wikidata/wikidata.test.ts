@@ -9,6 +9,8 @@ test('wikidata.toGeoJSON', () => {
 
 test('wikidata.createQuery', () => {
   const query = wikidata.createQuery('Ottawa', {radius: 100, nearest: [-75, 45]})
+  if (process.env.regen) { fs.writeFileSync(path.join(__dirname, 'fixtures', 'out.sparql.sql'), query, 'utf8')}
+
   const sparql = fs.readFileSync(path.join(__dirname, 'fixtures', 'out.sparql.sql'), 'utf8')
   expect(query).toBe(sparql)
   expect(() => wikidata.createQuery('Ottawa')).toThrow()

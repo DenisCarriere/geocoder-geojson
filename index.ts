@@ -112,14 +112,15 @@ export function mapboxReverse(lnglat: string | LngLat, options = Mapbox.Options)
  */
 export function google(address: string, options = Google.Options): Promise<Points> {
   // Define Options
-  options.language = options.language || Google.Options.language
-  options.sensor = options.sensor || Google.Options.sensor
+  const language = options.language || Google.Options.language
+  const sensor = options.sensor || Google.Options.sensor
   options.short = options.short || Google.Options.short
 
   // URL Parameters
   const params = {
     address,
-    sensor: options.sensor,
+    language,
+    sensor,
   }
 
   // Request
