@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0 -2017-03-4
+
+- Refactor entire code to ES6 (removed Typescript, only keeping .d.ts)
+
 ## 1.10.0 - 2017-01-17
 
 -   Updated docs

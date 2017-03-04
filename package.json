@@ -12,7 +12,7 @@
     "webpack": "webpack --entry ./examples/main.js --output-path ./examples/webpack --output-filename bundle.js"
   },
   "bin": {
-    "geocode": "cli.js"
+    "geocode": "./bin/geocode.js"
   },
   "repository": {
     "type": "git",
