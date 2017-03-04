@@ -19,7 +19,7 @@ export interface Options extends utils.Options {
   limit?: number
 }
 
-interface Geometry {
+export interface Geometry {
   coordinates: LngLat
   type: string
 }

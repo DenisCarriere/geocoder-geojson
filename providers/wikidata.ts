@@ -2,7 +2,18 @@ import * as turf from '@turf/helpers'
 import * as utils from '../../utils'
 import { Points, LngLat, error } from '../../utils'
 import * as iso639 from '../../utils/ISO_639-2_alpha-2'
-import * as wikidataCodes from './codes'
+
+export const wikidataCodes = {
+  country: 'Q6256',
+  province: 'Q11828004',
+  capital: 'Q5119',
+  city: 'Q515',
+  town: 'Q3957',
+  village: 'Q532',
+  municipality: 'Q15284',
+  suburb: 'Q188509',
+  neighborhood: 'Q123705',
+}
 
 export const Options: Options = {
   subclasses: ['Q486972'],
@@ -19,7 +30,7 @@ export interface Options extends utils.Options {
   sparql?: boolean
 }
 
-interface Entity {
+export interface Entity {
   type: string
   value: string
   datatype?: string

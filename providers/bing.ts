@@ -1,6 +1,6 @@
 import * as turf from '@turf/helpers'
-import * as utils from '../../utils'
-import { Points, BBox, LngLat, confidenceScore } from '../../utils'
+import * as utils from '../utils'
+import { Points, BBox, LngLat, confidenceScore } from '../utils'
 
 export const Options: Options = {
   maxResults: 5,
@@ -10,22 +10,22 @@ export interface Options extends utils.Options {
   maxResults?: number
 }
 
-interface Point {
+export interface Point {
   type: string
   coordinates: LngLat
 }
 
-interface GeocodePoint extends Point {
+export interface GeocodePoint extends Point {
   calculationMethod: string
   usageTypes: Array<string>
 }
 
-interface ResourceSets {
+export interface ResourceSets {
   estimatedTotal: number
   resources: Array<Result>
 }
 
-interface Result {
+export interface Result {
   __type?: string
   bbox: BBox
   name: string

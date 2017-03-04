@@ -15,17 +15,17 @@ export interface Options extends utils.Options {
   sensor?: boolean
 }
 
-interface Bounds {
+export interface Bounds {
   northeast: LatLng
   southwest: LatLng
 }
 
-interface LatLng {
+export interface LatLng {
   lat: number
   lng: number
 }
 
-interface AddressComponent {
+export interface AddressComponent {
   long_name: string
   short_name: string
   types: Array<string>
