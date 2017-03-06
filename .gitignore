@@ -2,13 +2,6 @@
 logs
 *.log
 npm-debug.log*
-*.js.map
-*.js
-!main.js
-!bundle.js
-!webpack.config.js
-
-typings/
 
 # Runtime data
 pids
