@@ -121,6 +121,11 @@ function google(address, options = Google.Options) {
     sensor,
   }
 
+  // Add the api key to if specified
+  if (options.key) {
+    params.key = options.key
+  }
+
   // Request
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'
   return request(url, Google.toGeoJSON, params, options)
