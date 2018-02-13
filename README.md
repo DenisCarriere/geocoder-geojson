@@ -47,7 +47,7 @@ geocoder.google('Ottawa, ON')
 | [mapbox](#mapbox)               | Global   | API Key                             |
 | [mapboxReverse](#mapboxreverse) | Global   | API Key                             |
 | [bing](#bing)                   | Global   | API Key                             |
-| [wikdata](#wikidata)            | Global   | Free                                |
+| [wikidata](#wikidata)           | Global   | Free                                |
 
 ## CLI
 
