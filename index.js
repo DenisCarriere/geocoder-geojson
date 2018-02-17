@@ -6,6 +6,7 @@ const Google = providers.Google
 const Bing = providers.Bing
 const Wikidata = providers.Wikidata
 const Mapbox = providers.Mapbox
+const Opencage = providers.Opencage
 
 /**
  * Mapbox Provider
@@ -240,6 +241,82 @@ function wikidata(address, options = Wikidata.Options) {
 module.exports.wikidata = wikidata
 
 /**
+ * Opencage Provider
+ *
+ * https://geocoder.opencagedata.com
+ *
+ * @param {string} address Location for your search
+ * @param {OpencageOptions} [options] opencage Options
+ * @param {string} [options.access_token] Access token or environment variable `OPENCAGE_ACCESS_TOKEN`
+ * @param {string} [options.country'] An ISO 3166 alpha 2 country code
+ * @param {string} [options.language] An IETF format language code (such as es for Spanish or pt-BR for Brazilian Portuguese)
+ * @param {number} [options.limit=10] Limit the number of results returned
+ * @returns {Promise<Points>} GeoJSON Point FeatureCollection
+ * @example
+ * const geojson = await geocoder.opencage('Ottawa, ON')
+ */
+function opencage(address, options = Opencage.Options) {
+  // Define options
+  const key = options.access_token || options.key || process.env.OPENCAGE_ACCESS_TOKEN
+  const countrycode = options.country
+  const language = options.language
+  const limit = options.limit || Opencage.Options.limit
+  const format = 'geojson'
+
+  // Validation
+  if (!key) { error('[options.access_token] is required') }
+  if (countrycode && iso3166.codes[countrycode] === undefined) { error('--country is invalid') }
+
+  // URL Parameters
+  const params = {
+    key,
+    countrycode,
+    language,
+    limit,
+    format
+  }
+
+  // Request
+  const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(address)}`
+  return request(url, Opencage.toGeoJSON, params, options)
+}
+module.exports.opencage = opencage
+
+/**
+ * Opencage Provider (Reverse)
+ *
+ * https://www.opencage.com/api-documentation/#geocoding
+ *
+ * @param {LngLat} lnglat Longitude & Latitude [x, y]
+ * @param {OpencageOptions} [options] opencage Options
+ * @param {string} [options.access_token] Access token or environment variable `OPENCAGE_ACCESS_TOKEN`
+ * @param {string} [options.language] An IETF format language code (such as es for Spanish or pt-BR for Brazilian Portuguese)
+ * @returns {Promise<Points>} GeoJSON Point FeatureCollection
+ * @example
+ * const geojson = await geocoder.opencageReverse([-75.1, 45.1])
+ */
+function opencageReverse(lnglat, options = Opencage.Options) {
+  // Define options
+  const key = options.access_token || options.key || process.env.OPENCAGE_ACCESS_TOKEN
+  const language = options.language
+
+  // Validation
+  lnglat = utils.validateLngLat(lnglat)
+  if (!key) { error('--access_token is required') }
+
+  // URL Parameters
+  const params = {
+    key,
+    language
+  }
+
+  // Request
+  const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(lnglat.join(','))}`
+  return request(url, Opencage.toGeoJSON, params, options)
+}
+module.exports.opencageReverse = opencageReverse
+
+/**
  * Generic GET function to normalize all of the requests
  *
  * @param {string} url URL
@@ -274,5 +351,7 @@ function get(provider, query, options) {
   if (provider === 'wikidata') { return wikidata(query, options) }
   if (provider === 'googleReverse') { return googleReverse(query, options) }
   if (provider === 'mapboxReverse') { return mapboxReverse(query, options) }
+  if (provider === 'opencage') { return opencage(query, options) }
+  if (provider === 'opencageReverse') { return opencageReverse(query, options) }
 }
 module.exports.get = get
