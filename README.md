@@ -40,14 +40,16 @@ geocoder.google('Ottawa, ON')
 
 ## Features
 
-| Name                            | Coverage | Restrictions                        |
-| ------------------------------- | :------- | :---------------------------------- |
-| [google](#google)               | Global   | Free & API Key - RateLimit 2500/day |
-| [googleReverse](#googlereverse) | Global   | Free & API Key - RateLimit 2500/day |
-| [mapbox](#mapbox)               | Global   | API Key                             |
-| [mapboxReverse](#mapboxreverse) | Global   | API Key                             |
-| [bing](#bing)                   | Global   | API Key                             |
-| [wikidata](#wikidata)           | Global   | Free                                |
+| Name                                | Coverage | Restrictions                                                            |
+| -------------------------------     | :------- | :----------------------------------                                     |
+| [google](#google)                   | Global   | Free & API Key - RateLimit 2500/day                                     |
+| [googleReverse](#googlereverse)     | Global   | Free & API Key - RateLimit 2500/day                                     |
+| [mapbox](#mapbox)                   | Global   | API Key                                                                 |
+| [mapboxReverse](#mapboxreverse)     | Global   | API Key                                                                 |
+| [bing](#bing)                       | Global   | API Key                                                                 |
+| [wikidata](#wikidata)               | Global   | Free                                                                    |
+| [opencage](#opencage)               | Global   | Free & API Key - [RateLimit](https://geocoder.opencagedata.com/pricing) |
+| [opencageReverse](#opencageReverse) | Global   | Free & API Key - [RateLimit](https://geocoder.opencagedata.com/pricing) |
 
 ## CLI
 
@@ -222,3 +224,47 @@ Generic GET function to normalize all of the requests
 -   `options` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)](default utils.Options)** Options used for HTTP request & GeoJSON Parser function
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** Results in GeoJSON FeatureCollection Points
+
+### opencage
+
+opencage Provider
+
+<https://geocoder.opencagedata.com/>
+
+**Parameters**
+
+-   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
+-   `options` **\[opencageOptions]** opencage Options
+    -   `options.access_token` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Access token or environment variable `OPENCAGE_ACCESS_TOKEN`
+    -   `options.country` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** An ISO 3166 alpha 2 country code
+    -   `options.language` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** An IETF format language code (such as es for Spanish or pt-BR for Brazilian Portuguese)
+    -   `options.limit` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** How many results should be returned. Default is 10. Maximum is 100
+
+**Examples**
+
+```javascript
+const geojson = await geocoder.opencage('Ottawa, ON')
+```
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** GeoJSON Point FeatureCollection
+
+### opencageReverse
+
+opencage Provider (Reverse)
+
+<https://geocoder.opencagedata.com/>
+
+**Parameters**
+
+-   `lnglat` **LngLat** Longitude & Latitude [x, y]
+-   `options` **\[opencageOptions]** opencage Options
+    -   `options.access_token` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Access token or environment variable `opencage_ACCESS_TOKEN`
+    -   `options.language` **\[[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** An IETF format language code (such as es for Spanish or pt-BR for Brazilian Portuguese)
+
+**Examples**
+
+```javascript
+const geojson = await geocoder.opencageReverse([-75.1, 45.1])
+```
+
+Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;Points>** GeoJSON Point FeatureCollection
