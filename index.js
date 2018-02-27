@@ -157,6 +157,11 @@ function googleReverse(lnglat, options = Google.Options) {
     address: [lat, lng].join(','),
     sensor: options.sensor,
   }
+  
+  // Add the api key to if specified
+  if (options.key) {
+    params.key = options.key
+  }
 
   // Request
   const url = 'https://maps.googleapis.com/maps/api/geocode/json'

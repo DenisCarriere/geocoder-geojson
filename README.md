@@ -134,6 +134,7 @@ Google Provider
 
 -   `address` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Location for your search
 -   `options` **\[GoogleOptions]** Google Options
+    -   `options.key` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** API key
     -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results (optional, default `en`)
     -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
 
@@ -155,6 +156,7 @@ Google Provider (Reverse)
 
 -   `lnglat` **LngLat** Longitude & Latitude [x, y]
 -   `options` **\[GoogleOptions]** Google Options
+    -   `options.key` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** API key
     -   `options.language` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** The language in which to return results (optional, default `en`)
     -   `options.short` **\[[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Address components have long or short results (optional, default `false`)
 
